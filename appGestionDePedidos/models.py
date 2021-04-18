@@ -9,6 +9,9 @@ class Cliente(models.Model):
     nombreEmpresa = models.CharField(max_length=50)
     email = models.EmailField(max_legth=50)
 
+    def __str__(self):
+        return self.nombre
+
 class Pedido(models.Model):
     id_pedido = models.CharField(max_length=5)
     fecha = models.CharField(max_length=50)
@@ -24,8 +27,13 @@ class Producto(models.Model):
     categoria = models.CharField(max_length=50)
     componente = models.ManyToManyField(Componente) #esto nos crea la tabla intermedia de la n-m invisible producto-componente
 
+    def __str__(self):
+        return self.nombre
+
 class Componente(models.Model):
     id_componente= models.CharField(max_length=5)
     nombre = models.CharField(max_length=50)
     marca = models.CharField(max_length=50)
     
+    def __str__(self):
+        return self.nombre
