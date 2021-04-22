@@ -38,8 +38,6 @@ class Pedido(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE) #para la recacion 1-n con cliente
     producto = models.ManyToManyField(Producto) #esto nos crea la tabla intermedia de la n-m invisible de pedido-producto
 
-'''Esto es una prueba, soy Luis'''
-
 
 
 
