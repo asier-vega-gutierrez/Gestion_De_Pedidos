@@ -1,8 +1,8 @@
+
 from django.db import models
 
 
 class Cliente(models.Model):
-    id_cliente = models.CharField(max_length=5)
     cif = models.CharField(max_length=10)
     nombre = models.CharField(max_length=50)
     telefono = models.IntegerField()
@@ -13,7 +13,6 @@ class Cliente(models.Model):
         return self.nombre
 
 class Componente(models.Model):
-    id_componente= models.CharField(max_length=5)
     nombre = models.CharField(max_length=50)
     marca = models.CharField(max_length=50)
     
@@ -21,7 +20,6 @@ class Componente(models.Model):
         return self.nombre
         
 class Producto(models.Model):
-    id_producto = models.CharField(max_length=5)
     precio = models.IntegerField()
     nombre = models.CharField(max_length=50)
     descripcion = models.CharField(max_length=50)
@@ -32,7 +30,6 @@ class Producto(models.Model):
         return self.nombre
         
 class Pedido(models.Model):
-    id_pedido = models.CharField(max_length=5)
     fecha = models.CharField(max_length=50)
     precioTotal = models.IntegerField()
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE) #para la recacion 1-n con cliente
