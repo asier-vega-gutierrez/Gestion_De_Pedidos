@@ -95,7 +95,7 @@ main h2{
 #cabecera-pag-princ{
     height: 610px;
     width: 100%;
-    background-image: url(IMG/cabecera-pag-princ.jpg);
+    background-image: url(../IMG/cabecera-pag-princ.jpg);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -117,15 +117,15 @@ main h2{
 }
 
 #caracas{
-    background-image: url(IMG/caracas.jpg);
+    background-image: url(../IMG/caracas.jpg);
 }
 
 #dubai{
-    background-image: url(IMG/dubai.jpg);
+    background-image: url(../IMG/dubai.jpg);
 }
 
 #marruecos{
-    background-image: url(IMG/marruecos.jpg);
+    background-image: url(../IMG/marruecos.jpg);
 }
 
 .articlePagPrincipal{
