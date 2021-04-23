@@ -24,13 +24,19 @@
 
 .menu img{
     float: left;
-    padding: 10px;
-    padding-left: 40px;
+    padding-top: 0px;
+    padding-left: 15px;
+    padding-bottom: 0px;
 }
 
 .menu ul {
+    margin: auto;
     list-style: none;
     padding-right: 30px;
+    float: right;
+}
+.menu li{
+    display: inline-block;
 }
 
 .menu li a {
@@ -39,14 +45,40 @@
     padding-top: 34px;
     padding-right: 20px;
     font-size: 17px;
-    text-align: center;
-    float: right;
-    overflow: hidden;
     transition: color 0.4s;
+    display: block;
+}
+
+.menu > li{
+    float: right;
 }
 
 .menu li a:hover {
     color: gainsboro;
+}
+
+.menu ul li ul {
+    /*Organizacion de lista anidada*/
+    position: absolute;
+    visibility: hidden;
+}
+
+.menu ul li ul li {
+    /*Organizacion*/
+    display: flex;
+    margin-top: -5px;
+    padding-left: 8px;
+    border-bottom: #f6f6f6 2px solid;
+    padding-bottom: 5px;
+    
+    /*Estetica*/
+    background-color:  #313238;  
+}
+
+/*Condicion para que se haga visible la lista anidada*/
+.menu ul li:hover > ul {
+    /*Hace visble la lista anidada cuando se pone encima el cursor*/
+    visibility: visible; 
 }
 
 /*PIE DE PÁGINA --> IGUAL PARA TODOS*/
@@ -113,13 +145,11 @@ main h2{
     font-size: 50px;
     font-weight: 500px;
     color: white;
-    padding-bottom: 15px;
 }
 
 #cabecera-pag-princ h2{
     font-family: "poppins", Arial, Helvetica, sans-serif;
-    font-size: 45px;
-    font-weight: 450px;
+    font-size: 30px;
     color: white;
     padding-bottom: 15px;
 }

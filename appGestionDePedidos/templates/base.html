@@ -17,8 +17,20 @@
                 <img src="{% static 'IMG/logo_nav.png' %}" alt="Logo" width="150px">
                 <ul>
                     <li><a href="{% url 'pagPrincipal' %}">PÁGINA PRINCIPAL</a></li>
-                    <li><a href="">GESTION DE PRODUCTOS</a></li> <!--PONER NOMBRE URL Y SUS PARÁMETROS-->
-                    <li><a href="">GESTION DE PEDIDOS</a></li> <!--PONER NOMBRE URL Y SUS PARÁMETROS-->  
+                    <li><a href="">GESTIÓN DE PRODUCTOS</a> <!--PONER NOMBRE URL Y SUS PARÁMETROS-->
+                        <ul>
+                            <li><a href="">DETALLE PRODUCTO</a></li>
+                            <li><a href="">AÑADIR PRODUCTO</a></li>
+                            <li><a href="">ELIMINAR PRODUCTO</a></li>
+                        </ul>
+                    </li> 
+                    <li><a href="">GESTIÓN DE PEDIDOS</a> <!--PONER NOMBRE URL Y SUS PARÁMETROS-->
+                        <ul>
+                            <li><a href="">DETALLE PEDIDO</a></li>
+                            <li><a href="">AÑADIR PEDIDO</a></li>
+                            <li><a href="">MODIFICAR PEDIDO</a></li>
+                        </ul>
+                    </li>   
                 </ul>
             </nav>
         </div>
@@ -29,9 +41,7 @@
     </header>
 
     <main>
-        <article id="dubai" class="articlePagPrincipal">
-           
-        </article>
+        
     </main>
 
     <footer class="pie">
