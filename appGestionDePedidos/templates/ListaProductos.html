@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block tituloPrincipal %}
+    <h1>LISTADO DE PRODUCTOS</h1>
+    <h2>Deustronic Components S.L.</h2>
+    <img src="{% static 'IMG/logo_transparente.png' %}" alt="Logo" width="200px" height="200px">
+{% endblock %}
+
+{% block Listados %}
+
+    <p>A continución aparecera el listado de todos los productos existentes en la empresa Deustronic Components S.L.:</p>
+    
+    {% if producto.componente_set %}
+        <ul>
+            {% for componente in producto.componente_set.all %}
+                <li>
+                    <a href="{%  %}"></a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p> No existen productos en Deustronic Components S.L.</p>
+    {% endif %}
