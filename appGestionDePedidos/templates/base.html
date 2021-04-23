@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -6,25 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor de Recursos</title>
     <!--ICONO PESTAÑA-->
-    <link rel="icon" type="image/png" href="../static/IMG/logo.png">
-    <link rel="stylesheet" href="../static/CSS/style.css">
+    <link rel="icon" type="image/png" href="{% static 'IMG/logo.png' %}">
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
 </head>
 <body>
     <header id="cabecera-pag-princ">
         <div class="nav-fijado">
             <nav class="menu">
-                <img src="../static/IMG/logo_nav.png" alt="Logo" width="150px">
+                <img src="{% static 'IMG/logo_nav.png' %}" alt="Logo" width="150px">
                 <ul>
-                    <li><a href="base.html">PÁGINA PRINCIPAL</a></li>
-                    <li><a href=".html">GESTION DE PRODUCTOS</a></li>    
-                    <li><a href=".html">GESTION DE PEDIDOS</a></li>      
+                    <li><a href="{% url 'pagPrincipal' %}">PÁGINA PRINCIPAL</a></li>
+                    <li><a href="">GESTION DE PRODUCTOS</a></li> <!--PONER NOMBRE URL Y SUS PARÁMETROS-->
+                    <li><a href="">GESTION DE PEDIDOS</a></li> <!--PONER NOMBRE URL Y SUS PARÁMETROS-->  
                 </ul>
             </nav>
         </div>
 
         <div id="titulo">
-            <h1>GESTIÓN DE DE PEDIDOS</h1>
-            <img src="../static/IMG/logo_transparente.png" alt="Logo" width="200px" height="200px">
+           {% block tituloPrincipal %}{% endblock %}   
         </div>
     </header>
 
@@ -36,13 +36,13 @@
 
     <footer class="pie">
         <!--INSTAGRAM-->
-        <a href="https://www.instagram.com/?hl=es" title="Instagram"><img src="../static/IMG/instagram.png" alt="Intagram" width="50px" height="50px"></a>
+        <a href="https://www.instagram.com/?hl=es" title="Instagram"><img src="{% static 'IMG/instagram.png' %}" alt="Intagram" width="50px" height="50px"></a>
         <!--TWITTER-->
-        <a href="https://twitter.com/?lang=es" title="Twitter"><img src="../static/IMG/twitter.png" alt="Twitter" width="50px" height="50px"></a>
+        <a href="https://twitter.com/?lang=es" title="Twitter"><img src="{% static 'IMG/twitter.png' %}"alt="Twitter" width="50px" height="50px"></a>
         <!--FACEBOOK-->
-        <a href="https://es-es.facebook.com/" title="Facebook"><img src="../static/IMG/facebook.png" alt="Facebook" width="50px" height="50px"></a>
+        <a href="https://es-es.facebook.com/" title="Facebook"><img src="{% static 'IMG/facebook.png' %}" alt="Facebook" width="50px" height="50px"></a>
         <!--LINKEDIN-->
-        <a href="https://es.linkedin.com/" title="LinkedIn"><img src="../static/IMG/linkedin.png" alt="LinkedIn" width="50px" height="50px"></a>
+        <a href="https://es.linkedin.com/" title="LinkedIn"><img src="{% static 'IMG/linkedin.png' %}" alt="LinkedIn" width="50px" height="50px"></a>
     </footer>
 </body>
 </html>

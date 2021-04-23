@@ -6,9 +6,9 @@ from django.views.generic.detail import DetailView
 
 # Create your views here.
 
-def index(request):
+def pagPrincipal(request):
     context = {}
-    return render(request, "base.html", context)
+    return render(request, "pagPrincipal.html", context)
 
 #class ProductoListView(ListView):
 

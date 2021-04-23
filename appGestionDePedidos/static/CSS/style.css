@@ -116,6 +116,14 @@ main h2{
     padding-bottom: 15px;
 }
 
+#cabecera-pag-princ h2{
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    font-size: 45px;
+    font-weight: 450px;
+    color: white;
+    padding-bottom: 15px;
+}
+
 #caracas{
     background-image: url(../IMG/caracas.jpg);
 }
