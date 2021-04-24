@@ -16,6 +16,11 @@ class ProductoListView(ListView):
         template_name = 'ListaProductos.html'
         context_object_name = 'lista_productos'
 
+        def get_context_data(self, **kwargs):
+                context = super(ProductoListView, self).get_context_data(**kwargs)
+                context['Titulo_Pagina'] = 'Listado de productos'
+                return context
+
 class ProductoDetailView(DetailView):
 
         model = Producto
