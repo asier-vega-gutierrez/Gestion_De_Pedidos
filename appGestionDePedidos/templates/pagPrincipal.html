@@ -7,24 +7,44 @@
     <img src="{% static 'IMG/logo_transparente.png' %}" alt="Logo" width="200px" height="200px">
 {% endblock %}
 
-{% block Listados %}
+{% block content %}
     <header>
         <h2>PRODUCTOS EXISTENTES</h2>
     </header>
 
-    {% if producto.componente_set %}
+    {% if lista_productos %}
     <ul>
         <div class="articlePagPrincipal">
-            {% for producto in lista_Producto %}
-            <li>
-                <h3><span>{{producto}}</span><a href="{% url 'ListaProducto' producto.id %}">{{producto.nombre}}</a></h3>
-            </li>
+            {% for producto in lista_productos %}
+                <li>
+                    <h3><span>{{producto}}</span><a href="{% url 'DetalleProducto' producto.id %}">{{producto.nombre}}</a></h3>
+                </li>
             {% endfor %}
         </div>>
     </ul>
     {% else %}
-    <h4>
-        <p> No existen productos en Deustronic Components S.L.</p>
-    </h4>
+        <h4><p> No existen productos en Deustronic Components S.L.</p></h4>
     {% endif %}
 {% endblock %}
+
+    <!--<header>
+        <h2>PEDIDOS EXISTENTES</h2>
+    </header>
+
+    {% if pedido.producto_set %}
+        <ul>
+            <div class="articlePagPrincipal">
+                {% for pedido in lista_pedidos %}
+                    <li>
+                        <h3><span>{{producto}}</span><a href="{% url 'ListaProducto' producto.id %}">{{producto.nombre}}</a></h3>
+                    </li>
+                {% endfor %}
+            </div>>
+        </ul>
+    {% else %}
+        <h4>
+            <p> No existen pedidos en Deustronic Components S.L.</p>
+        </h4>
+    {% endif %}-->
+
+
