@@ -16,9 +16,9 @@ class ProductoListView(ListView):
         template_name = 'ListaProducto.html'
         context_object_name = 'lista_productos'
 
-        def get_context_data(self, **kwargs):
+        '''def get_context_data(self, **kwargs):
                 context = super(ProductoListView, self).get_context_data(**kwargs)
-                return context
+                return context'''
         
        
 
@@ -26,24 +26,24 @@ class ProductoDetailView(DetailView):
 
         model = Producto
         template_name = 'DetalleProducto.html'
-        context_object_name = 'producto'
+        context_object_name = 'Detalle_producto'
 
-        def get_context_data(self, **kwargs):
+        '''def get_context_data(self, **kwargs):
                 context = super().get_context_data(**kwargs)
                 #context['lista_productos'] = 
-                return context
+                return context'''
 
 
 class PedidoListView(ListView):
 
         model = Pedido
-        template_name = 'pagPrincipal.html'
+        template_name = 'ListaPedido.html'
         context_object_name = 'lista_pedidos'
 
-        def get_context_data(self, **kwargs):
+        '''def get_context_data(self, **kwargs):
                 context = super(PedidoListView, self).get_context_data(**kwargs)
                 
-                return context
+                return context'''
 
 class PedidoDetailView(DetailView):
 

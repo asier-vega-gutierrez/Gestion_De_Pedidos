@@ -5,5 +5,6 @@ from appGestionDePedidos.views import *
 urlpatterns = [
     path('', views.pagPrincipal, name = 'pagPrincipal'),
     path('ListaProducto/', ProductoListView.as_view(), name = 'ListaProducto'),
-    path('DetalleProducto/<str:nombre_producto>', ProductoDetailView.as_view(), name = 'DetalleProducto'),
+    path('DetalleProducto/<int:pk>', ProductoDetailView.as_view(), name = 'DetalleProducto'),
+    path('ListaPedidos/', PedidoListView.as_view(), name = 'ListaPedido'),
 ]

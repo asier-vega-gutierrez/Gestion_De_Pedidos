@@ -7,28 +7,11 @@
 <img src="{% static 'IMG/logo_transparente.png' %}" alt="Logo" width="200px" height="200px">
 {% endblock %}
 
-{% block context %}
+{% block content %}
     <header>
         <h2>A continución apareceran en detalle todos los productos existentes:</h2>
     </header>
 
-    {% if producto.componente_set %}
-        <ul>
-            <div class="articlePagPrincipal">
-                {% for componente in producto.componente_set.all %}
-                    <li>
-                        <h3><span>{{producto}}</span><a href="/GestionDePedidos/DetalleProducto/{{producto.id}}">{{producto.nombre}}</a></h3>
-                    </li>
-                {% endfor %}
-            </div>>
-        </ul>
-    {% else %}
-
-        <div class="dcha">
-            <h4>
-                <p> No existen productos en Deustronic Components S.L.</p>
-            </h4>
-        </div>
-
-    {% endif %}
+<p>{{ Detalle_producto.nombre }}</p>
+<p>{{ Detalle_producto.descripcion }}</p>
 {% endblock %}
