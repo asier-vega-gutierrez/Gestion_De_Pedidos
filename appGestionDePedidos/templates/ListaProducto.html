@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block tituloPrincipal %}
+    <h1>GESTIÓN DE PEDIDOS</h1>
+    <h2>Deustronic Components S.L.</h2>
+    <img src="{% static 'IMG/logo_transparente.png' %}" alt="Logo" width="200px" height="200px">
+{% endblock %}
+
+{% block content %}
+<header>
+    <h2>PRODUCTOS EXISTENTES</h2>
+</header>
+
+{% if lista_productos %}
+<ul>
+    <div class="articlePagPrincipal">
+        {% for producto in lista_productos %}
+        <li>
+            <h3><a href="">{{producto.nombre}}</a></h3>
+        </li>
+        {% endfor %}
+    </div>
+</ul>
+{% else %}
+    <h4><p> No existen productos en Deustronic Components S.L.</p></h4>
+{% endif %}
+{% endblock %}

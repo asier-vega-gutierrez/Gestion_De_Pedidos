@@ -13,13 +13,14 @@ def pagPrincipal(request):
 class ProductoListView(ListView):
 
         model = Producto
-        template_name = 'pagPrincipal.html'
+        template_name = 'ListaProducto.html'
         context_object_name = 'lista_productos'
 
-        '''def get_context_data(self, **kwargs):
+        def get_context_data(self, **kwargs):
                 context = super(ProductoListView, self).get_context_data(**kwargs)
-                context['Titulo_Pagina'] = 'Listado de productos'
-                return context'''
+                return context
+        
+       
 
 class ProductoDetailView(DetailView):
 
@@ -41,7 +42,7 @@ class PedidoListView(ListView):
 
         def get_context_data(self, **kwargs):
                 context = super(PedidoListView, self).get_context_data(**kwargs)
-                context['Titulo_Pagina'] = 'Listado de pedidos'
+                
                 return context
 
 class PedidoDetailView(DetailView):
