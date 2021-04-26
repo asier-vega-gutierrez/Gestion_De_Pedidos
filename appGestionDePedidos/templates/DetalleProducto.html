@@ -14,4 +14,19 @@
 
 <p>{{ detalle_producto.nombre }}</p>
 <p>{{ detalle_producto.descripcion }}</p>
+
+{% if lista_pedidos_productos %}
+        <ul>
+            <div class="articlePagPrincipal">
+                {% for pedido in lista_pedidos_productos %}
+                <li>
+                    <p><a href="">{{pedido.pedido}}</a></p>
+                    <p>{{pedido.cantidad}}</p>
+                </li>
+                {% endfor %}
+            </div>
+        </ul>
+    {% else %}
+        <h4><p> No existen productos en Deustronic Components S.L.</p></h4>
+    {% endif %}
 {% endblock %}

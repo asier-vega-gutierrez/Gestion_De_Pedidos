@@ -34,6 +34,8 @@ class Pedido(models.Model):
     precioTotal = models.IntegerField()
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE) #para la recacion 1-n con cliente
     productos = models.ManyToManyField(Producto, through = 'Compone')#esto nos crea la tabla intermedia de la n-m invisible de pedido-producto
+    def __str__(self):
+        return str(self.fecha)
 
 class Consta(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
@@ -43,6 +45,7 @@ class Compone(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
+
 
 
 

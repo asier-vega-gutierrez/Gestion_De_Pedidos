@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Cliente, Componente, Producto, Pedido
+from .models import *
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django import forms
@@ -20,10 +20,10 @@ class ProductoDetailView(DetailView):
         template_name = 'detalleProducto.html'
         context_object_name = 'detalle_producto'
 
-        '''def get_context_data(self, **kwargs):
-                context = super().get_context_data(**kwargs)
-                #context['lista_productos'] = 
-                return context'''
+        def get_context_data(self, **kwargs):
+                context = super(ProductoDetailView, self).get_context_data(**kwargs)
+                context['lista_pedidos_productos'] = Compone.objects.filter(producto=self.object.id)
+                return context
 
 '''class PedidoDetailView(DetailView):
 
