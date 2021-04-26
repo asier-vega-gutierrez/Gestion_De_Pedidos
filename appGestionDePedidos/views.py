@@ -5,45 +5,24 @@ from django.views.generic.detail import DetailView
 from django import forms
 from django.views import View
 
-# Create your views here.
-
-def pagPrincipal(request):
-    context = {}
-    return render(request, "pagPrincipal.html", context)
-
-class ProductoListView(ListView):
-
+class ProductoPedidoListView(ListView):
         model = Producto
-        template_name = 'ListaProducto.html'
+        template_name = 'pagPrincipal.html'
         context_object_name = 'lista_productos'
 
-        '''def get_context_data(self, **kwargs):
-                context = super(ProductoListView, self).get_context_data(**kwargs)
-                return context'''
-        
-       
+        def get_context_data(self, **kwargs):
+                context = super(ProductoPedidoListView, self).get_context_data(**kwargs)
+                context['lista_pedidos'] = Pedido.objects.all()
+                return context
 
 class ProductoDetailView(DetailView):
-
         model = Producto
-        template_name = 'DetalleProducto.html'
-        context_object_name = 'Detalle_producto'
+        template_name = 'detalleProducto.html'
+        context_object_name = 'detalle_producto'
 
         '''def get_context_data(self, **kwargs):
                 context = super().get_context_data(**kwargs)
                 #context['lista_productos'] = 
-                return context'''
-
-
-class PedidoListView(ListView):
-
-        model = Pedido
-        template_name = 'ListaPedido.html'
-        context_object_name = 'lista_pedidos'
-
-        '''def get_context_data(self, **kwargs):
-                context = super(PedidoListView, self).get_context_data(**kwargs)
-                
                 return context'''
 
 '''class PedidoDetailView(DetailView):
@@ -62,15 +41,15 @@ class ComponenteListView(ListView):
         #template_name = 
 '''
 
-class AnadirProductoForm(View):
+class AnyadirProductoForm(View):
 
         def get(self, request, *args, **kwargs):
                 form = AnadirProductoForm()
                 context = {'form': form}
-                return render(request, 'AnadirProducto.html', context)
+                return render(request, 'anyadirProducto.html', context)
 
         def post(self, request, *args, **kwargs):
-                form = AnadirProductoForm(request.POST)
+                form = AnyadirProductoForm(request.POST)
                 if form.is_valid():
                         producto = Producto()
                         producto.precio = form.cleaned_data['precio']
@@ -81,4 +60,4 @@ class AnadirProductoForm(View):
                         # Volvemos a la lista de departamentos
                         return redirect('producto')
 
-                return render(request, 'AnadirProducto.html', {'form': form})
+                return render(request, 'anyadirProducto.html', {'form': form})

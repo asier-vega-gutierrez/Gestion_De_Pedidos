@@ -8,27 +8,40 @@
 {% endblock %}
 
 {% block content %}
-  
-{% endblock %}
+    <header>
+        <h2>PRODUCTOS EXISTENTES</h2>
+    </header>
 
-    <!--<header>
+    {% if lista_productos %}
+        <ul>
+            <div class="articlePagPrincipal">
+                {% for producto in lista_productos %}
+                <li>
+                    <h3><a href="{% url 'detalleProducto' producto.id %}">{{producto.nombre}}</a></h3>
+                </li>
+                {% endfor %}
+            </div>
+        </ul>
+    {% else %}
+        <h4><p> No existen productos en Deustronic Components S.L.</p></h4>
+    {% endif %}
+
+    <header>
         <h2>PEDIDOS EXISTENTES</h2>
     </header>
 
-    {% if pedido.producto_set %}
+    {% if lista_pedidos %}
         <ul>
             <div class="articlePagPrincipal">
                 {% for pedido in lista_pedidos %}
-                    <li>
-                        <h3><span>{{producto}}</span><a href="{% url 'ListaProducto' producto.id %}">{{producto.nombre}}</a></h3>
-                    </li>
+                <li>
+                    <h3><a href="">{{pedido.fecha}}</a></h3>
+                </li>
                 {% endfor %}
-            </div>>
+            </div>
         </ul>
     {% else %}
-        <h4>
-            <p> No existen pedidos en Deustronic Components S.L.</p>
-        </h4>
-    {% endif %}-->
-
+        <h4><p> No existen pedidos en Deustronic Components S.L.</p></h4>
+    {% endif %}
+{% endblock %}
 

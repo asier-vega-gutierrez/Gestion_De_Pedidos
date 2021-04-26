@@ -13,7 +13,7 @@ class AnadirPedidoForm(forms.Form):
     precioTotal = forms.IntegerField(label="Precio Total")
     cliente = forms.CharField(label="Cliente", max_length=100)'''
 
-class AnadirProductoForm(forms.ModelForm):
+class AnyadirProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
         fields = '__all__'

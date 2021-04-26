@@ -3,9 +3,10 @@ from . import views
 from appGestionDePedidos.views import *
 
 urlpatterns = [
-    path('', views.pagPrincipal, name = 'pagPrincipal'),
-    path('ListaProducto/', ProductoListView.as_view(), name = 'ListaProducto'),
-    path('DetalleProducto/<int:pk>', ProductoDetailView.as_view(), name = 'DetalleProducto'),
-    path('ListaPedidos/', PedidoListView.as_view(), name = 'ListaPedido'),
-    path('AnadirProducto/', AnadirProductoForm.as_view(), name="AnadirProducto"),
+    #URL para la pag. principal donde se visualizará el listado de productos y pedidos
+    path('', ProductoPedidoListView.as_view(), name = 'pagPrincipal'),
+    #URL para la visualización de cada atributo de un producto concreto
+    path('detalleProducto/<int:pk>/', ProductoDetailView.as_view(), name = 'detalleProducto'),
+    #URL para acceder al formulario en el cual se podrá añadir un producto nuevo
+    path('anyadirProducto/', AnyadirProductoForm.as_view(), name="anyadirProducto"),
 ]
