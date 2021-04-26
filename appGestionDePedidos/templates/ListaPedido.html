@@ -17,7 +17,7 @@
     <div class="articlePagPrincipal">
         {% for pedido in lista_pedidos %}
         <li>
-            <h3><a href="">{{pedido.fecha}}</a></h3>
+            <h3><a href="{% url 'DetallePedido' pedido.id %}">{{pedido.fecha}}</a></h3>
         </li>
         {% endfor %}
     </div>

@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Cliente, Componente, Producto, Pedido
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-
+from django import forms
+from django.views import View
 
 # Create your views here.
 
@@ -45,7 +46,7 @@ class PedidoListView(ListView):
                 
                 return context'''
 
-class PedidoDetailView(DetailView):
+'''class PedidoDetailView(DetailView):
 
         model = Pedido
         #template_name = 
@@ -59,3 +60,25 @@ class ComponenteListView(ListView):
 
         model = Componente
         #template_name = 
+'''
+
+class AnadirProductoForm(View):
+
+        def get(self, request, *args, **kwargs):
+                form = AnadirProductoForm()
+                context = {'form': form}
+                return render(request, 'AnadirProducto.html', context)
+
+        def post(self, request, *args, **kwargs):
+                form = AnadirProductoForm(request.POST)
+                if form.is_valid():
+                        producto = Producto()
+                        producto.precio = form.cleaned_data['precio']
+                        producto.nombre = form.cleaned_data['nombre']
+                        producto.descripcion = form.cleaned_data['descripcion']
+                        producto.categoria = form.cleaned_data['categoria']
+                        producto.save()
+                        # Volvemos a la lista de departamentos
+                        return redirect('producto')
+
+                return render(request, 'AnadirProducto.html', {'form': form})

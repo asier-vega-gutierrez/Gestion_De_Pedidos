@@ -17,7 +17,7 @@
     <div class="articlePagPrincipal">
         {% for producto in lista_productos %}
         <li>
-            <h3><a href="">{{producto.nombre}}</a></h3>
+            <h3><a href="{% url 'DetalleProducto' producto.id %}">{{producto.nombre}}</a></h3>
         </li>
         {% endfor %}
     </div>
