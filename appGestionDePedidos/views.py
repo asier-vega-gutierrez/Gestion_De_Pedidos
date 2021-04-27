@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django import forms
 from django.views import View
+from .forms import *
 
 class ProductoPedidoListView(ListView):
         model = Producto
@@ -20,25 +21,11 @@ class ProductoDetailView(DetailView):
         template_name = 'detalleProducto.html'
         context_object_name = 'detalle_producto'
 
-        '''
-        def get_context_data(self, **kwargs):
-                context = super(ProductoDetailView, self).get_context_data(**kwargs)
-                context['lista_pedidos_productos'] = Compone.objects.all().filter(pedido=self.kwargs['pk'])
-                return context
-        '''
-
 class PedidoDetailView(DetailView):
         model = Pedido
         template_name = 'detallePedido.html'
         context_object_name = 'detalle_pedido'
 
-        '''
-        def get_context_data(self, **kwargs):
-                context = super(PedidoDetailView, self).get_context_data(**kwargs)
-                context['lista_pedidos_productos'] = Compone.objects.filter(producto=self.kwargs['pk'])
-                return context
-        '''
-        
 '''class PedidoDetailView(DetailView):
 
         model = Pedido
@@ -58,12 +45,12 @@ class ComponenteListView(ListView):
 class AnyadirProductoForm(View):
 
         def get(self, request, *args, **kwargs):
-                form = AnadirProductoForm()
+                form = ProductoAnyadirForm()
                 context = {'form': form}
                 return render(request, 'anyadirProducto.html', context)
 
         def post(self, request, *args, **kwargs):
-                form = AnyadirProductoForm(request.POST)
+                form = ProductoAnyadirForm(request.POST)
                 if form.is_valid():
                         producto = Producto()
                         producto.precio = form.cleaned_data['precio']

@@ -14,7 +14,7 @@
             <div class="articlePagPrincipal">
                 {% for productos in detalle_pedido.productos.all %}
                 <li>
-                    <p><a href="">{{productos.nombre}}</a></p>
+                    <p><a href="{% url 'detalleProducto' productos.id %}">{{productos.nombre}}</a></p>
                     <p>{{productos.cantidad}}</p>
                 </li>
                 {% endfor %}

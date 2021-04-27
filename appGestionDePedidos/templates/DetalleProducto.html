@@ -15,7 +15,7 @@
             <div class="articlePagPrincipal">
                 {% for pedidos in detalle_producto.pedido_set.all %}
                 <li>
-                    <p><a href="">{{pedidos.fecha}}</a></p>
+                    <p><a href="{% url 'detallePedido' pedidos.id %}">{{pedidos.fecha}}</a></p>
                     <p>{{pedidos.cantidad}}</p>
                 </li>
                 {% endfor %}
