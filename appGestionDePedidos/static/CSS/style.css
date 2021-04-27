@@ -180,6 +180,10 @@ main h2{
     margin-left: 10px;
 }
 
+#formulario{
+    padding-top: 100px;
+}
+
 /*FORMULARIOS (INSERTAR PROYECTO Y RECURSOS)
 #nota{
     font-family: "calibri", Verdana, Geneva, Tahoma, sans-serif;

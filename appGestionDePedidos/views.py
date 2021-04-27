@@ -63,3 +63,4 @@ class AnyadirProductoForm(View):
                         return redirect('pagPrincipal')
 
                 return render(request, 'anyadirProducto.html', {'form': form})
+                
