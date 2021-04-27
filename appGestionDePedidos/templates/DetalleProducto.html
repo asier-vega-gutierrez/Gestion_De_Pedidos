@@ -10,13 +10,13 @@
 <p>{{ detalle_producto.nombre }}</p>
 <p>{{ detalle_producto.descripcion }}</p>
 
-{% if lista_pedidos_productos %}
+{% if detalle_producto.pedido_set.all %}
         <ul>
             <div class="articlePagPrincipal">
-                {% for pedido in lista_pedidos_productos %}
+                {% for pedidos in detalle_producto.pedido_set.all %}
                 <li>
-                    <p><a href="{% url 'detallePedido' pedido.id %}">{{pedido.pedido}}</a></p>
-                    <p>{{pedido.cantidad}}</p>
+                    <p><a href="">{{pedidos.fecha}}</a></p>
+                    <p>{{pedidos.cantidad}}</p>
                 </li>
                 {% endfor %}
             </div>
