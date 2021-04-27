@@ -7,11 +7,13 @@ from django.views import View
 from .forms import *
 from django.urls import reverse
 
+#Vista basada en clase que nos coge un listado de todos los productos para poder manipular en el html
 class ProductoPedidoListView(ListView):
         model = Producto
         template_name = 'pagPrincipal.html'
         context_object_name = 'lista_productos'
 
+        #Añadimos a la vista un listado de todos los pedidos existentes mediante la función get_context_data
         def get_context_data(self, **kwargs):
                 context = super(ProductoPedidoListView, self).get_context_data(**kwargs)
                 context['lista_pedidos'] = Pedido.objects.all()

@@ -1,6 +1,8 @@
+<!--Heredamos todos los elementos de base.html-->
 {% extends "base.html" %}
 {% load static %}
 
+<!--Portada con título, empresa y logo para la página principal-->
 {% block tituloPrincipal %}
     <div id="cabecera-pag-princ">
         <div id="titulo">
@@ -11,47 +13,62 @@
     </div>
 {% endblock %}
 
+<!--Contenido de la página donde se visualizarán el listado de pedidos y productos-->
 {% block content %}
     <header>
         <h2>LISTADO DE LOS PRODUCTOS Y PEDIDOS EXISTENTES</h2>
     </header>
 
-    <article class="listados">
+    <article class="listados" id="listadosIzq">
         <header>
             <h3><span>1</span>LISTADO DE PRODUCTOS</h3>
         </header>
 
-        {% if lista_productos %}
-            <ul>
-                {% for producto in lista_productos %}
-                <li>
-                    <h3><a href="{% url 'detalleProducto' producto.id %}">{{producto.nombre}}</a></h3>
-                </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <h4><p> No existen productos en Deustronic Components S.L.</p></h4>
-        {% endif %}
+        <div class="listadosContenido">
+            <!--Comprobamos si existen productos en nuestra BBDD-->
+            {% if lista_productos %}
+                <ul>
+                    <!--Recorremos todos los productos existentes y los visualizamos como una lista no ordenada <ul>-->
+                    {% for producto in lista_productos %}
+                        <li>
+                            <span>id.{{producto.id}}</span>{{producto.nombre}}
+                            <a href="{% url 'detalleProducto' producto.id %}">(detalles)</a>
+                            <a href="{% url 'eliminarProducto' producto.id %}">(eliminar)</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            <!--Sacamos un aviso de que no existen productos en caso de no encontrarlos-->
+            {% else %}
+                <h4>No existen productos en Deustronic Components S.L.</h4>
+                <p>Para añadir un producto haga click <a href="{% url 'anyadirProducto' %}">aquí</a></p>
+            {% endif %}
+        </div>
     </article>
 
-    <article class="listados">
+    <article class="listados" id="listadosDcha">
         <header>
             <h3><span>2</span>LISTADO DE PEDIDOS</h3>
         </header>
-
-        {% if lista_pedidos %}
-            <ul>
-                <div class="listados">
+        
+        <div class="listadosContenido">
+            <!--Comprobamos si existen pedidos en nuestra BBDD-->
+            {% if lista_pedidos %}
+                <ul>
+                    <!--Recorremos todos los pedidos existentes y los visualizamos como una lista no ordenada <ul>-->
                     {% for pedido in lista_pedidos %}
-                    <li>
-                        <h3><a href="{% url 'detallePedido' pedido.id %}">{{pedido.fecha}}</a></h3>
-                    </li>
+                        <li>
+                            <span>id.{{pedido.id}}</span>{{pedido.fecha}}
+                            <a href="{% url 'detallePedido' pedido.id %}">(detalles)</a>
+                            <a href="">(modificar)</a>
+                        </li>
                     {% endfor %}
-                </div>
-            </ul>
-        {% else %}
-            <h4><p> No existen pedidos en Deustronic Components S.L.</p></h4>
-        {% endif %}
+                </ul>
+            <!--Sacamos un aviso de que no existen pedidos en caso de no encontrarlos-->
+            {% else %}
+                <h4>No existen pedidos en Deustronic Components S.L.</h4>
+                <p>Para añadir un pedido haga click <a href="">aquí</a></p>
+            {% endif %}
+        </div>
     </article>
 {% endblock %}
 
