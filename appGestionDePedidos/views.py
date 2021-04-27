@@ -25,6 +25,16 @@ class ProductoDetailView(DetailView):
                 context['lista_pedidos_productos'] = Compone.objects.filter(producto=self.object.id)
                 return context
 
+class PedidoDetailView(DetailView):
+        model = Pedido
+        template_name = 'detallePedido.html'
+        context_object_name = 'detalle_pedido'
+
+        def get_context_data(self, **kwargs):
+                context = super(PedidoDetailView, self).get_context_data(**kwargs)
+                context['lista_pedidos_productos'] = Compone.objects.filter(producto=self.object.id)
+                return context
+
 '''class PedidoDetailView(DetailView):
 
         model = Pedido

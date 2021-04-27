@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
 </head>
 <body>
-    <header id="cabecera-pag-princ">
+    <header>
         <div class="nav-fijado">
             <nav class="menu">
                 <img src="{% static 'IMG/logo_nav.png' %}" alt="Logo" width="150px">
@@ -33,9 +33,7 @@
             </nav>
         </div>
 
-        <div id="titulo">
-           {% block tituloPrincipal %}{% endblock %}   
-        </div>
+        {% block tituloPrincipal %}{% endblock %}   
     </header>
 
     <main>

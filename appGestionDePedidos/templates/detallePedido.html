@@ -3,19 +3,18 @@
 
 {% block content %}
     <header>
-        <h2>Detalle del producto: {{detalle_producto.nombre}}</h2>
+        <h2>Detalle del pedido: {{detalle_pedido.id}}</h2>
     </header>
 
-<p>{{ detalle_producto.nombre }}</p>
-<p>{{ detalle_producto.descripcion }}</p>
+<p>{{ detalle_pedido.fecha }}</p>
 
 {% if lista_pedidos_productos %}
         <ul>
             <div class="articlePagPrincipal">
-                {% for pedido in lista_pedidos_productos %}
+                {% for producto in lista_pedidos_productos %}
                 <li>
-                    <p><a href="{% url 'detallePedido' pedido.id %}">{{pedido.pedido}}</a></p>
-                    <p>{{pedido.cantidad}}</p>
+                    <p><a href="{% url 'detalleProducto' producto.id %}">{{producto.producto}}</a></p>
+                    <p>{{producto.cantidad}}</p>
                 </li>
                 {% endfor %}
             </div>

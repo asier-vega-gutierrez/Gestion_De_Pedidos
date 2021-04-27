@@ -2,9 +2,13 @@
 {% load static %}
 
 {% block tituloPrincipal %}
-    <h1>GESTIÓN DE PEDIDOS</h1>
-    <h2>Deustronic Components S.L.</h2>
-    <img src="{% static 'IMG/logo_transparente.png' %}" alt="Logo" width="200px" height="200px">
+    <div id="cabecera-pag-princ">
+        <div id="titulo">
+            <h1>GESTIÓN DE PEDIDOS</h1>
+            <h2>Deustronic Components S.L.</h2>
+            <img src="{% static 'IMG/logo_transparente.png' %}" alt="Logo" width="200px" height="200px">
+        </div>
+    </div>
 {% endblock %}
 
 {% block content %}
@@ -35,7 +39,7 @@
             <div class="articlePagPrincipal">
                 {% for pedido in lista_pedidos %}
                 <li>
-                    <h3><a href="">{{pedido.fecha}}</a></h3>
+                    <h3><a href="{% url 'detallePedido' pedido.id %}">{{pedido.fecha}}</a></h3>
                 </li>
                 {% endfor %}
             </div>
