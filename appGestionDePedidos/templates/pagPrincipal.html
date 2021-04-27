@@ -13,39 +13,45 @@
 
 {% block content %}
     <header>
-        <h2>PRODUCTOS EXISTENTES</h2>
+        <h2>LISTADO DE LOS PRODUCTOS Y PEDIDOS EXISTENTES</h2>
     </header>
 
-    {% if lista_productos %}
-        <ul>
-            <div class="articlePagPrincipal">
+    <article class="listados">
+        <header>
+            <h3><span>1</span>LISTADO DE PRODUCTOS</h3>
+        </header>
+
+        {% if lista_productos %}
+            <ul>
                 {% for producto in lista_productos %}
                 <li>
                     <h3><a href="{% url 'detalleProducto' producto.id %}">{{producto.nombre}}</a></h3>
                 </li>
                 {% endfor %}
-            </div>
-        </ul>
-    {% else %}
-        <h4><p> No existen productos en Deustronic Components S.L.</p></h4>
-    {% endif %}
+            </ul>
+        {% else %}
+            <h4><p> No existen productos en Deustronic Components S.L.</p></h4>
+        {% endif %}
+    </article>
 
-    <header>
-        <h2>PEDIDOS EXISTENTES</h2>
-    </header>
+    <article class="listados">
+        <header>
+            <h3><span>2</span>LISTADO DE PEDIDOS</h3>
+        </header>
 
-    {% if lista_pedidos %}
-        <ul>
-            <div class="articlePagPrincipal">
-                {% for pedido in lista_pedidos %}
-                <li>
-                    <h3><a href="{% url 'detallePedido' pedido.id %}">{{pedido.fecha}}</a></h3>
-                </li>
-                {% endfor %}
-            </div>
-        </ul>
-    {% else %}
-        <h4><p> No existen pedidos en Deustronic Components S.L.</p></h4>
-    {% endif %}
+        {% if lista_pedidos %}
+            <ul>
+                <div class="listados">
+                    {% for pedido in lista_pedidos %}
+                    <li>
+                        <h3><a href="{% url 'detallePedido' pedido.id %}">{{pedido.fecha}}</a></h3>
+                    </li>
+                    {% endfor %}
+                </div>
+            </ul>
+        {% else %}
+            <h4><p> No existen pedidos en Deustronic Components S.L.</p></h4>
+        {% endif %}
+    </article>
 {% endblock %}
 

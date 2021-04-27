@@ -99,7 +99,6 @@
 /*ELEMENTOS COMUNES PARA TODAS LAS PÁGINAS --> IGUAL PARA TODOS*/
 main{
     background-color: rgb(241, 241, 241);
-    height: auto;
 }
 
 main h2{
@@ -154,26 +153,14 @@ main h2{
     padding-bottom: 15px;
 }
 
-#caracas{
-    background-image: url(../IMG/caracas.jpg);
-}
-
-#dubai{
-    background-image: url(../IMG/dubai.jpg);
-}
-
-#marruecos{
-    background-image: url(../IMG/marruecos.jpg);
-}
-
-.articlePagPrincipal{
+.listados{
     background-size: cover;
     background-position: center;
-    width: 100%;
-    height: 660px;
+    width: auto;
+    height: auto;
 }
 
-.articlePagPrincipal header{
+.listados header{
     padding: 30px;
     font-family: "montserrat";
     font-size: 25px;
@@ -181,15 +168,7 @@ main h2{
     background-color: rgba(0, 0, 0, .7);
 }
 
-.dcha header{
-    text-align: left;
-}
-
-.izq header{
-    text-align: right;
-}
-
-.articlePagPrincipal span{
+.listados span{
     background: black;
     color: rgb(241, 241, 241);
     border: solid rgb(241, 241, 241);
@@ -200,88 +179,6 @@ main h2{
     margin-right: 10px;
     margin-left: 10px;
 }
-
-    /*CONTENIDO PRINCIPAL (TABLAS) DE CADA PROYECTO*/
-    .articlePagPrincipal table{
-        border-collapse: collapse;
-        border-spacing: 0;
-        font-family: "calibri", Verdana, Geneva, Tahoma, sans-serif;;
-        font-size: 20px;
-        color: black;
-        text-align: left;
-        background-color: rgba(255, 255, 255, 0.65);
-        height: 400px;
-        width: 650px;
-        margin-top: 50px;
-    }
-
-    .dcha table{
-        margin-left: 50px;
-        float: left;
-        overflow: hidden;
-    }
-
-    .izq table{
-        margin-right: 50px;
-        float: right;
-        overflow: hidden;
-    }
-
-    .articlePagPrincipal tr{
-        transition: background-color 1s;
-    }
-
-    .articlePagPrincipal tr:hover{
-        background-color: rgba(255, 255, 255, 0.8);
-        transition: background-color 1s;
-    }
-
-    .articlePagPrincipal th, td{
-        padding: 20px;
-    }
-
-    /*MAPAS*/
-    .articlePagPrincipal aside{
-        margin-top: 75px;
-    }
-
-    .dcha aside{
-        float: right;
-        overflow: hidden;
-        margin-right: 500px;
-    }
-
-    .izq aside{
-        float: left;
-        overflow: hidden;
-        margin-left: 60px;
-    }
-
-    .articlePagPrincipal iframe{
-        position: absolute;
-        z-index: 0;
-    }
-
-    .ver-mapa{
-        position: absolute;
-        background-color: rgba(0, 0, 0, 0.7);
-        width: 430px;
-        height: 350px;
-    }
-
-    .ver-mapa p{
-        font-family: "poppins", Arial, Helvetica, sans-serif;
-        color: white;
-        font-size: 16px;
-        text-align: center;
-        line-height: 320px;
-    }
-
-    .ver-mapa:hover{
-        opacity: 0;
-        z-index: -1;
-    }
-
 
 /*FORMULARIOS (INSERTAR PROYECTO Y RECURSOS)*/
 #nota{

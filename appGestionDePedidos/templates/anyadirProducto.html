@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <form action="{% url 'AnadirProducto' %}" method="post">
+    <form action="{% url 'anyadirProducto' %}" method="post">
         {% csrf_token %}
         {{ form.as_ul }}
         <input type="submit" value="Nuevo producto"/>
