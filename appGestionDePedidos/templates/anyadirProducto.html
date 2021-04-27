@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+
 {% load static %}
 
 {% block content %}
@@ -6,6 +6,6 @@
     <form action="{% url 'anyadirProducto' %}" method="post">
         {% csrf_token %}
         {{ form.as_ul }}
-        <input type="submit" value="Nuevo producto"/>
+        <input type="submit" value="Nuevo producto">
     </form>
 {% endblock %}

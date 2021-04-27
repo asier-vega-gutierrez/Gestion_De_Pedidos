@@ -50,15 +50,16 @@ class AnyadirProductoForm(View):
                 return render(request, 'anyadirProducto.html', context)
 
         def post(self, request, *args, **kwargs):
+
                 form = ProductoAnyadirForm(request.POST)
                 if form.is_valid():
                         producto = Producto()
-                        producto.precio = form.cleaned_data['precio']
                         producto.nombre = form.cleaned_data['nombre']
-                        producto.descripcion = form.cleaned_data['descripcion']
+                        producto.precio = form.cleaned_data['precio']
                         producto.categoria = form.cleaned_data['categoria']
+                        producto.descripcion = form.cleaned_data['descripcion']
                         producto.save()
                         # Volvemos a la lista de departamentos
-                        return redirect('producto')
+                        return redirect('pagPrincipal')
 
                 return render(request, 'anyadirProducto.html', {'form': form})

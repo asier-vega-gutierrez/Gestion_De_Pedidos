@@ -10,5 +10,5 @@ urlpatterns = [
     #URL para la visualización de cada atributo de un pedido concreto
     path('detallePedido/<int:pk>/', PedidoDetailView.as_view(), name = 'detallePedido'),
     #URL para acceder al formulario en el cual se podrá añadir un producto nuevo
-    path('anyadirProducto/', AnyadirProductoForm.as_view(), name="anyadirProducto"),
+    path('anyadirProducto/', views.AnyadirProductoForm.as_view(), name="anyadirProducto"),
 ]
