@@ -45,11 +45,7 @@ class ComponenteListView(ListView):
 class AnyadirProductoForm(View):
 
         def get(self, request, *args, **kwargs):
-<<<<<<< HEAD
                 form = ProductoAnyadirForm()
-=======
-                form = AnyadirProductoForm()
->>>>>>> refs/remotes/origin/master
                 context = {'form': form}
                 return render(request, 'anyadirProducto.html', context)
 
