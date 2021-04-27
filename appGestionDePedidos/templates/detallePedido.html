@@ -1,3 +1,4 @@
+<!--Heredamos todos los elementos de base.html-->
 {% extends "base.html" %}
 {% load static %}
 
@@ -7,20 +8,39 @@
         <hr>
     </header>
 
-<p>{{ detalle_pedido.fecha }}</p>
-
-{% if detalle_pedido.productos.all %}
-        <ul>
-            <div class="articlePagPrincipal">
-                {% for productos in detalle_pedido.productos.all %}
-                <li>
-                    <p><a href="{% url 'detalleProducto' productos.id %}">{{productos.nombre}}</a></p>
-                    <p>{{productos.cantidad}}</p>
-                </li>
-                {% endfor %}
-            </div>
-        </ul>
-    {% else %}
-        <h4><p> No existen productos en Deustronic Components S.L.</p></h4>
-    {% endif %}
+    <!--Tabla con todos los atributos de un pedido específico-->
+    <div class="detalle">
+        <table>
+            <tr>
+                <th>Fecha del pedido</th>
+                <td>{{ detalle_pedido.fecha }}</td>
+            </tr>
+            <tr>
+                <th>Precio total</th>
+                <td>{{ detalle_pedido.precioTotal }}€</td>
+            </tr>
+            <tr>
+                <th>Nombre del cliente</th>
+                <td>{{ detalle_pedido.cliente }}</td>
+            </tr>
+            <tr>
+                <th>Listado de productos</th>
+                <td>
+                    <!--Comprobamos si existen productos asignados al pedido en nuestra BBDD-->
+                    {% if detalle_pedido.compone_set.all %}
+                        <ul>
+                            <!--Recorremos todos los productos asignados y los visualizamos como una lista no ordenada <ul>-->
+                            {% for productos in detalle_pedido.compone_set.all %}
+                                <li>{{productos.producto}} cant.:{{productos.cantidad}}</li>
+                            {% endfor %}
+                        </ul>
+                    <!--Sacamos un aviso de que no existen productos asignados en caso de no encontrarlos-->
+                    {% else %}
+                        <h4>No se han asignado productos para este pedido</h4>
+                        <p>Para añadir un producto haga click <a href="{% url 'anyadirProducto' %}">aquí</a></p>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
 {% endblock %}

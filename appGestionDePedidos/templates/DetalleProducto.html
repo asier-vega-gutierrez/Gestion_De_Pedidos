@@ -1,3 +1,4 @@
+<!--Heredamos todos los elementos de base.html-->
 {% extends "base.html" %}
 {% load static %}
 
@@ -7,21 +8,60 @@
         <hr>
     </header>
 
-<p>{{ detalle_producto.nombre }}</p>
-<p>{{ detalle_producto.descripcion }}</p>
-
-{% if detalle_producto.pedido_set.all %}
-        <ul>
-            <div class="articlePagPrincipal">
-                {% for pedidos in detalle_producto.pedido_set.all %}
-                <li>
-                    <p><a href="{% url 'detallePedido' pedidos.id %}">{{pedidos.fecha}}</a></p>
-                    <p>{{pedidos.cantidad}}</p>
-                </li>
-                {% endfor %}
-            </div>
-        </ul>
-    {% else %}
-        <h4><p> No existen pedidos en Deustronic Components S.L.</p></h4>
-    {% endif %}
+    <!--Tabla con todos los atributos de un producto específico-->
+    <div class="detalle">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ detalle_producto.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Precio</th>
+                <td>{{ detalle_producto.precio }}€</td>
+            </tr>
+            <tr>
+                <th>Categoría</th>
+                <td>{{ detalle_producto.categoria }}</td>
+            </tr>
+            <tr>
+                <th>Descripción</th>
+                <td>{{ detalle_producto.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Listado de pedidos</th>
+                <td>
+                    <!--Comprobamos si existen pedidos asignados al producto en nuestra BBDD-->
+                    {% if detalle_producto.compone_set.all %}
+                        <ul>
+                            <!--Recorremos todos los pedidos asignados y los visualizamos como una lista no ordenada <ul>-->
+                            {% for pedidos in detalle_producto.compone_set.all %}
+                                <li>{{pedidos.pedido}} cant.:{{pedidos.cantidad}}</li>
+                            {% endfor %}
+                        </ul>
+                    <!--Sacamos un aviso de que no existen pedidos asignados en caso de no encontrarlos-->
+                    {% else %}
+                        <h4>No se han asignado pedidos para este producto</h4>
+                        <p>Para añadir un pedido haga click <a href="">aquí</a></p>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Listado de componentes</th>
+                <td>
+                    <!--Comprobamos si existen componentes asignados al producto en nuestra BBDD-->
+                    {% if detalle_producto.componentes.all %}
+                        <ul>
+                            <!--Recorremos todos los componentes asignados y los visualizamos como una lista no ordenada <ul>-->
+                            {% for componentes in detalle_producto.componentes.all %}
+                                <li>{{componentes.nombre}}</li>
+                            {% endfor %}
+                        </ul>
+                    <!--Sacamos un aviso de que no existen componentes asignados en caso de no encontrarlos-->
+                    {% else %}
+                        <h4>No se han asignado componentes para este producto</h4>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
 {% endblock %}

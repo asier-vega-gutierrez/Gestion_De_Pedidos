@@ -7,7 +7,7 @@ from django.views import View
 from .forms import *
 from django.urls import reverse
 
-#Vista basada en clase que nos coge un listado de todos los productos para poder manipular en el html
+#Vista basada en clase que nos coge un listado de todos los productos para poder trabajar con ellos en el html
 class ProductoPedidoListView(ListView):
         model = Producto
         template_name = 'pagPrincipal.html'
@@ -19,41 +19,25 @@ class ProductoPedidoListView(ListView):
                 context['lista_pedidos'] = Pedido.objects.all()
                 return context
 
+#Vista basada en clase que nos coge todos los atributos de un producto concreto para poder trabajar con ellos en el html
 class ProductoDetailView(DetailView):
         model = Producto
         template_name = 'detalleProducto.html'
         context_object_name = 'detalle_producto'
 
+#Vista basada en clase que nos coge todos los atributos de un pedido concreto para poder trabajar con ellos en el html
 class PedidoDetailView(DetailView):
         model = Pedido
         template_name = 'detallePedido.html'
         context_object_name = 'detalle_pedido'
 
-'''class PedidoDetailView(DetailView):
-
-        model = Pedido
-        #template_name = 
-    
-class ClienteListView(ListView):
-
-        model = Cliente
-        #template_name = 
-
-class ComponenteListView(ListView):
-
-        model = Componente
-        #template_name = 
-'''
-
 class AnyadirProductoForm(View):
-
         def get(self, request, *args, **kwargs):
                 form = ProductoAnyadirForm()
                 context = {'form': form}
                 return render(request, 'anyadirProducto.html', context)
 
         def post(self, request, *args, **kwargs):
-
                 form = ProductoAnyadirForm(request.POST)
                 if form.is_valid():
                         producto = Producto()
@@ -64,17 +48,16 @@ class AnyadirProductoForm(View):
                         producto.save()
                         # Volvemos a la lista de departamentos
                         return redirect('pagPrincipal')
-
                 return render(request, 'anyadirProducto.html', {'form': form})
 
-class eliminarProducto(DeleteView):
+class EliminarProducto(DeleteView):
         model = Producto
         template_name = 'eliminarProducto.html'
         #context_object_name = 'producto'
         from_class = ProductoAnyadirForm
 
         def get_context_data(self, **kwargs):
-                context = super(eliminarProducto, self).get_context_data(**kwargs)
+                context = super(EliminarProducto, self).get_context_data(**kwargs)
                 pk = self.kwargs.get('pk')
                 producto = Producto.objects.get(id=pk)
                 producto.delete()

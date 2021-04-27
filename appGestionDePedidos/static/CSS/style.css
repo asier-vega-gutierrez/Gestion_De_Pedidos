@@ -157,21 +157,18 @@ main h2{
 #listadosIzq{
     float: left;
     width: 49%;
-    border-right: #313238 solid 4px;
-    min-height: 376px;
+    margin-left: 10px;
 }
 
 #listadosDcha{
     float: right;
-    width: 50.36%;
-    border-left: #313238 solid 4px;
-    min-height: 376px;
+    width: 49%;
+    margin-right: 10px;
 }
 
 .listados header{
     padding: 30px;
     font-family: "montserrat";
-    text-align: center;
     font-size: 25px;
     color: rgb(241, 241, 241);
     background-color: rgba(0, 0, 0, .7);
@@ -241,6 +238,56 @@ main h2{
     font-size: 20px;
     font-weight: 800;
 }
+
+
+
+
+
+
+
+.detalle{
+    padding: 30px;
+    width: 55%;
+    margin: auto;
+}
+
+.detalle table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 4px solid black;
+    font-family: "calibri", Verdana, Geneva, Tahoma, sans-serif;;
+    font-size: 20px;
+    color: gainsboro;
+    width: 700px;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.detalle tr{
+    transition: background-color 1s;
+}
+
+.detalle tr:hover{
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: background-color 1s;
+}
+
+.detalle th, td{
+    padding: 20px;
+}
+
+.detalle p a{
+    font-size: 20px;
+    font-weight: 800;
+    text-decoration: none;
+    color: gainsboro;
+    transition: color 0.4s;
+}
+
+.detalle a:hover{
+    color: rgb(175, 175, 175);
+}
+
 
 #formulario{
     padding-top: 100px;
