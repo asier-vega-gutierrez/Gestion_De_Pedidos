@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    {% csrf_token %}
+    <div id = "formulario">
+        <input type="submit" value="Eliminar">
+        <p>{{producto.pk}}</p>
+        <p>{{producto.nombre}}</p>
+    </div>
+{% endblock %}

@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import *
 from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
+from django.views.generic import DetailView, DeleteView
 from django import forms
 from django.views import View
 from .forms import *
+from django.urls import reverse
 
 class ProductoPedidoListView(ListView):
         model = Producto
@@ -63,4 +64,20 @@ class AnyadirProductoForm(View):
                         return redirect('pagPrincipal')
 
                 return render(request, 'anyadirProducto.html', {'form': form})
+
+class eliminarProducto(DeleteView):
+        model = Producto
+        template_name = 'eliminarProducto.html'
+        #context_object_name = 'producto'
+        from_class = ProductoAnyadirForm
+
+        def get_context_data(self, **kwargs):
+                context = super(eliminarProducto, self).get_context_data(**kwargs)
+                pk = self.kwargs.get('pk')
+                producto = Producto.objects.get(id=pk)
+                producto.delete()
+                return context
+
+        def get_success_url(self):
+                return reverse('producto')
                 
