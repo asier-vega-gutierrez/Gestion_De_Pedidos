@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import DetailView, DeleteView, ListView, UpdateView
+from django.views.generic import DetailView, DeleteView, ListView, UpdateView, CreateView
 from django.views import View
 from django import forms
 from django.urls import reverse_lazy
@@ -31,7 +31,25 @@ class PedidoDetailView(DetailView):
         template_name = 'detallePedido.html'
         context_object_name = 'detalle_pedido'
 
+class AnyadirProductoForm(CreateView):
+        model = Producto
+        template_name = 'anyadirProducto.html'
+        success_url = reverse_lazy('pagPrincipal')
 
+        fields = '__all__'
+
+        def form_valid(self, form):
+                self.object = form.save(commit=False)
+                self.object.save()
+
+                for componentes in form.cleaned_data['componentes']:
+                        consta = Consta()
+                        consta.producto = self.object
+                        consta.componente = componentes
+                        consta.save()
+                return super(AnyadirProductoForm, self).form_valid(form)
+        
+'''
 class AnyadirProductoForm(View):
         def get(self, request, *args, **kwargs):
                 form = ProductoAnyadirForm()
@@ -49,8 +67,30 @@ class AnyadirProductoForm(View):
                         producto.save()
                         # Volvemos a la lista de departamentos
                         return redirect('pagPrincipal')
-                return render(request, 'anyadirProducto.html', {'form': form})
 
+                return render(request, 'anyadirProducto.html', {'form': form})
+'''
+
+class AnyadirPedidoForm(CreateView):
+        model = Pedido
+        template_name = 'anyadirPedido.html'
+        success_url = reverse_lazy('pagPrincipal')
+
+        fields = '__all__'
+
+        def form_valid(self, form):
+                self.object = form.save(commit=False)
+                self.object.save()
+
+                for productos in form.cleaned_data['productos']:
+                        compone = Compone()
+                        compone.pedido = self.object
+                        compone.producto = productos
+                        compone.cantidad = form.cleaned_data['cantidad']
+                        compone.save()
+                return super(AnyadirPedidoForm, self).form_valid(form)
+
+'''
 class AnyadirPedidoForm(View):
         def get(self, request, *args, **kwargs):
                 form = PedidoAnyadirForm()
@@ -69,6 +109,7 @@ class AnyadirPedidoForm(View):
                         # Volvemos a la lista de departamentos
                         return redirect('pagPrincipal')
                 return render(request, 'anyadirPedido.html', {'form': form})
+'''
 
 class AnyadirPedidoProductoForm(View):
         def get(self, request, *args, **kwargs):

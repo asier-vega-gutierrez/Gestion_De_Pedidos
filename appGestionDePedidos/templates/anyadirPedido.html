@@ -12,6 +12,7 @@
         <form action="{% url 'anyadirPedido' %}" method="post">
             {% csrf_token %}
             {{ form.as_ul }}
+            {{ form_compone.as_ul }}
             <input type="submit" value="Nuevo pedido">
         </form>
     </div>
