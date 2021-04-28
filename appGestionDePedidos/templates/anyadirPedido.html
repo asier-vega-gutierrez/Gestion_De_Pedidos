@@ -1,12 +1,12 @@
-{% extends "base.html" %}
+{% extends "base.html" %}<!--Herencia de nuestra base.html comun para todas las templates -->
 {% load static %}
 
-{% block content %}
+{% block content %}<!--bloque a modificar en cada una de las templates-->
 
 <form action="{% url 'anyadirPedido' %}" method="post">
     {% csrf_token %}
     <div id = "formulario">
-        {{ form.as_ul }}
+        {{ form.as_ul }} <!--cargar los campos del formulario-->
         <input type="submit" value="Nuevo pedido">
     </div>
 </form>

@@ -82,9 +82,18 @@ class ModificarPedido(UpdateView):
         model = Pedido
         template_name = 'modificarPedido.html'
         success_url = reverse_lazy('pagPrincipal')
+
+        '''def get_context_data(self, **kwargs):
+                context = super(ModificarPedido, self).get_context_data(**kwargs)
+                context['cantidad'] = Compone.cantidad
+                return context'''
+
         fields = {
                 "fecha",
                 "precioTotal",
-                "cliente"
+                "cliente",
+                #"productos",
+                #"cantidad"
+                #se necesita el atributo cantidad para modificar los prodcutos, si no da error
         }
                 
