@@ -1,13 +1,35 @@
-{% extends "base.html" %}<!--Herencia de nuestra base.html comun para todas las templates -->
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
 {% load static %}
 
-{% block content %}<!--bloque a modificar en cada una de las templates-->
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">AÑADIR NUEVO PRODUCTO</h2>
+        <hr>
+    </header>
 
-<form action="{% url 'anyadirProducto' %}" method="post">
-    {% csrf_token %}
-    <div id = "formulario">
-        {{ form.as_ul }} <!--cargar los campos del formulario en este cado de tipo view por lo que solo saldran los indicados en el metodo get-->
-        <input type="submit" value="Nuevo producto">
-    </div>
-</form>
+        <form action="{% url 'anyadirProducto' %}" method="post">
+            {% csrf_token %}
+            <!--Cargamos los campos del formulario indicados en el metodo get dontro de nuestra vista-->
+            <ul class="formularios">
+                <li>
+                    <label for="id_nombre">Nombre <span class="required">*</span></label>
+                    <div class="texto">{{ form.nombre }}</div> 
+                </li>
+                <li>
+                    <label for="id_precio">Precio <span class="required">*</span></label>
+                    <div class="texto">{{ form.precio }}</div> 
+                </li>
+                <li>
+                    <label for="id_categoria">Categoria <span class="required">*</span></label>
+                    <div class="texto">{{ form.categoria }}</div> 
+                </li>
+                <li>
+                    <label for="id_descripcion">Descripción <span class="required">*</span></label>
+                    <div class="texto">{{ form.descripcion }}</div> 
+                </li>
+            </ul>   
+            
+            <input type="submit" value="Insertar producto">
+        </form>
 {% endblock %}

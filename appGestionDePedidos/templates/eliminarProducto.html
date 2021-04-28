@@ -1,14 +1,18 @@
-{% extends "base.html" %}<!--Herencia de nuestra base.html comun para todas las templates -->
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
 {% load static %}
 
-{% block content %}<!--bloque a modificar en cada una de las templates-->
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">ELIMINAR PRODUCTO: {{ producto.nombre }}</h2>
+        <hr>
+    </header>
 
-    <div id = "formulario">
+    <div class = "formularios">
         <form method="POST" action=".">
             {% csrf_token %}
             <p>Esta seguro que desea eliminar {{ producto.nombre }}?</p>
             <input type="submit" value="Eliminar">
         </form>
     </div>
-
 {% endblock %}

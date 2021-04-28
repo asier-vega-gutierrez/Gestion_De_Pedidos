@@ -7,7 +7,7 @@ from django.urls import reverse_lazy
 from .forms import *
 from .models import *
 
-#Vista basada en clase que nos coge un listado de todos los productos para poder trabajar con ellos en el html
+#Vista basada en clases que nos coge un listado de todos los productos para poder trabajar con ellos en el html
 class ProductoPedidoListView(ListView):
         model = Producto
         template_name = 'pagPrincipal.html'
@@ -19,13 +19,13 @@ class ProductoPedidoListView(ListView):
                 context['lista_pedidos'] = Pedido.objects.all()
                 return context
 
-#Vista basada en clase que nos coge todos los atributos de un producto concreto para poder trabajar con ellos en el html
+#Vista basada en clases que nos coge todos los atributos de un producto concreto para poder trabajar con ellos en el html
 class ProductoDetailView(DetailView):
         model = Producto
         template_name = 'detalleProducto.html'
         context_object_name = 'detalle_producto'
 
-#Vista basada en clase que nos coge todos los atributos de un pedido concreto para poder trabajar con ellos en el html
+#Vista basada en clases que nos coge todos los atributos de un pedido concreto para poder trabajar con ellos en el html
 class PedidoDetailView(DetailView):
         model = Pedido
         template_name = 'detallePedido.html'
@@ -51,13 +51,6 @@ class AnyadirProductoForm(View):
                         return redirect('pagPrincipal')
                 return render(request, 'anyadirProducto.html', {'form': form})
 
-#vista basada en clases de tipo deleteView que nos vale para eliminar un producto
-class EliminarProducto(DeleteView):
-        model = Producto
-        template_name = 'eliminarProducto.html'
-        success_url = reverse_lazy('pagPrincipal')
-
-
 class AnyadirPedidoForm(View):
         def get(self, request, *args, **kwargs):
                 form = PedidoAnyadirForm()
@@ -77,7 +70,48 @@ class AnyadirPedidoForm(View):
                         return redirect('pagPrincipal')
                 return render(request, 'anyadirPedido.html', {'form': form})
 
-#vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
+class AnyadirPedidoProductoForm(View):
+        def get(self, request, *args, **kwargs):
+                form = PedidoProductoAnyadirForm()
+                context = {'form': form}
+                return render(request, 'anyadirPedidoProducto.html', context)
+
+        def post(self, request, *args, **kwargs):
+                form = PedidoProductoAnyadirForm(request.POST)
+                if form.is_valid():
+                        compone = Compone()
+                        compone.pedido = form.cleaned_data['pedido']
+                        compone.producto = form.cleaned_data['producto']
+                        compone.cantidad = form.cleaned_data['cantidad']
+                        compone.save()
+                        # Volvemos a la lista de departamentos
+                        return redirect('pagPrincipal')
+                return render(request, 'anyadirPedidoProducto.html', {'form': form})
+
+class AnyadirComponenteProductoForm(View):
+        def get(self, request, *args, **kwargs):
+                form = ComponenteProductoAnyadirForm()
+                context = {'form': form}
+                return render(request, 'anyadirComponenteProductoForm.html', context)
+
+        def post(self, request, *args, **kwargs):
+                form = ComponenteProductoAnyadirForm(request.POST)
+                if form.is_valid():
+                        consta = Consta()
+                        consta.producto = form.cleaned_data['producto']
+                        consta.componente = form.cleaned_data['componente']
+                        consta.save()
+                        # Volvemos a la lista de departamentos
+                        return redirect('pagPrincipal')
+                return render(request, 'anyadirComponenteProductoForm.html', {'form': form})
+
+#Vista basada en clases de tipo deleteView que nos vale para eliminar un producto
+class EliminarProducto(DeleteView):
+        model = Producto
+        template_name = 'eliminarProducto.html'
+        success_url = reverse_lazy('pagPrincipal')
+
+#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
 class ModificarPedido(UpdateView):
         model = Pedido
         template_name = 'modificarPedido.html'

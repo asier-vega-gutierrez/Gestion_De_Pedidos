@@ -18,6 +18,9 @@ urlpatterns = [
     #URL para acceder al formulario en el cual se podrá añadir un producto nuevo
     path('anyadirPedido/', views.AnyadirPedidoForm.as_view(), name="anyadirPedido"),
 
+    path('anyadirPedidoProducto/', views.AnyadirPedidoProductoForm.as_view(), name="anyadirPedidoProducto"),
+    
+    path('anyadirComponenteProducto/', views.AnyadirComponenteProductoForm.as_view(), name="anyadirComponenteProducto"),
 
     #URLS PARA ELIMINAR
     #URL para acceder al formulario en el cual se podrá eliminar un producto ya existente

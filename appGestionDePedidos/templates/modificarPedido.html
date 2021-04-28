@@ -1,15 +1,20 @@
-{% extends "base.html" %} <!--Herencia de nuestra base.html comun para todas las templates -->
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %} 
 {% load static %}
 
-{% block content %}<!--bloque a modificar en cada una de las templates-->
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">MODIFICAR PEDIDO: {{ pedido.fecha }}</h2>
+        <hr>
+    </header>
 
-    <div id = "formulario">
+    <div class = "formularios">
         <form method="POST" action=".">
             {% csrf_token %}
-            {{ form.as_ul }} <!--cargar los campos del formulario en este cado de tipo UpdateView por lo que deven estar rellenados-->
-            <p>Conservar cambion en pedido id {{pedido.id}}?</p>
+            <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
+            {{ form.as_ul }} 
+            <p>Modificar pedido con id: {{pedido.id}}?</p>
             <input type="submit" value="Guardar">
         </form>
     </div>
-
 {% endblock %}

@@ -4,15 +4,15 @@
 
 {% block content %}
     <header>
-        <h2 class="pagSecundarias">AÑADIR NUEVO PEDIDO</h2>
+        <h2 class="pagSecundarias">ASIGNAR COMPONENTE-PRODUCTO</h2>
         <hr>
     </header>
 
     <div class="formularios">
-        <form action="{% url 'anyadirPedido' %}" method="post">
+        <form action="{% url 'anyadirComponenteProducto' %}" method="post">
             {% csrf_token %}
             {{ form.as_ul }}
-            <input type="submit" value="Nuevo pedido">
+            <input type="submit" value="Asignar">
         </form>
     </div>
 {% endblock %}

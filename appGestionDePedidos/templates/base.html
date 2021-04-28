@@ -20,11 +20,14 @@
                     <li><a href="">GESTIÓN DE PRODUCTOS</a> <!--PONER NOMBRE URL Y SUS PARÁMETROS-->
                         <ul>
                             <li><a href="{% url 'anyadirProducto' %}">AÑADIR PRODUCTO</a></li>
+                            <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PEDIDO</a></li>
+                            <li><a href="{% url 'anyadirComponenteProducto' %}">ASIGNAR COMPONENTE</a></li>
                         </ul>
                     </li> 
                     <li><a href="">GESTIÓN DE PEDIDOS</a> <!--PONER NOMBRE URL Y SUS PARÁMETROS-->
                         <ul>
                             <li><a href="{% url 'anyadirPedido' %}">AÑADIR PEDIDO</a></li>
+                            <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PRODUCTO</a></li>
                         </ul>
                     </li>   
                 </ul>
