@@ -17,3 +17,8 @@ class ProductoAnyadirForm(forms.ModelForm):
     class Meta:
         model = Producto
         fields = '__all__'
+
+class PedidoAnyadirForm(forms.ModelForm):
+    class Meta:
+        model = Pedido
+        fields = '__all__'

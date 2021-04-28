@@ -65,4 +65,23 @@ class EliminarProducto(DeleteView):
 
         def get_success_url(self):
                 return reverse('producto')
+
+class AnyadirPedidoForm(View):
+        def get(self, request, *args, **kwargs):
+                form = PedidoAnyadirForm()
+                context = {'form': form}
+                return render(request, 'anyadirPedido.html', context)
+
+        def post(self, request, *args, **kwargs):
+                form = PedidoAnyadirForm(request.POST)
+                if form.is_valid():
+                        pedido = Pedido()
+                        pedido.fecha = form.DateField['fecha']
+                        pedido.precioTotal = form.cleaned_data['nombre']
+                        pedido.cliente = form.cleaned_data['cliente']
+                        pedido.productos = form.cleaned_data['productos']
+                        pedido.save()
+                        # Volvemos a la lista de departamentos
+                        return redirect('pagPrincipal')
+                return render(request, 'anyadirPedido.html', {'form': form})
                 
