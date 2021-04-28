@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import *
-from django.views.generic.list import ListView
-from django.views.generic import DetailView, DeleteView
-from django import forms
+from django.views.generic import DetailView, DeleteView, ListView, UpdateView
 from django.views import View
-from .forms import *
+from django import forms
 from django.urls import reverse_lazy
+
+from .forms import *
+from .models import *
 
 #Vista basada en clase que nos coge un listado de todos los productos para poder trabajar con ellos en el html
 class ProductoPedidoListView(ListView):
@@ -31,6 +31,7 @@ class PedidoDetailView(DetailView):
         template_name = 'detallePedido.html'
         context_object_name = 'detalle_pedido'
 
+
 class AnyadirProductoForm(View):
         def get(self, request, *args, **kwargs):
                 form = ProductoAnyadirForm()
@@ -50,18 +51,12 @@ class AnyadirProductoForm(View):
                         return redirect('pagPrincipal')
                 return render(request, 'anyadirProducto.html', {'form': form})
 
+#vista basada en clases de tipo deleteView que nos vale para eliminar un producto
 class EliminarProducto(DeleteView):
         model = Producto
         template_name = 'eliminarProducto.html'
-        #context_object_name = 'producto'
         success_url = reverse_lazy('pagPrincipal')
 
-        '''def get_context_data(self, **kwargs):
-                context = super(EliminarProducto, self).get_context_data(**kwargs)
-                pk = self.kwargs.get('pk')
-                producto = Producto.objects.get(id=pk)
-                producto.delete()
-                return context'''
 
 class AnyadirPedidoForm(View):
         def get(self, request, *args, **kwargs):
@@ -81,4 +76,15 @@ class AnyadirPedidoForm(View):
                         # Volvemos a la lista de departamentos
                         return redirect('pagPrincipal')
                 return render(request, 'anyadirPedido.html', {'form': form})
+
+#vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
+class ModificarPedido(UpdateView):
+        model = Pedido
+        template_name = 'modificarPedido.html'
+        success_url = reverse_lazy('pagPrincipal')
+        fields = {
+                "fecha",
+                "precioTotal",
+                "cliente"
+        }
                 

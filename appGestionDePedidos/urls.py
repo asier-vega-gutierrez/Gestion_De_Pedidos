@@ -23,4 +23,8 @@ urlpatterns = [
     #URL para acceder al formulario en el cual se podrá eliminar un producto ya existente
     path('eliminarProducto/<int:pk>/', EliminarProducto.as_view(), name = 'eliminarProducto'),
     
+    #URLS PARA modificar
+    #URL para acceder al formulario en el cual se podrá modificar un pedido ya existente
+     path('modificarPedido/<int:pk>/', ModificarPedido.as_view(), name = 'modificarPedido'),
+    
 ]

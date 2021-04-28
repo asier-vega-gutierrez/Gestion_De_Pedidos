@@ -59,7 +59,7 @@
                         <li>
                             <span>id.{{pedido.id}}</span>{{pedido.fecha}}
                             <a href="{% url 'detallePedido' pedido.id %}">(detalles)</a>
-                            <a href="">(modificar)</a>
+                            <a href="{% url 'modificarPedido' pedido.id %}">(modificar)</a>
                         </li>
                     {% endfor %}
                 </ul>
