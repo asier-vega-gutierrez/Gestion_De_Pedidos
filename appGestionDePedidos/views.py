@@ -5,7 +5,7 @@ from django.views.generic import DetailView, DeleteView
 from django import forms
 from django.views import View
 from .forms import *
-from django.urls import reverse
+from django.urls import reverse_lazy
 
 #Vista basada en clase que nos coge un listado de todos los productos para poder trabajar con ellos en el html
 class ProductoPedidoListView(ListView):
@@ -54,17 +54,14 @@ class EliminarProducto(DeleteView):
         model = Producto
         template_name = 'eliminarProducto.html'
         #context_object_name = 'producto'
-        from_class = ProductoAnyadirForm
+        success_url = reverse_lazy('pagPrincipal')
 
-        def get_context_data(self, **kwargs):
+        '''def get_context_data(self, **kwargs):
                 context = super(EliminarProducto, self).get_context_data(**kwargs)
                 pk = self.kwargs.get('pk')
                 producto = Producto.objects.get(id=pk)
                 producto.delete()
-                return context
-
-        def get_success_url(self):
-                return reverse('producto')
+                return context'''
 
 class AnyadirPedidoForm(View):
         def get(self, request, *args, **kwargs):

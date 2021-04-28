@@ -2,10 +2,13 @@
 {% load static %}
 
 {% block content %}
-    {% csrf_token %}
+
     <div id = "formulario">
-        <input type="submit" value="Eliminar">
-        <p>{{producto.pk}}</p>
-        <p>{{producto.nombre}}</p>
+        <form method="POST" action=".">
+            {% csrf_token %}
+            <p>Esta seguro que desea eliminar {{ producto.nombre }}?
+            <input type="submit" value="Eliminar">
+        </form>
     </div>
+
 {% endblock %}
