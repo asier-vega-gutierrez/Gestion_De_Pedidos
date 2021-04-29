@@ -173,9 +173,7 @@ class ModificarPedido(UpdateView):
                 "fecha",
                 "precioTotal",
                 "cliente",
-                #"productos",
-                #"cantidad"
-                #se necesita el atributo cantidad para modificar los prodcutos, si no da error
+                "productos",
         }
 
 #Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 

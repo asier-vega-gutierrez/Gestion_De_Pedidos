@@ -44,7 +44,7 @@ class Consta(models.Model):
 class Compone(models.Model):
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
-    cantidad = models.IntegerField()
+    cantidad = models.IntegerField(default='1')
 
 
 
