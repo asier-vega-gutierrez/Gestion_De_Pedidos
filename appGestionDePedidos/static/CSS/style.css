@@ -99,7 +99,8 @@
 /*ELEMENTOS COMUNES PARA TODAS LAS PÁGINAS --> IGUAL PARA TODOS*/
 main{
     background-color: rgb(241, 241, 241);
-    min-height: 483px;
+    min-height: 521px;
+    padding: 15px;
 }
 
 main h2{
@@ -254,8 +255,8 @@ main h2{
 .detalle table{
     border-collapse: collapse;
     border-spacing: 0;
-    border: 4px solid black;
-    font-family: "calibri", Verdana, Geneva, Tahoma, sans-serif;;
+    box-shadow: 10px 10px 14px 2px rgba(0,0,0,0.47);
+    font-family: "calibri", Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
     color: gainsboro;
     width: 700px;
@@ -289,6 +290,99 @@ main h2{
 }
 
 
-#formulario{
-    padding-top: 100px;
+form{
+    padding: 15px;
+    width: 700px;
+    margin: auto;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, .65);
+    color: gainsboro;
+    font-family: "calibri", Verdana, Geneva, Tahoma, sans-serif;
+    box-shadow: 10px 10px 14px 2px rgba(0,0,0,0.47);
+}
+
+.formularios{
+    padding-left: 80px;
+}
+
+.formularios li{
+    list-style: none;
+    padding: 10px;
+    display: block;
+}
+
+.formularios label{
+	padding-bottom:10px;
+	display:block;
+	font-weight: bold;
+    margin: auto;
+}
+
+.formularios input[type=text], 
+.formularios input[type=date],
+.formularios input[type=number],
+.formularios input[type=email],
+textarea, 
+select{
+    width: 500px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;	
+}
+
+textarea{
+    resize:none;
+    overflow: scroll;
+}
+
+.formularios input[type=text]:focus, 
+.formularios input[type=date]:focus,
+.formularios input[type=number]:focus,
+.formularios input[type=email]:focus,
+.formularios textarea:focus, 
+.formularios select:focus{
+	-moz-box-shadow: 0 0 8px #88D5E9;
+	-webkit-box-shadow: 0 0 8px #88D5E9;
+	box-shadow: 0 0 8px #88D5E9;
+	border: 1px solid #88D5E9;
+}
+
+form p{
+    width: 500px;
+    margin-left: 80px;
+    text-align: center;
+    padding: 10px;
+}
+
+.aviso{
+    color: rgb(231, 65, 65);
+}
+
+.formularios .required{
+    color: rgb(231, 65, 65);
+    float: right;
+    padding-right: 100px;
+}
+
+input[type=submit]{
+    margin-top: 10px;
+    margin-left: 180px;
+    width: 300px;
+	background: none;
+	padding: 8px 15px 8px 15px;
+	border: none;
+	color: white;
+    transition: background 1s;
+}
+
+input[type=submit]:hover{
+    background: rgba(0, 0, 0, .65);
 }

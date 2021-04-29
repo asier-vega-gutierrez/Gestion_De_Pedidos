@@ -8,32 +8,34 @@
         <hr>
     </header>
 
-        <form action="{% url 'anyadirProducto' %}" method="post">
-            {% csrf_token %}
-            <!--Cargamos los campos del formulario indicados en el metodo get dontro de nuestra vista-->
-            <ul class="formularios">
-                <li>
-                    <label for="id_nombre">Nombre <span class="required">*</span></label>
-                    <div class="texto">{{ form.nombre }}</div> 
-                </li>
-                <li>
-                    <label for="id_precio">Precio <span class="required">*</span></label>
-                    <div class="texto">{{ form.precio }}</div> 
-                </li>
-                <li>
-                    <label for="id_categoria">Categoria <span class="required">*</span></label>
-                    <div class="texto">{{ form.categoria }}</div> 
-                </li>
-                <li>
-                    <label for="id_descripcion">Descripción <span class="required">*</span></label>
-                    <div class="texto">{{ form.descripcion }}</div> 
-                </li>
-                <li>
-                    <label for="id_componentes">Componentes <span class="required">*</span></label>
-                    <div class="texto">{{ form.componentes }}</div> 
-                </li>
-            </ul>   
-            
-            <input type="submit" value="Insertar producto">
-        </form>
+    <form action="{% url 'anyadirProducto' %}" method="post">
+        {% csrf_token %}
+        <!--Cargamos los campos del formulario indicados en el metodo get dontro de nuestra vista-->
+        <ul class="formularios">
+            <li>
+                <label for="id_nombre">Nombre <span class="required">*</span></label>
+                {{ form.nombre }}
+            </li>
+            <li>
+                <label for="id_precio">Precio <span class="required">*</span></label>
+                {{ form.precio }} 
+            </li>
+            <li>
+                <label for="id_categoria">Categoria <span class="required">*</span></label>
+                {{ form.categoria }} 
+            </li>
+            <li>
+                <label for="id_descripcion">Descripción <span class="required">*</span></label>
+                {{ form.descripcion }}
+            </li>
+            <li>
+                <label for="id_componentes">Componentes <span class="required">*</span></label>
+                {{ form.componentes }}
+            </li>
+        </ul>   
+
+        <p class = "aviso">AVISO: Para asignar un producto a un pedido con una catidad determinada vaya a la pestaña 'ASIGNAR PEDIDO' dentro de 'GESTIÓN DE PRODUCTOS'</p>
+        
+        <input type="submit" value="Insertar producto">
+    </form>
 {% endblock %}

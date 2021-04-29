@@ -31,12 +31,11 @@ class PedidoDetailView(DetailView):
         template_name = 'detallePedido.html'
         context_object_name = 'detalle_pedido'
 
+#Vista basada en clases que muestra un formulario para crear un producto, volver a mostrar el formulario con errores de validación (si los hay) y guardar el producto. La relación Pedido - Producto se deberá hacer en otro formulario debido al atributo 'cantidad'. La relación Producto - Componente se guarda al realizar este formulario.
 class AnyadirProductoForm(CreateView):
-        model = Producto
+        form_class = ProductoAnyadirForm
         template_name = 'anyadirProducto.html'
         success_url = reverse_lazy('pagPrincipal')
-
-        fields = '__all__'
 
         def form_valid(self, form):
                 self.object = form.save(commit=False)
@@ -47,70 +46,16 @@ class AnyadirProductoForm(CreateView):
                         consta.producto = self.object
                         consta.componente = componentes
                         consta.save()
+
                 return super(AnyadirProductoForm, self).form_valid(form)
-        
-'''
-class AnyadirProductoForm(View):
-        def get(self, request, *args, **kwargs):
-                form = ProductoAnyadirForm()
-                context = {'form': form}
-                return render(request, 'anyadirProducto.html', context)
 
-        def post(self, request, *args, **kwargs):
-                form = ProductoAnyadirForm(request.POST)
-                if form.is_valid():
-                        producto = Producto()
-                        producto.nombre = form.cleaned_data['nombre']
-                        producto.precio = form.cleaned_data['precio']
-                        producto.categoria = form.cleaned_data['categoria']
-                        producto.descripcion = form.cleaned_data['descripcion']
-                        producto.save()
-                        # Volvemos a la lista de departamentos
-                        return redirect('pagPrincipal')
-
-                return render(request, 'anyadirProducto.html', {'form': form})
-'''
-
+#Vista basada en clases que muestra un formulario para crear un pedido, volver a mostrar el formulario con errores de validación (si los hay) y guardar el pedido. La relación Pedido - Producto se deberá hacer en otro formulario debido al atributo 'cantidad'.
 class AnyadirPedidoForm(CreateView):
-        model = Pedido
+        form_class = PedidoAnyadirForm
         template_name = 'anyadirPedido.html'
         success_url = reverse_lazy('pagPrincipal')
 
-        fields = '__all__'
-
-        def form_valid(self, form):
-                self.object = form.save(commit=False)
-                self.object.save()
-
-                for productos in form.cleaned_data['productos']:
-                        compone = Compone()
-                        compone.pedido = self.object
-                        compone.producto = productos
-                        compone.cantidad = form.cleaned_data['cantidad']
-                        compone.save()
-                return super(AnyadirPedidoForm, self).form_valid(form)
-
-'''
-class AnyadirPedidoForm(View):
-        def get(self, request, *args, **kwargs):
-                form = PedidoAnyadirForm()
-                context = {'form': form}
-                return render(request, 'anyadirPedido.html', context)
-
-        def post(self, request, *args, **kwargs):
-                form = PedidoAnyadirForm(request.POST)
-                if form.is_valid():
-                        pedido = Pedido()
-                        pedido.fecha = form.DateField['fecha']
-                        pedido.precioTotal = form.cleaned_data['nombre']
-                        pedido.cliente = form.cleaned_data['cliente']
-                        pedido.productos = form.cleaned_data['productos']
-                        pedido.save()
-                        # Volvemos a la lista de departamentos
-                        return redirect('pagPrincipal')
-                return render(request, 'anyadirPedido.html', {'form': form})
-'''
-
+#Vista basada en clases que muestra un formulario para asignar un pedido a un producto con su cantidad mediante la función 'get', volver a mostrar el formulario con errores de validación (si los hay) y guardar la relación a través de la función 'post'.
 class AnyadirPedidoProductoForm(View):
         def get(self, request, *args, **kwargs):
                 form = PedidoProductoAnyadirForm()
@@ -129,6 +74,7 @@ class AnyadirPedidoProductoForm(View):
                         return redirect('pagPrincipal')
                 return render(request, 'anyadirPedidoProducto.html', {'form': form})
 
+#Vista basada en clases que muestra un formulario para asignar un componente a un producto mediante la función 'get', volver a mostrar el formulario con errores de validación (si los hay) y guardar la relación a través de la función 'post'.
 class AnyadirComponenteProductoForm(View):
         def get(self, request, *args, **kwargs):
                 form = ComponenteProductoAnyadirForm()

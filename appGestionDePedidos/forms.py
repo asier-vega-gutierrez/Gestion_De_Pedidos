@@ -5,13 +5,13 @@ from .models import *
 class ProductoAnyadirForm(forms.ModelForm):
     class Meta:
         model = Producto
-        exclude = ['componentes']
+        fields = '__all__'
 
 #clase formulario para los pedidos, cargamos todos los campos de dicho modelo
 class PedidoAnyadirForm(forms.ModelForm):
     class Meta:
         model = Pedido
-        fields = '__all__'
+        exclude = ['productos']
 
 class PedidoProductoAnyadirForm(forms.ModelForm):
     class Meta:

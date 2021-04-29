@@ -11,7 +11,7 @@
     <div class = "formularios">
         <form method="POST" action=".">
             {% csrf_token %}
-            <p>Esta seguro que desea eliminar {{ producto.nombre }}?</p>
+            <p>Está seguro que desea eliminar: {{ producto.nombre }}?</p>
             <input type="submit" value="Eliminar">
         </form>
     </div>

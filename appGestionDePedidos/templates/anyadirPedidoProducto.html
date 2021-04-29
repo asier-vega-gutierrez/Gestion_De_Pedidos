@@ -8,11 +8,23 @@
         <hr>
     </header>
 
-    <div class="formularios">
-        <form action="{% url 'anyadirPedidoProducto' %}" method="post">
-            {% csrf_token %}
-            {{ form.as_ul }}
-            <input type="submit" value="Asignar">
-        </form>
-    </div>
+    <form action="{% url 'anyadirPedidoProducto' %}" method="post">
+        {% csrf_token %}
+        <ul class="formularios">
+            <li>
+                <label for="id_pedido">Pedido <span class="required">*</span></label>
+                {{ form.pedido }}
+            </li>
+            <li>
+                <label for="id_producto">Producto <span class="required">*</span></label>
+                {{ form.producto }} 
+            </li>
+            <li>
+                <label for="id_cantidad">Cantidad <span class="required">*</span></label>
+                {{ form.cantidad }} 
+            </li>
+        </ul>
+
+        <input type="submit" value="Asignar">
+    </form>
 {% endblock %}

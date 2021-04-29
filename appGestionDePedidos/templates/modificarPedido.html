@@ -8,13 +8,23 @@
         <hr>
     </header>
 
-    <div class = "formularios">
-        <form method="POST" action=".">
-            {% csrf_token %}
-            <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
-            {{ form.as_ul }} 
-            <p>Modificar pedido con id: {{pedido.id}}?</p>
-            <input type="submit" value="Guardar">
-        </form>
-    </div>
+    <form method="POST" action=".">
+        {% csrf_token %}
+        <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
+        <ul class="formularios">
+            <li>
+                <label for="id_Fecha">Fecha (año-mes-día) <span class="required">*</span></label>
+                {{ form.fecha }}
+            </li>
+            <li>
+                <label for="id_precioTotal">Precio Total<span class="required">*</span></label>
+                {{ form.precioTotal }} 
+            </li>
+            <li>
+                <label for="id_cliente">Cliente <span class="required">*</span></label>
+                {{ form.cliente }} 
+            </li>
+        </ul>
+        <input type="submit" value="Actualizar">
+    </form>
 {% endblock %}

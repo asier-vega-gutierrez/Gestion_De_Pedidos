@@ -8,12 +8,26 @@
         <hr>
     </header>
 
-    <div class="formularios">
-        <form action="{% url 'anyadirPedido' %}" method="post">
-            {% csrf_token %}
-            {{ form.as_ul }}
-            {{ form_compone.as_ul }}
-            <input type="submit" value="Nuevo pedido">
-        </form>
-    </div>
+    
+    <form action="{% url 'anyadirPedido' %}" method="post">
+        {% csrf_token %}
+        <ul class="formularios">
+            <li>
+                <label for="id_Fecha">Fecha (año-mes-día) <span class="required">*</span></label>
+                {{ form.fecha }}
+            </li>
+            <li>
+                <label for="id_precioTotal">Precio Total<span class="required">*</span></label>
+                {{ form.precioTotal }} 
+            </li>
+            <li>
+                <label for="id_cliente">Cliente <span class="required">*</span></label>
+                {{ form.cliente }} 
+            </li>
+        </ul>
+
+        <p class = "aviso">AVISO: Para asignar un pedido a un producto con una catidad determinada vaya a la pestaña 'ASIGNAR PRODUCTO' dentro de 'GESTIÓN DE PEDIDOS'</p>
+
+        <input type="submit" value="Nuevo pedido">
+    </form>
 {% endblock %}
