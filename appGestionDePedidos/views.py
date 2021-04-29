@@ -152,6 +152,12 @@ class EliminarProducto(DeleteView):
         template_name = 'eliminarProducto.html'
         success_url = reverse_lazy('pagPrincipal')
 
+#Vista basada en clases de tipo deleteView que nos vale para eliminar un pedido
+class EliminarPedido(DeleteView):
+        model = Pedido
+        template_name = 'eliminarPedido.html'
+        success_url = reverse_lazy('pagPrincipal')
+
 #Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
 class ModificarPedido(UpdateView):
         model = Pedido
@@ -171,4 +177,22 @@ class ModificarPedido(UpdateView):
                 #"cantidad"
                 #se necesita el atributo cantidad para modificar los prodcutos, si no da error
         }
-                
+
+#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
+class ModificarProducto(UpdateView):
+        model = Producto
+        template_name = 'modificarProducto.html'
+        success_url = reverse_lazy('pagPrincipal')
+
+        '''def get_context_data(self, **kwargs):
+                context = super(ModificarPedido, self).get_context_data(**kwargs)
+                context['cantidad'] = Compone.cantidad
+                return context'''
+
+        fields = {
+                "nombre",
+                "precio",
+                "descripcion",
+                "categoria",
+                "componentes"
+        }

@@ -34,6 +34,7 @@
                             <span>id.{{producto.id}}</span>{{producto.nombre}}
                             <a href="{% url 'detalleProducto' producto.id %}">(detalles)</a>
                             <a href="{% url 'eliminarProducto' producto.id %}">(eliminar)</a>
+                            <a href="{% url 'modificarProducto' producto.id %}">(modificar)</a>
                         </li>
                     {% endfor %}
                 </ul>
@@ -59,6 +60,7 @@
                         <li>
                             <span>id.{{pedido.id}}</span>{{pedido.fecha}}
                             <a href="{% url 'detallePedido' pedido.id %}">(detalles)</a>
+                            <a href="{% url 'eliminarPedido' pedido.id %}">(eliminar)</a>
                             <a href="{% url 'modificarPedido' pedido.id %}">(modificar)</a>
                         </li>
                     {% endfor %}
