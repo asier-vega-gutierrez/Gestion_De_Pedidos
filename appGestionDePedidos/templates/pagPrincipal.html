@@ -87,7 +87,7 @@
                     {% for cliente in lista_clientes %}
                         <li>
                             <span>id.{{cliente.id}}</span>{{cliente.nombre}}
-                            <a href="{% url 'detallePedido' pedido.id %}">(detalles)</a>
+                            <a href="{% url 'detalleCliente' pedido.id %}">(detalles)</a>
                             <a href="{% url 'eliminarCliente' cliente.id %}">(eliminar)</a>
                             <a href="{% url 'modificarCliente' cliente.id %}">(modificar)</a>
                         </li>

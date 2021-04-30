@@ -1,0 +1,36 @@
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">Detalle del cliente: {{detalle_cliente.id}}</h2>
+        <hr>
+    </header>
+
+    <!--Tabla con todos los atributos de un pedido específico-->
+    <div class="detalle">
+        <table>
+            <tr>
+                <th>cif</th>
+                <td>{{ detalle_cliente.cif }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ detalle_cliente.nombre }}€</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ detalle_cliente.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de la empresa</th>
+                <td>{{ detalle_cliente.nombreEmpresa }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ detalle_cliente.email }}</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

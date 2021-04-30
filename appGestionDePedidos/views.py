@@ -31,6 +31,12 @@ class PedidoDetailView(DetailView):
         template_name = 'detallePedido.html'
         context_object_name = 'detalle_pedido'
 
+#Vista basada en clases que nos coge todos los atributos de un cliente concreto para poder trabajar con ellos en el html
+class ClienteDetailView(DetailView):
+        model = Cliente
+        template_name = 'detalleCliente.html'
+        context_object_name = 'detalle_cliente'
+
 #Vista basada en clases que muestra un formulario para crear un producto, volver a mostrar el formulario con errores de validación (si los hay) y guardar el producto. La relación Pedido - Producto se deberá hacer en otro formulario debido al atributo 'cantidad'. La relación Producto - Componente se guarda al realizar este formulario.
 class AnyadirProductoForm(CreateView):
         form_class = ProductoAnyadirForm
