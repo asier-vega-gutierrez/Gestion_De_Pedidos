@@ -17,6 +17,7 @@ class ProductoPedidoListView(ListView):
         def get_context_data(self, **kwargs):
                 context = super(ProductoPedidoListView, self).get_context_data(**kwargs)
                 context['lista_pedidos'] = Pedido.objects.all()
+                context['lista_clientes'] = Cliente.objects.all()
                 return context
 
 #Vista basada en clases que nos coge todos los atributos de un producto concreto para poder trabajar con ellos en el html

@@ -97,9 +97,14 @@
 }
 
 /*ELEMENTOS COMUNES PARA TODAS LAS PÁGINAS --> IGUAL PARA TODOS*/
-main{
+body {
+    height: 100%;
     background-color: rgb(241, 241, 241);
+}
+
+main{
     min-height: 521px;
+    height: 100%;
     padding: 15px;
 }
 
@@ -187,7 +192,15 @@ main h2{
     margin-left: 10px;
 }
 
+.listadosContenido ul{
+    height: 300px;
+    overflow:hidden; 
+    overflow-y:scroll;
+}
+
 .listadosContenido {
+    height: 300px;
+    margin-bottom: 15px;
     padding: 5px;
     justify-content: center;
     align-items: center;
@@ -196,8 +209,15 @@ main h2{
 }
 
 .listadosContenido ul li {
+    width: 100%;
     list-style: none;
     padding: 10px;
+}
+
+.listadosContenido ul li:hover{
+    background-color: rgba(0, 0, 0, .65);
+    transition: background-color 0.5s;
+    color: gainsboro;
 }
 
 .listadosContenido ul li span{
@@ -215,14 +235,61 @@ main h2{
 }
 
 .listadosContenido a {
-    font-size: 13px;
     text-decoration: none;
     color: black;
+}
+
+.añadir:hover{
+    color: rgb(136, 136, 136);
     transition: color 0.4s;
 }
 
-.listadosContenido a:hover{
-    color: #686868;
+.eliminar{
+    font-size: 13px;
+    float: right;
+    margin-right: 15px;
+    padding: 3px;
+    background-color: #d1052a;
+    border: black solid 2px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.eliminar:hover{
+    background-color: #ff6565;
+    transition: background-color 0.5s;
+}
+
+.modificar{
+    font-size: 13px;
+    float: right;
+    margin-right: 15px;
+    padding: 3px;
+    background-color: #5086c1;
+    border: black solid 2px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.modificar:hover{
+    background-color: #6a9eda;
+    transition: background-color 0.5s;
+}
+
+.detalles{
+    font-size: 13px;
+    float: right;
+    margin-right: 15px;
+    padding: 3px;
+    background-color: #42ab49;
+    border: black solid 2px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.detalles:hover{
+    background-color: #5dc460;
+    transition: background-color 0.5s;
 }
 
 .listadosContenido h4{

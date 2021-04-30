@@ -4,7 +4,7 @@
 
 {% block content %}
     <header>
-        <h2 class="pagSecundarias">Detalle del cliente: {{detalle_cliente.id}}</h2>
+        <h2 class="pagSecundarias">Detalle del cliente: {{detalle_cliente.nombre}}</h2>
         <hr>
     </header>
 
@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <th>Nombre</th>
-                <td>{{ detalle_cliente.nombre }}€</td>
+                <td>{{ detalle_cliente.nombre }}</td>
             </tr>
             <tr>
                 <th>Telefono</th>
