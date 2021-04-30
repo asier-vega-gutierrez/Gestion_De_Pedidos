@@ -110,16 +110,10 @@ class ModificarPedido(UpdateView):
         template_name = 'modificarPedido.html'
         success_url = reverse_lazy('pagPrincipal')
 
-        '''def get_context_data(self, **kwargs):
-                context = super(ModificarPedido, self).get_context_data(**kwargs)
-                context['cantidad'] = Compone.cantidad
-                return context'''
-
         fields = {
                 "fecha",
                 "precioTotal",
-                "cliente",
-                "productos",
+                "cliente"
         }
 
 #Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
@@ -127,11 +121,6 @@ class ModificarProducto(UpdateView):
         model = Producto
         template_name = 'modificarProducto.html'
         success_url = reverse_lazy('pagPrincipal')
-
-        '''def get_context_data(self, **kwargs):
-                context = super(ModificarPedido, self).get_context_data(**kwargs)
-                context['cantidad'] = Compone.cantidad
-                return context'''
 
         fields = {
                 "nombre",
