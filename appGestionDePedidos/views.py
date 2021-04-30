@@ -61,6 +61,12 @@ class AnyadirPedidoForm(CreateView):
         template_name = 'anyadirPedido.html'
         success_url = reverse_lazy('pagPrincipal')
 
+#Vista basada en clases que muestra un formulario para crear un cliente, volver a mostrar el formulario con errores de validación (si los hay) y guardar el cliente.
+class AnyadirClienteForm(CreateView):
+        form_class = ClienteAnyadirForm
+        template_name = 'anyadirCliente.html'
+        success_url = reverse_lazy('pagPrincipal')
+
 #Vista basada en clases que muestra un formulario para asignar un pedido a un producto con su cantidad mediante la función 'get', volver a mostrar el formulario con errores de validación (si los hay) y guardar la relación a través de la función 'post'.
 class AnyadirPedidoProductoForm(View):
         def get(self, request, *args, **kwargs):
@@ -97,12 +103,6 @@ class AnyadirComponenteProductoForm(View):
                         # Volvemos a la lista de departamentos
                         return redirect('pagPrincipal')
                 return render(request, 'anyadirComponenteProducto.html', {'form': form})
-
-#Vista basada en clases que muestra un formulario para crear un cliente, volver a mostrar el formulario con errores de validación (si los hay) y guardar el cliente.
-class AnyadirClienteForm(CreateView):
-        form_class = ClienteAnyadirForm
-        template_name = 'anyadirCliente.html'
-        success_url = reverse_lazy('pagPrincipal')
 
 #Vista basada en clases de tipo deleteView que nos vale para eliminar un producto
 class EliminarProducto(DeleteView):
