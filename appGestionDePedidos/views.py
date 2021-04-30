@@ -79,7 +79,7 @@ class AnyadirComponenteProductoForm(View):
         def get(self, request, *args, **kwargs):
                 form = ComponenteProductoAnyadirForm()
                 context = {'form': form}
-                return render(request, 'anyadirComponenteProductoForm.html', context)
+                return render(request, 'anyadirComponenteProducto.html', context)
 
         def post(self, request, *args, **kwargs):
                 form = ComponenteProductoAnyadirForm(request.POST)
