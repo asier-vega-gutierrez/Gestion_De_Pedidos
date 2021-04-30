@@ -92,6 +92,12 @@ class AnyadirComponenteProductoForm(View):
                         return redirect('pagPrincipal')
                 return render(request, 'anyadirComponenteProducto.html', {'form': form})
 
+#Vista basada en clases que muestra un formulario para crear un cliente, volver a mostrar el formulario con errores de validación (si los hay) y guardar el cliente.
+class AnyadirClienteForm(CreateView):
+        form_class = ClienteAnyadirForm
+        template_name = 'anyadirCliente.html'
+        success_url = reverse_lazy('pagPrincipal')
+
 #Vista basada en clases de tipo deleteView que nos vale para eliminar un producto
 class EliminarProducto(DeleteView):
         model = Producto
@@ -102,6 +108,12 @@ class EliminarProducto(DeleteView):
 class EliminarPedido(DeleteView):
         model = Pedido
         template_name = 'eliminarPedido.html'
+        success_url = reverse_lazy('pagPrincipal')
+
+#Vista basada en clases de tipo deleteView que nos vale para eliminar un cliente
+class EliminarCliente(DeleteView):
+        model = Cliente
+        template_name = 'eliminarCliente.html'
         success_url = reverse_lazy('pagPrincipal')
 
 #Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 

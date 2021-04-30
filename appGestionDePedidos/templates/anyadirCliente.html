@@ -1,0 +1,39 @@
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">AÑADIR NUEVO CLIENTE</h2>
+        <hr>
+    </header>
+
+    
+    <form action="{% url 'anyadirCliente' %}" method="post">
+        {% csrf_token %}
+        <ul class="formularios">
+            <li>
+                <label for="id_cif">CIF <span class="required">*</span></label>
+                {{ form.cif }}
+            </li>
+            <li>
+                <label for="id_nombre">Nombre <span class="required">*</span></label>
+                {{ form.nombre }} 
+            </li>
+            <li>
+                <label for="id_telefono">Telefono <span class="required">*</span></label>
+                {{ form.telefono }} 
+            </li>
+            <li>
+                <label for="id_nombreEmpresa">Nombre de la empresa <span class="required">*</span></label>
+                {{ form.nombreEmpresa }} 
+            </li>
+            <li>
+                <label for="id_email">Email <span class="required">*</span></label>
+                {{ form.email }} 
+            </li>
+        </ul>
+
+        <input type="submit" value="Nuevo cliente">
+    </form>
+{% endblock %}

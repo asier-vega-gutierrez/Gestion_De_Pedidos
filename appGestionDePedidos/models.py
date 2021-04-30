@@ -3,7 +3,7 @@ from django.db import models
 class Cliente(models.Model):
     cif = models.CharField(max_length=10)
     nombre = models.CharField(max_length=50)
-    telefono = models.CharField(max_length=50)
+    telefono = models.CharField(max_length=9)
     nombreEmpresa = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
 

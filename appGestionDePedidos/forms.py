@@ -24,4 +24,8 @@ class ComponenteProductoAnyadirForm(forms.ModelForm):
     class Meta:
         model = Consta
         fields = '__all__'
-        
+
+class ClienteAnyadirForm(forms.ModelForm):
+    class Meta:
+        model = Cliente
+        fields = '__all__'
