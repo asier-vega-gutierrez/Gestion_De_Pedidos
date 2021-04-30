@@ -41,7 +41,7 @@
                     <!--Sacamos un aviso de que no existen pedidos asignados en caso de no encontrarlos-->
                     {% else %}
                         <h4>No se han asignado pedidos para este producto</h4>
-                        <p>Para añadir un pedido haga click <a href="">aquí</a></p>
+                        <p>Para añadir un pedido haga click <a href="{% url 'anyadirPedidoProducto' %}">aquí</a></p>
                     {% endif %}
                 </td>
             </tr>
