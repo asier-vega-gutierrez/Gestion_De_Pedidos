@@ -141,3 +141,16 @@ class ModificarProducto(UpdateView):
                 "categoria",
                 "componentes"
         }
+
+class ModificarCliente(UpdateView):
+        model = Cliente
+        template_name = 'modificarCliente.html'
+        success_url = reverse_lazy('pagPrincipal')
+
+        fields = {
+                "cif",
+                "nombre",
+                "telefono",
+                "nombreEmpresa",
+                "email"
+        }

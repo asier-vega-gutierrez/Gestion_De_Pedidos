@@ -70,7 +70,38 @@
                 <h4>No existen pedidos en Deustronic Components S.L.</h4>
                 <p>Para añadir un pedido haga click <a href="">aquí</a></p>
             {% endif %}
+            
+        </div>
+    </article>
+
+    <article class="listados" id="listadosDchaAbajo">
+        <header>
+            <h3><span>3</span>LISTADO DE CLIENTES</h3>
+        </header>
+        
+        <div class="listadosContenido">
+            <!--Comprobamos si existen pedidos en nuestra BBDD-->
+            {% if lista_clientes %}
+                <ul>
+                    <!--Recorremos todos los pedidos existentes y los visualizamos como una lista no ordenada <ul>-->
+                    {% for cliente in lista_clientes %}
+                        <li>
+                            <span>id.{{cliente.id}}</span>{{cliente.nombre}}
+                            <a href="{% url 'detallePedido' pedido.id %}">(detalles)</a>
+                            <a href="{% url 'eliminarCliente' cliente.id %}">(eliminar)</a>
+                            <a href="{% url 'modificarCliente' cliente.id %}">(modificar)</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            <!--Sacamos un aviso de que no existen pedidos en caso de no encontrarlos-->
+            {% else %}
+                <h4>No existen clientes en Deustronic Components S.L.</h4>
+                <p>Para añadir un cliente haga click <a href="">aquí</a></p>
+            {% endif %}
+            
         </div>
     </article>
 {% endblock %}
+
+
 
