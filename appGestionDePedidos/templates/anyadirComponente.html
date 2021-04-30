@@ -1,0 +1,27 @@
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">AÑADIR NUEVO COMPONENTE</h2>
+        <hr>
+    </header>
+
+    
+    <form action="{% url 'anyadirComponente' %}" method="post">
+        {% csrf_token %}
+        <ul class="formularios">
+            <li>
+                <label for="id_nombre">Nombre <span class="required">*</span></label>
+                {{ form.nombre }}
+            </li>
+            <li>
+                <label for="id_marca">Marca <span class="required">*</span></label>
+                {{ form.marca }} 
+            </li>
+        </ul>
+
+        <input type="submit" value="Nuevo componente">
+    </form>
+{% endblock %}

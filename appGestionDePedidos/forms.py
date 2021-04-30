@@ -25,7 +25,14 @@ class ComponenteProductoAnyadirForm(forms.ModelForm):
         model = Consta
         fields = '__all__'
 
+#Clase formulario para los clientes, cargamos todos los campos de dicho modelo
 class ClienteAnyadirForm(forms.ModelForm):
     class Meta:
         model = Cliente
+        fields = '__all__'
+
+#Clase formulario para los componentes, cargamos todos los campos de dicho modelo
+class ComponenteAnyadirForm(forms.ModelForm):
+    class Meta:
+        model = Componente
         fields = '__all__'

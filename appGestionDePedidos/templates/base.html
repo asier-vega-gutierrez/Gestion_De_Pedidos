@@ -17,20 +17,26 @@
                 <img src="{% static 'IMG/logo_nav.png' %}" alt="Logo" width="150px">
                 <ul>
                     <li><a href="{% url 'pagPrincipal' %}">PÁGINA PRINCIPAL</a></li>
-                    <li><a href="">GESTIÓN DE PRODUCTOS</a> <!--PONER NOMBRE URL Y SUS PARÁMETROS-->
+                    <li><a href="">GESTIÓN DE PRODUCTOS</a> 
                         <ul>
                             <li><a href="{% url 'anyadirProducto' %}">AÑADIR PRODUCTO</a></li>
                             <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PEDIDO</a></li>
                             <li><a href="{% url 'anyadirComponenteProducto' %}">ASIGNAR COMPONENTE</a></li>
                         </ul>
                     </li> 
-                    <li><a href="">GESTIÓN DE PEDIDOS</a> <!--PONER NOMBRE URL Y SUS PARÁMETROS-->
+                    <li><a href="">GESTIÓN DE PEDIDOS</a> 
                         <ul>
                             <li><a href="{% url 'anyadirPedido' %}">AÑADIR PEDIDO</a></li>
                             <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PRODUCTO</a></li>
                         </ul>
-                    </li>   
-                    <li><a href="">GESTIÓN DE CLIENTES</a> <!--PONER NOMBRE URL Y SUS PARÁMETROS-->
+                    </li>  
+                    <li><a href="">GESTIÓN DE COMPONENTES</a> 
+                        <ul>
+                            <li><a href="{% url 'anyadirComponente' %}">AÑADIR COMPONENTE</a></li>
+                            <li><a href="{% url 'anyadirComponenteProducto' %}">ASIGNAR PRODUCTO</a></li>
+                        </ul>
+                    </li>  
+                    <li><a href="">GESTIÓN DE CLIENTES</a> 
                         <ul>
                             <li><a href="{% url 'anyadirCliente' %}">AÑADIR CLIENTE</a></li>
                         </ul>

@@ -1,0 +1,18 @@
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">ELIMINAR COMPONENTE: {{ cliente.nombre }}</h2>
+        <hr>
+    </header>
+
+    <div class = "formularios">
+        <form method="POST" action=".">
+            {% csrf_token %}
+            <p>Está seguro que desea eliminar: {{ componente.nombre }}?</p>
+            <input type="submit" value="Eliminar">
+        </form>
+    </div>
+{% endblock %}

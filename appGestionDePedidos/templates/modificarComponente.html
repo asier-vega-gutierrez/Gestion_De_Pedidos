@@ -1,0 +1,26 @@
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %} 
+{% load static %}
+
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">MODIFICAR COMPONENTE: {{ cliente.nombre }}</h2>
+        <hr>
+    </header>
+
+    <form method="POST" action=".">
+        {% csrf_token %}
+        <!--Cargamos los campos del formulario desde UpdateView, los cuales deben estar rellenados-->
+        <ul class="formularios">
+            <li>
+                <label for="id_nombre">Nombre <span class="required">*</span></label>
+                {{ form.nombre }}
+            </li>
+            <li>
+                <label for="id_marca">Marca <span class="required">*</span></label>
+                {{ form.marca }} 
+            </li>
+        </ul>
+        <input type="submit" value="Actualizar">
+    </form>
+{% endblock %}

@@ -8,16 +8,17 @@ from .forms import *
 from .models import *
 
 #Vista basada en clases que nos coge un listado de todos los productos para poder trabajar con ellos en el html
-class ProductoPedidoListView(ListView):
+class ListadosListView(ListView):
         model = Producto
         template_name = 'pagPrincipal.html'
         context_object_name = 'lista_productos'
 
         #Añadimos a la vista un listado de todos los pedidos existentes mediante la función get_context_data
         def get_context_data(self, **kwargs):
-                context = super(ProductoPedidoListView, self).get_context_data(**kwargs)
+                context = super(ListadosListView, self).get_context_data(**kwargs)
                 context['lista_pedidos'] = Pedido.objects.all()
                 context['lista_clientes'] = Cliente.objects.all()
+                context['lista_componentes'] = Componente.objects.all()
                 return context
 
 #Vista basada en clases que nos coge todos los atributos de un producto concreto para poder trabajar con ellos en el html
@@ -37,6 +38,12 @@ class ClienteDetailView(DetailView):
         model = Cliente
         template_name = 'detalleCliente.html'
         context_object_name = 'detalle_cliente'
+
+#Vista basada en clases que nos coge todos los atributos de un componente concreto para poder trabajar con ellos en el html
+class ComponenteDetailView(DetailView):
+        model = Componente
+        template_name = 'detalleComponente.html'
+        context_object_name = 'detalle_componente'
 
 #Vista basada en clases que muestra un formulario para crear un producto, volver a mostrar el formulario con errores de validación (si los hay) y guardar el producto. La relación Pedido - Producto se deberá hacer en otro formulario debido al atributo 'cantidad'. La relación Producto - Componente se guarda al realizar este formulario.
 class AnyadirProductoForm(CreateView):
@@ -66,6 +73,12 @@ class AnyadirPedidoForm(CreateView):
 class AnyadirClienteForm(CreateView):
         form_class = ClienteAnyadirForm
         template_name = 'anyadirCliente.html'
+        success_url = reverse_lazy('pagPrincipal')
+
+#Vista basada en clases que muestra un formulario para crear un componente, volver a mostrar el formulario con errores de validación (si los hay) y guardar el componente.
+class AnyadirComponenteForm(CreateView):
+        form_class = ComponenteAnyadirForm
+        template_name = 'anyadirComponente.html'
         success_url = reverse_lazy('pagPrincipal')
 
 #Vista basada en clases que muestra un formulario para asignar un pedido a un producto con su cantidad mediante la función 'get', volver a mostrar el formulario con errores de validación (si los hay) y guardar la relación a través de la función 'post'.
@@ -123,6 +136,12 @@ class EliminarCliente(DeleteView):
         template_name = 'eliminarCliente.html'
         success_url = reverse_lazy('pagPrincipal')
 
+#Vista basada en clases de tipo deleteView que nos vale para eliminar un componente
+class EliminarComponente(DeleteView):
+        model = Componente
+        template_name = 'eliminarComponente.html'
+        success_url = reverse_lazy('pagPrincipal')
+
 #Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
 class ModificarPedido(UpdateView):
         model = Pedido
@@ -149,6 +168,7 @@ class ModificarProducto(UpdateView):
                 "componentes"
         }
 
+#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
 class ModificarCliente(UpdateView):
         model = Cliente
         template_name = 'modificarCliente.html'
@@ -160,4 +180,15 @@ class ModificarCliente(UpdateView):
                 "telefono",
                 "nombreEmpresa",
                 "email"
+        }
+
+#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
+class ModificarComponente(UpdateView):
+        model = Componente
+        template_name = 'modificarComponente.html'
+        success_url = reverse_lazy('pagPrincipal')
+
+        fields = {
+                "nombre",
+                "marca"
         }

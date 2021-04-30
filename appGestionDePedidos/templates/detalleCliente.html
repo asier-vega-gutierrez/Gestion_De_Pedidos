@@ -8,7 +8,7 @@
         <hr>
     </header>
 
-    <!--Tabla con todos los atributos de un pedido específico-->
+    <!--Tabla con todos los atributos de un cliente específico-->
     <div class="detalle">
         <table>
             <tr>
@@ -30,6 +30,24 @@
             <tr>
                 <th>Email</th>
                 <td>{{ detalle_cliente.email }}</td>
+            </tr>
+            <tr>
+                <th>Listado de pedidos</th>
+                <td>
+                    <!--Comprobamos si existen pedidos asignados al cliente en nuestra BBDD-->
+                    {% if detalle_cliente.pedido_set.all %}
+                        <ul>
+                            <!--Recorremos todos los pedidos asignados y los visualizamos como una lista no ordenada <ul>-->
+                            {% for pedidos in detalle_cliente.pedido_set.all %}
+                                <li>{{pedidos.fecha}}</li>
+                            {% endfor %}
+                        </ul>
+                    <!--Sacamos un aviso de que no existen pedidos asignados en caso de no encontrarlos-->
+                    {% else %}
+                        <h4>No se han asignado pedidos para este pedido</h4>
+                        <p>Para asignar un pedido haga click <a href="{% url 'anyadirPedido' %}">aquí</a></p>
+                    {% endif %}
+                </td>
             </tr>
         </table>
     </div>

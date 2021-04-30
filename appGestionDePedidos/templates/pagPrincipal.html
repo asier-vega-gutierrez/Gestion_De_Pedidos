@@ -70,7 +70,6 @@
                 <h4>No existen pedidos en Deustronic Components S.L.</h4>
                 <p>Para añadir un pedido haga click <a class="añadir" href="{% url 'anyadirPedido' %}">aquí</a></p>
             {% endif %}
-            
         </div>
     </article>
 
@@ -80,10 +79,10 @@
         </header>
 
         <div class="listadosContenido">
-            <!--Comprobamos si existen productos en nuestra BBDD-->
+            <!--Comprobamos si existen clientes en nuestra BBDD-->
             {% if lista_clientes %}
                 <ul>
-                    <!--Recorremos todos los productos existentes y los visualizamos como una lista no ordenada <ul>-->
+                    <!--Recorremos todos los clientes existentes y los visualizamos como una lista no ordenada <ul>-->
                     {% for cliente in lista_clientes %}
                         <li>
                             <span>id.{{cliente.id}}</span>{{cliente.nombre}}
@@ -93,10 +92,37 @@
                         </li>
                     {% endfor %}
                 </ul>
-            <!--Sacamos un aviso de que no existen productos en caso de no encontrarlos-->
+            <!--Sacamos un aviso de que no existen clientes en caso de no encontrarlos-->
             {% else %}
                 <h4>No existen clientes en Deustronic Components S.L.</h4>
                 <p>Para añadir un cliente haga click <a class="añadir" href="{% url 'anyadirCliente' %}">aquí</a></p>
+            {% endif %}
+        </div>
+    </article>
+
+    <article class="listados" id="listadosDcha">
+        <header>
+            <h3><span>4</span>LISTADO DE COMPONENTES</h3>
+        </header>
+        
+        <div class="listadosContenido">
+            <!--Comprobamos si existen componentes en nuestra BBDD-->
+            {% if lista_componentes %}
+                <ul>
+                    <!--Recorremos todos los componentes existentes y los visualizamos como una lista no ordenada <ul>-->
+                    {% for componente in lista_componentes %}
+                        <li>
+                            <span>id.{{componente.id}}</span>{{componente.nombre}}
+                            <a class="detalles" href="{% url 'detalleComponente' componente.id %}">detalles</a>
+                            <a class="eliminar" href="{% url 'eliminarComponente' componente.id %}">eliminar</a>
+                            <a class="modificar" href="{% url 'modificarComponente' componente.id %}">modificar</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            <!--Sacamos un aviso de que no existen componentes en caso de no encontrarlos-->
+            {% else %}
+                <h4>No existen componentes en Deustronic Components S.L.</h4>
+                <p>Para añadir un componente haga click <a class="añadir" href="{% url 'anyadirComponente' %}">aquí</a></p>
             {% endif %}
         </div>
     </article>

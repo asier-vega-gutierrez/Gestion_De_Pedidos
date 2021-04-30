@@ -1,0 +1,42 @@
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">Detalle del componente: {{detalle_componente.nombre}}</h2>
+        <hr>
+    </header>
+
+    <!--Tabla con todos los atributos de un pedido específico-->
+    <div class="detalle">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ detalle_componente.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Marca</th>
+                <td>{{ detalle_componente.marca }}</td>
+            </tr>
+            <tr>
+                <th>Listado de productos</th>
+                <td>
+                    <!--Comprobamos si existen productos asignados al componente en nuestra BBDD-->
+                    {% if detalle_componente.consta_set.all %}
+                        <ul>
+                            <!--Recorremos todos los productos asignados y los visualizamos como una lista no ordenada <ul>-->
+                            {% for productos in detalle_componente.consta_set.all %}
+                                <li>{{productos.producto}}</li>
+                            {% endfor %}
+                        </ul>
+                    <!--Sacamos un aviso de que no existen productos asignados en caso de no encontrarlos-->
+                    {% else %}
+                        <h4>No se han asignado productos para este componente</h4>
+                        <p>Para asignar un producto haga click <a href="{% url 'anyadirComponenteProducto' %}">aquí</a></p>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
