@@ -90,7 +90,7 @@ class AnyadirComponenteProductoForm(View):
                         consta.save()
                         # Volvemos a la lista de departamentos
                         return redirect('pagPrincipal')
-                return render(request, 'anyadirComponenteProductoForm.html', {'form': form})
+                return render(request, 'anyadirComponenteProducto.html', {'form': form})
 
 #Vista basada en clases de tipo deleteView que nos vale para eliminar un producto
 class EliminarProducto(DeleteView):
