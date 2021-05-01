@@ -8,7 +8,7 @@ class Cliente(models.Model):
     nombreEmpresa = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
 
-    #Funcion utilizada para mostrar el nombre del cliente en vez de la PK.
+    #Funcion utilizada para mostrar el nombre del cliente en vez del objeto.
     def __str__(self):
         return self.nombre
 
@@ -17,7 +17,7 @@ class Componente(models.Model):
     nombre = models.CharField(max_length=50)
     marca = models.CharField(max_length=50)
     
-    #Funcion utilizada para mostrar el nombre del componente en vez de la PK.
+    #Funcion utilizada para mostrar el nombre del componente en vez del objeto.
     def __str__(self):
         return self.nombre
         
@@ -29,7 +29,7 @@ class Producto(models.Model):
     categoria = models.CharField(max_length=50)
     componentes = models.ManyToManyField(Componente, through = 'Consta') #esto nos crea la tabla intermedia de la n-m invisible producto-componente
 
-    #Funcion utilizada para mostrar el nombre del producto en vez de la PK.
+    #Funcion utilizada para mostrar el nombre del producto en vez del objeto.
     def __str__(self):
         return self.nombre
         
@@ -40,7 +40,7 @@ class Pedido(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE) #para la recacion 1-n con cliente
     productos = models.ManyToManyField(Producto, through = 'Compone')#esto nos crea la tabla intermedia de la n-m invisible de pedido-producto
     
-    #Funcion utilizada para mostrar la fecha del pedido en vez de la PK.
+    #Funcion utilizada para mostrar la fecha del pedido en vez del objeto.
     def __str__(self):
         return str(self.fecha)
 
