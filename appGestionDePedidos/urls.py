@@ -3,7 +3,7 @@ from . import views
 from appGestionDePedidos.views import *
 
 urlpatterns = [
-    #URL para la pag. principal donde se visualizará el listado de productos y pedidos
+    #URL para la pag. principal donde se visualizará todos los listados
     path('', ListadosListView.as_view(), name = 'pagPrincipal'),
 
     #URLS PARA DETALLES
@@ -19,7 +19,7 @@ urlpatterns = [
     #URLS PARA AÑADIR
     #URL para acceder al formulario en el cual se podrá añadir un producto nuevo
     path('anyadirProducto/', views.AnyadirProductoForm.as_view(), name="anyadirProducto"),
-    #URL para acceder al formulario en el cual se podrá añadir un producto nuevo
+    #URL para acceder al formulario en el cual se podrá añadir un pedido nuevo
     path('anyadirPedido/', views.AnyadirPedidoForm.as_view(), name="anyadirPedido"),
     #URL para acceder al formulario en el cual se podrá asignar un producto existente a un pedido existente
     path('anyadirPedidoProducto/', views.AnyadirPedidoProductoForm.as_view(), name="anyadirPedidoProducto"),
@@ -47,6 +47,6 @@ urlpatterns = [
     path('modificarProducto/<int:pk>/', ModificarProducto.as_view(), name = 'modificarProducto'),
     #URL para acceder al formulario en el cual se podrá modificar un cliente ya existente
     path('modificarCliente/<int:pk>/', ModificarCliente.as_view(), name = 'modificarCliente'),
-    #URL para acceder al formulario en el cual se podrá modificar un cliente ya existente
+    #URL para acceder al formulario en el cual se podrá modificar un componente ya existente
     path('modificarComponente/<int:pk>/', ModificarComponente.as_view(), name = 'modificarComponente'),
 ]

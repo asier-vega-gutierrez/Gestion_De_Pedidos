@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-# Register your models here.
+#Registramos nuestros modelos para ejecutar los comandos 'makemigrations' y 'migrate'
 admin.site.register(Cliente)
 admin.site.register(Pedido)
 admin.site.register(Producto)

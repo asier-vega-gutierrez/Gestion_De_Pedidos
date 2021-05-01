@@ -13,7 +13,7 @@ class ListadosListView(ListView):
         template_name = 'pagPrincipal.html'
         context_object_name = 'lista_productos'
 
-        #Añadimos a la vista un listado de todos los pedidos existentes mediante la función get_context_data
+        #Añadimos a la vista un listado de todos los pedidos, clientes y componentes existentes mediante la función get_context_data
         def get_context_data(self, **kwargs):
                 context = super(ListadosListView, self).get_context_data(**kwargs)
                 context['lista_pedidos'] = Pedido.objects.all()
@@ -45,12 +45,13 @@ class ComponenteDetailView(DetailView):
         template_name = 'detalleComponente.html'
         context_object_name = 'detalle_componente'
 
-#Vista basada en clases que muestra un formulario para crear un producto, volver a mostrar el formulario con errores de validación (si los hay) y guardar el producto. La relación Pedido - Producto se deberá hacer en otro formulario debido al atributo 'cantidad'. La relación Producto - Componente se guarda al realizar este formulario.
+#Vista basada en clases que muestra un formulario para crear un producto, volver a mostrar el formulario con errores de validación (si los hay) y guardar el producto. La relación Pedido - Producto se deberá hacer en otro formulario debido al atributo 'cantidad'. 
 class AnyadirProductoForm(CreateView):
         form_class = ProductoAnyadirForm
         template_name = 'anyadirProducto.html'
         success_url = reverse_lazy('pagPrincipal')
 
+        #Con esta función la relación Producto - Componente se guarda al realizar este formulario.
         def form_valid(self, form):
                 self.object = form.save(commit=False)
                 self.object.save()

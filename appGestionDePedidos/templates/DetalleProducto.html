@@ -60,6 +60,7 @@
                     <!--Sacamos un aviso de que no existen componentes asignados en caso de no encontrarlos-->
                     {% else %}
                         <h4>No se han asignado componentes para este producto</h4>
+                        <p>Para asignar un componente haga click <a href="{% url 'anyadirComponenteProducto' %}">aquí</a></p>
                     {% endif %}
                 </td>
             </tr>

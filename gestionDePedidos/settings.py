@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# Añadimos nuestra aplicación al listado de aplicaciones ('appGestionDePedidos')
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
