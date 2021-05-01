@@ -130,6 +130,7 @@ main h2{
 
 
 /* PÁG. PRINCIPAL*/
+/*CABECERA DE LA PAGINA PRINCIPAL*/
 #cabecera-pag-princ{
     height: 620px;
     width: 100%;
@@ -160,18 +161,21 @@ main h2{
     padding-bottom: 15px;
 }
 
+/*LISTADO DE PRODUCTOS Y LISTADO DE CLIENTES*/
 #listadosIzq{
     float: left;
     width: 49%;
     margin-left: 10px;
 }
 
+/*LISTADO DE PEDIDOS Y LISTADO DE COMPONENTES*/
 #listadosDcha{
     float: right;
     width: 49%;
     margin-right: 10px;
 }
 
+/*FORMATO DE LISTADOS -> IGUAL PARA TODOS LOS LISTADOS*/
 .listados header{
     padding: 30px;
     font-family: "montserrat";
@@ -244,6 +248,7 @@ main h2{
     transition: color 0.4s;
 }
 
+/*BOTON DE ELIMINAR EN LISTADOS*/
 .eliminar{
     font-size: 13px;
     float: right;
@@ -260,6 +265,7 @@ main h2{
     transition: background-color 0.5s;
 }
 
+/*BOTON DE MEODIFICAR EN LISTADOS*/
 .modificar{
     font-size: 13px;
     float: right;
@@ -276,6 +282,7 @@ main h2{
     transition: background-color 0.5s;
 }
 
+/*BOTON DE DETALLES EN LISTADOS*/
 .detalles{
     font-size: 13px;
     float: right;
@@ -292,6 +299,7 @@ main h2{
     transition: background-color 0.5s;
 }
 
+/*POSICION DE LOS LISTADOS*/
 .listadosContenido h4{
     text-align: center;
     padding-top: 20px;
@@ -307,12 +315,7 @@ main h2{
     font-weight: 800;
 }
 
-
-
-
-
-
-
+/*FORMATO DE LA VISUALIZACION DE DETALLE*/
 .detalle{
     padding: 30px;
     width: 55%;
@@ -356,7 +359,7 @@ main h2{
     color: rgb(175, 175, 175);
 }
 
-
+/*FORMATO DE LA VISUALIZACION DE LOS FORMULARIOS*/
 form{
     padding: 15px;
     width: 700px;
@@ -429,6 +432,7 @@ form p{
     padding: 10px;
 }
 
+/*AVISO DE FORMULARIOS*/
 .aviso{
     color: rgb(231, 65, 65);
 }
