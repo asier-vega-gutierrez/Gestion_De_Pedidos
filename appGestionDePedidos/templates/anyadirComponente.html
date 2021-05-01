@@ -2,15 +2,17 @@
 {% extends "base.html" %}
 {% load static %}
 
+<!--Bloque content, que varia dependiendo el html.-->
 {% block content %}
     <header>
         <h2 class="pagSecundarias">AÑADIR NUEVO COMPONENTE</h2>
         <hr>
     </header>
 
-    
+    <!--Formulario para añadir un nuevo componente mediante el metodo post.-->
     <form action="{% url 'anyadirComponente' %}" method="post">
         {% csrf_token %}
+        <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">
             <li>
                 <label for="id_nombre">Nombre <span class="required">*</span></label>

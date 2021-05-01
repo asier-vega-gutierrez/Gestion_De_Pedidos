@@ -12,6 +12,7 @@
 </head>
 <body>
     <header>
+        <!--BARRA DE NAVEGACION-->
         <div class="nav-fijado">
             <nav class="menu">
                 <img src="{% static 'IMG/logo_nav.png' %}" alt="Logo" width="150px">
@@ -49,6 +50,7 @@
     </header>
 
     <main>
+        <!--Bloque en el que se visualiza la informacion y va variando en funcion al html cargado.-->
         {% block content %}{% endblock %}
     </main>
 

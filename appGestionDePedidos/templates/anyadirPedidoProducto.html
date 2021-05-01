@@ -2,14 +2,17 @@
 {% extends "base.html" %}
 {% load static %}
 
+<!--Bloque content, que varia dependiendo el html.-->
 {% block content %}
     <header>
         <h2 class="pagSecundarias">ASIGNAR PEDIDO-PRODUCTO</h2>
         <hr>
     </header>
 
+    <!--Formulario para asignar la cantidad de un producto ya existente a un pedido mediante el metodo post.-->
     <form action="{% url 'anyadirPedidoProducto' %}" method="post">
         {% csrf_token %}
+        <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">
             <li>
                 <label for="id_pedido">Pedido <span class="required">*</span></label>

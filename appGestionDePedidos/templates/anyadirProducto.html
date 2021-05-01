@@ -2,15 +2,17 @@
 {% extends "base.html" %}
 {% load static %}
 
+<!--Bloque content, que varia dependiendo el html.-->
 {% block content %}
     <header>
         <h2 class="pagSecundarias">AÑADIR NUEVO PRODUCTO</h2>
         <hr>
     </header>
 
+    <!--Formulario para añadir un producto nuevo mediante el metodo post.-->
     <form action="{% url 'anyadirProducto' %}" method="post">
         {% csrf_token %}
-        <!--Cargamos los campos del formulario indicados en el metodo get dontro de nuestra vista-->
+        <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">
             <li>
                 <label for="id_nombre">Nombre <span class="required">*</span></label>

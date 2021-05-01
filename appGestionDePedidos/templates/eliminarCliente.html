@@ -2,6 +2,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+<!--Bloque content, que varia dependiendo el html.-->
 {% block content %}
     <header>
         <h2 class="pagSecundarias">ELIMINAR CLIENTE: {{ cliente.nombre }}</h2>
@@ -9,6 +10,7 @@
     </header>
 
     <div class = "formularios">
+        <!--Formulario para eliminar un cliente existente mediante el metodo post. La accion se desarrolla mediante el id del cliente.-->
         <form method="POST" action=".">
             {% csrf_token %}
             <p>Está seguro que desea eliminar: {{ cliente.nombre }}?</p>
