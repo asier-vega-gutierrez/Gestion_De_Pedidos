@@ -33,13 +33,13 @@
                     {% for producto in lista_productos %}
                         <li>
                             <span>id.{{producto.id}}</span>{{producto.nombre}}
-                            {% if perms.app.view_producto %}
+                            {% if perms.appGestionDePedidos.view_producto %}
                                 <a class="detalles" href="{% url 'detalleProducto' producto.id %}">detalles</a> 
                             {% endif %}
-                            {% if perms.app.delete_producto %}
+                            {% if perms.appGestionDePedidos.delete_producto %}
                                 <a class="eliminar" href="{% url 'eliminarProducto' producto.id %}">eliminar</a>
                             {% endif %}
-                            {% if perms.app.change_producto %}
+                            {% if perms.appGestionDePedidos.change_producto %}
                                 <a class="modificar" href="{% url 'modificarProducto' producto.id %}">modificar</a>
                             {% endif %}
                         </li>
@@ -48,7 +48,7 @@
             <!--Sacamos un aviso de que no existen productos en caso de no encontrarlos-->
             {% else %}
                 <h4>No existen productos en Deustronic Components S.L.</h4>
-                {% if perms.app.add_producto %}
+                {% if perms.appGestionDePedidos.add_producto %}
                     <p>Para añadir un producto haga click <a class="añadir" href="{% url 'anyadirProducto' %}">aquí</a></p>
                 {% endif %}
             {% endif %}
@@ -69,13 +69,13 @@
                     {% for pedido in lista_pedidos %}
                         <li>
                             <span>id.{{pedido.id}}</span>{{pedido.fecha}}
-                            {% if perms.app.view_pedido %}
+                            {% if perms.appGestionDePedidos.view_pedido %}
                                 <a class="detalles" href="{% url 'detallePedido' pedido.id %}">detalles</a>
                             {% endif %}
-                            {% if perms.app.delete_pedido %}
+                            {% if perms.appGestionDePedidos.delete_pedido %}
                                 <a class="eliminar" href="{% url 'eliminarPedido' pedido.id %}">eliminar</a>
                             {% endif %}
-                            {% if perms.app.change_pedido %}
+                            {% if perms.appGestionDePedidos.change_pedido %}
                                 <a class="modificar" href="{% url 'modificarPedido' pedido.id %}">modificar</a>
                             {% endif %}
                         </li>
@@ -84,7 +84,7 @@
             <!--Sacamos un aviso de que no existen pedidos en caso de no encontrarlos-->
             {% else %}
                 <h4>No existen pedidos en Deustronic Components S.L.</h4>
-                {% if perms.app.add_pedido %}
+                {% if perms.appGestionDePedidos.add_pedido %}
                     <p>Para añadir un pedido haga click <a class="añadir" href="{% url 'anyadirPedido' %}">aquí</a></p>
                 {% endif %}
             {% endif %}
@@ -105,13 +105,13 @@
                     {% for cliente in lista_clientes %}
                         <li>
                             <span>id.{{cliente.id}}</span>{{cliente.nombre}}
-                            {% if perms.app.view_cliente %}
+                            {% if perms.appGestionDePedidos.view_cliente %}
                                 <a class="detalles" href="{% url 'detalleCliente' cliente.id %}">detalles</a>
                             {% endif %}
-                            {% if perms.app.delete_cliente %}
+                            {% if perms.appGestionDePedidos.delete_cliente %}
                                 <a class="eliminar" href="{% url 'eliminarCliente' cliente.id %}">eliminar</a>
                             {% endif %}
-                            {% if perms.app.change_cliente %}
+                            {% if perms.appGestionDePedidos.change_cliente %}
                                 <a class="modificar" href="{% url 'modificarCliente' cliente.id %}">modificar</a>
                             {% endif %}
                         </li>
@@ -121,7 +121,7 @@
             {% else %}
                 <h4>No existen clientes en Deustronic Components S.L.</h4>
                 
-                {% if perms.app.add_cliente %}
+                {% if perms.appGestionDePedidos.add_cliente %}
                     <p>Para añadir un cliente haga click <a class="añadir" href="{% url 'anyadirCliente' %}">aquí</a></p>
                 {% endif %}
             {% endif %}
@@ -142,13 +142,13 @@
                     {% for componente in lista_componentes %}
                         <li>
                             <span>id.{{componente.id}}</span>{{componente.nombre}}
-                            {% if perms.app.view_componente %}
+                            {% if perms.appGestionDePedidos.view_componente %}
                                 <a class="detalles" href="{% url 'detalleComponente' componente.id %}">detalles</a>
                             {% endif %}
-                            {% if perms.app.delete_componente %}
+                            {% if perms.appGestionDePedidos.delete_componente %}
                                 <a class="eliminar" href="{% url 'eliminarComponente' componente.id %}">eliminar</a>
                             {% endif %}
-                            {% if perms.app.change_componente %}
+                            {% if perms.appGestionDePedidos.change_componente %}
                                 <a class="modificar" href="{% url 'modificarComponente' componente.id %}">modificar</a>
                             {% endif %}
                         </li>
@@ -157,7 +157,7 @@
             <!--Sacamos un aviso de que no existen componentes en caso de no encontrarlos-->
             {% else %}
                 <h4>No existen componentes en Deustronic Components S.L.</h4>
-                {% if perms.app.add_componente %}
+                {% if perms.appGestionDePedidos.add_componente %}
                     <p>Para añadir un componente haga click <a class="añadir" href="{% url 'anyadirComponente' %}">aquí</a></p>
                 {% endif %}
             {% endif %}

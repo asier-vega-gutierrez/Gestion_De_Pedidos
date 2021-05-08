@@ -42,7 +42,7 @@
                     <!--Sacamos un aviso de que no existen pedidos asignados en caso de no encontrarlos-->
                     {% else %}
                         <h4>No se han asignado pedidos para este producto</h4>
-                        {% if perms.app.add_compone %}
+                        {% if perms.appGestionDePedidos.add_compone %}
                             <p>Para añadir un pedido haga click <a href="{% url 'anyadirPedidoProducto' %}">aquí</a></p>
                         {% endif %}
                     {% endif %}
@@ -62,7 +62,7 @@
                     <!--Sacamos un aviso de que no existen componentes asignados en caso de no encontrarlos-->
                     {% else %}
                         <h4>No se han asignado componentes para este producto</h4>
-                        {% if perms.app.add_consta %}
+                        {% if perms.appGestionDePedidos.add_consta %}
                             <p>Para asignar un componente haga click <a href="{% url 'anyadirComponenteProducto' %}">aquí</a></p>
                         {% endif %}
                     {% endif %}

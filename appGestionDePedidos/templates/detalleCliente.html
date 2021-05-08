@@ -46,7 +46,7 @@
                     <!--Sacamos un aviso de que no existen pedidos asignados en caso de no encontrarlos-->
                     {% else %}
                         <h4>No se han asignado pedidos para este cliente</h4>
-                        {% if perms.app.add_pedido %}
+                        {% if perms.appGestionDePedidos.add_pedido %}
                             <p>Para asignar un pedido haga click <a href="{% url 'anyadirPedido' %}">aquí</a></p>
                         {% endif %}
                     {% endif %}

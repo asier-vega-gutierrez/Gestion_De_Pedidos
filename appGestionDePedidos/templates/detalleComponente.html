@@ -34,7 +34,7 @@
                     <!--Sacamos un aviso de que no existen productos asignados en caso de no encontrarlos-->
                     {% else %}
                         <h4>No se han asignado productos para este componente</h4>
-                        {% if perms.app.add_consta %}
+                        {% if perms.appGestionDePedidos.add_consta %}
                             <p>Para asignar un producto haga click <a href="{% url 'anyadirComponenteProducto' %}">aquí</a></p>
                         {% endif %}
                     {% endif %}
