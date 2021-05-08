@@ -1,8 +1,11 @@
-from django.urls import path
+from django.urls import path, include 
 from . import views
 from appGestionDePedidos.views import *
 
 urlpatterns = [
+    #URL de Django para crear los forms Login y Logout
+    path('accounts/', include('django.contrib.auth.urls')),
+
     #URL para la pag. principal donde se visualizará todos los listados
     path('', ListadosListView.as_view(), name = 'pagPrincipal'),
 

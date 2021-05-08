@@ -5,6 +5,7 @@ from django import forms
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
 
+
 from .forms import *
 from .models import *
 

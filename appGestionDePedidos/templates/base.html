@@ -11,7 +11,7 @@
     <!-- enlace de archivo JS-->
     <script src="/JS/script.js"></script>
     <!-- enlace de archivo CSS-->
-    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}?{% now 'U' %}">
 </head>
 <body>
     <header>
@@ -62,6 +62,18 @@
                             {% endif %}
                         </ul>
                     </li>
+                    {% if user.is_authenticated %}
+                        <li>
+                            <p>Hola, @{{ user.username }}</p>
+                            <ul>
+                                <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li>
+                            <a href="{% url 'login' %}" title="Iniciar sesión"><img src="{% static 'IMG/iniciar_sesion.png' %}" width="25px" height="25px"></a>
+                        </li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>

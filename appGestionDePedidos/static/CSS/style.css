@@ -40,20 +40,31 @@
 }
 
 .menu li a {
-    color: white;
     text-decoration: none;
-    padding-top: 34px;
-    padding-right: 20px;
-    font-size: 17px;
+    color: white;  
+    font-size: 15px;
+    padding-top: 30px;
+    padding-right: 15px;
     transition: color 0.4s;
-    display: block;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.menu li p {
+    text-decoration: none;
+    color: white;  
+    font-size: 15px;
+    padding-top: 35px;
+    padding-right: 15px;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .menu > li{
     float: right;
 }
 
-.menu li a:hover {
+.menu li a:hover{
     color: gainsboro;
 }
 
@@ -66,11 +77,9 @@
 .menu ul li ul li {
     /*Organizacion*/
     display: flex;
-    margin-top: -5px;
     padding-left: 8px;
-    border-bottom: #f6f6f6 2px solid;
     padding-bottom: 5px;
-    
+    min-width: 100px;
     /*Estetica*/
     background-color:  #313238;  
 }
@@ -392,6 +401,7 @@ form{
 .formularios input[type=date],
 .formularios input[type=number],
 .formularios input[type=email],
+.formularios input[type=password],
 textarea, 
 select{
     width: 500px;
@@ -417,6 +427,7 @@ textarea{
 .formularios input[type=date]:focus,
 .formularios input[type=number]:focus,
 .formularios input[type=email]:focus,
+.formularios input[type=password]:focus,
 .formularios textarea:focus, 
 .formularios select:focus{
 	-moz-box-shadow: 0 0 8px #88D5E9;
