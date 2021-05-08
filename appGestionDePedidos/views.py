@@ -3,6 +3,7 @@ from django.views.generic import DetailView, DeleteView, ListView, UpdateView, C
 from django.views import View
 from django import forms
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 from .forms import *
 from .models import *
@@ -21,32 +22,37 @@ class ListadosListView(ListView):
                 context['lista_componentes'] = Componente.objects.all()
                 return context
 
-#Vista basada en clases que nos coge todos los atributos de un producto concreto para poder trabajar con ellos en el html
-class ProductoDetailView(DetailView):
+#Vista basada en clases que nos coge todos los atributos de un producto concreto para poder trabajar con ellos en el html. El 'permission_required' es para que un usuario sin autorización no pueda acceder a esta información por URL.
+class ProductoDetailView(PermissionRequiredMixin, DetailView):
+        permission_required = 'appGestionDePedidos.view_producto'
         model = Producto
         template_name = 'detalleProducto.html'
         context_object_name = 'detalle_producto'
 
-#Vista basada en clases que nos coge todos los atributos de un pedido concreto para poder trabajar con ellos en el html
-class PedidoDetailView(DetailView):
+#Vista basada en clases que nos coge todos los atributos de un pedido concreto para poder trabajar con ellos en el html. El 'permission_required' es para que un usuario sin autorización no pueda acceder a esta información por URL.
+class PedidoDetailView(PermissionRequiredMixin, DetailView):
+        permission_required = 'appGestionDePedidos.view_pedido'
         model = Pedido
         template_name = 'detallePedido.html'
         context_object_name = 'detalle_pedido'
 
-#Vista basada en clases que nos coge todos los atributos de un cliente concreto para poder trabajar con ellos en el html
-class ClienteDetailView(DetailView):
+#Vista basada en clases que nos coge todos los atributos de un cliente concreto para poder trabajar con ellos en el html. El 'permission_required' es para que un usuario sin autorización no pueda acceder a esta información por URL.
+class ClienteDetailView(PermissionRequiredMixin, DetailView):
+        permission_required = 'appGestionDePedidos.view_cliente'
         model = Cliente
         template_name = 'detalleCliente.html'
         context_object_name = 'detalle_cliente'
 
-#Vista basada en clases que nos coge todos los atributos de un componente concreto para poder trabajar con ellos en el html
-class ComponenteDetailView(DetailView):
+#Vista basada en clases que nos coge todos los atributos de un componente concreto para poder trabajar con ellos en el html. El 'permission_required' es para que un usuario sin autorización no pueda acceder a esta información por URL.
+class ComponenteDetailView(PermissionRequiredMixin, DetailView):
+        permission_required = 'appGestionDePedidos.view_componente'
         model = Componente
         template_name = 'detalleComponente.html'
         context_object_name = 'detalle_componente'
 
-#Vista basada en clases que muestra un formulario para crear un producto, volver a mostrar el formulario con errores de validación (si los hay) y guardar el producto. La relación Pedido - Producto se deberá hacer en otro formulario debido al atributo 'cantidad'. 
-class AnyadirProductoForm(CreateView):
+#Vista basada en clases que muestra un formulario para crear un producto, volver a mostrar el formulario con errores de validación (si los hay) y guardar el producto. La relación Pedido - Producto se deberá hacer en otro formulario debido al atributo 'cantidad'. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class AnyadirProductoForm(PermissionRequiredMixin, CreateView):
+        permission_required = 'appGestionDePedidos.add_producto'
         form_class = ProductoAnyadirForm
         template_name = 'anyadirProducto.html'
         success_url = reverse_lazy('pagPrincipal')
@@ -64,26 +70,30 @@ class AnyadirProductoForm(CreateView):
 
                 return super(AnyadirProductoForm, self).form_valid(form)
 
-#Vista basada en clases que muestra un formulario para crear un pedido, volver a mostrar el formulario con errores de validación (si los hay) y guardar el pedido. La relación Pedido - Producto se deberá hacer en otro formulario debido al atributo 'cantidad'.
-class AnyadirPedidoForm(CreateView):
+#Vista basada en clases que muestra un formulario para crear un pedido, volver a mostrar el formulario con errores de validación (si los hay) y guardar el pedido. La relación Pedido - Producto se deberá hacer en otro formulario debido al atributo 'cantidad'. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class AnyadirPedidoForm(PermissionRequiredMixin, CreateView):
+        permission_required = 'appGestionDePedidos.add_pedido'
         form_class = PedidoAnyadirForm
         template_name = 'anyadirPedido.html'
         success_url = reverse_lazy('pagPrincipal')
 
-#Vista basada en clases que muestra un formulario para crear un cliente, volver a mostrar el formulario con errores de validación (si los hay) y guardar el cliente.
-class AnyadirClienteForm(CreateView):
+#Vista basada en clases que muestra un formulario para crear un cliente, volver a mostrar el formulario con errores de validación (si los hay) y guardar el cliente. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class AnyadirClienteForm(PermissionRequiredMixin, CreateView):
+        permission_required = 'appGestionDePedidos.add_cliente'
         form_class = ClienteAnyadirForm
         template_name = 'anyadirCliente.html'
         success_url = reverse_lazy('pagPrincipal')
 
-#Vista basada en clases que muestra un formulario para crear un componente, volver a mostrar el formulario con errores de validación (si los hay) y guardar el componente.
-class AnyadirComponenteForm(CreateView):
+#Vista basada en clases que muestra un formulario para crear un componente, volver a mostrar el formulario con errores de validación (si los hay) y guardar el componente. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class AnyadirComponenteForm(PermissionRequiredMixin, CreateView):
+        permission_required = 'appGestionDePedidos.add_componente'
         form_class = ComponenteAnyadirForm
         template_name = 'anyadirComponente.html'
         success_url = reverse_lazy('pagPrincipal')
 
-#Vista basada en clases que muestra un formulario para asignar un pedido a un producto con su cantidad mediante la función 'get', volver a mostrar el formulario con errores de validación (si los hay) y guardar la relación a través de la función 'post'.
-class AnyadirPedidoProductoForm(View):
+#Vista basada en clases que muestra un formulario para asignar un pedido a un producto con su cantidad mediante la función 'get', volver a mostrar el formulario con errores de validación (si los hay) y guardar la relación a través de la función 'post'. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class AnyadirPedidoProductoForm(PermissionRequiredMixin, View):
+        permission_required = 'appGestionDePedidos.add_compone'
         def get(self, request, *args, **kwargs):
                 form = PedidoProductoAnyadirForm()
                 context = {'form': form}
@@ -101,8 +111,9 @@ class AnyadirPedidoProductoForm(View):
                         return redirect('pagPrincipal')
                 return render(request, 'anyadirPedidoProducto.html', {'form': form})
 
-#Vista basada en clases que muestra un formulario para asignar un componente a un producto mediante la función 'get', volver a mostrar el formulario con errores de validación (si los hay) y guardar la relación a través de la función 'post'.
-class AnyadirComponenteProductoForm(View):
+#Vista basada en clases que muestra un formulario para asignar un componente a un producto mediante la función 'get', volver a mostrar el formulario con errores de validación (si los hay) y guardar la relación a través de la función 'post'. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class AnyadirComponenteProductoForm(PermissionRequiredMixin, View):
+        permission_required = 'appGestionDePedidos.add_consta'
         def get(self, request, *args, **kwargs):
                 form = ComponenteProductoAnyadirForm()
                 context = {'form': form}
@@ -119,32 +130,37 @@ class AnyadirComponenteProductoForm(View):
                         return redirect('pagPrincipal')
                 return render(request, 'anyadirComponenteProducto.html', {'form': form})
 
-#Vista basada en clases de tipo deleteView que nos vale para eliminar un producto
-class EliminarProducto(DeleteView):
+#Vista basada en clases de tipo deleteView que nos vale para eliminar un producto. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class EliminarProducto(PermissionRequiredMixin, DeleteView):
+        permission_required = 'appGestionDePedidos.delete_producto'
         model = Producto
         template_name = 'eliminarProducto.html'
         success_url = reverse_lazy('pagPrincipal')
 
-#Vista basada en clases de tipo deleteView que nos vale para eliminar un pedido
-class EliminarPedido(DeleteView):
+#Vista basada en clases de tipo deleteView que nos vale para eliminar un pedido. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class EliminarPedido(PermissionRequiredMixin, DeleteView):
+        permission_required = 'appGestionDePedidos.delete_pedido'
         model = Pedido
         template_name = 'eliminarPedido.html'
         success_url = reverse_lazy('pagPrincipal')
 
-#Vista basada en clases de tipo deleteView que nos vale para eliminar un cliente
-class EliminarCliente(DeleteView):
+#Vista basada en clases de tipo deleteView que nos vale para eliminar un cliente. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class EliminarCliente(PermissionRequiredMixin, DeleteView):
+        permission_required = 'appGestionDePedidos.delete_cliente'
         model = Cliente
         template_name = 'eliminarCliente.html'
         success_url = reverse_lazy('pagPrincipal')
 
-#Vista basada en clases de tipo deleteView que nos vale para eliminar un componente
-class EliminarComponente(DeleteView):
+#Vista basada en clases de tipo deleteView que nos vale para eliminar un componente. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class EliminarComponente(PermissionRequiredMixin, DeleteView):
+        permission_required = 'appGestionDePedidos.delete_componente'
         model = Componente
         template_name = 'eliminarComponente.html'
         success_url = reverse_lazy('pagPrincipal')
 
-#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
-class ModificarPedido(UpdateView):
+#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class ModificarPedido(PermissionRequiredMixin, UpdateView):
+        permission_required = 'appGestionDePedidos.change_pedido'
         model = Pedido
         template_name = 'modificarPedido.html'
         success_url = reverse_lazy('pagPrincipal')
@@ -155,8 +171,9 @@ class ModificarPedido(UpdateView):
                 "cliente"
         }
 
-#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
-class ModificarProducto(UpdateView):
+#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class ModificarProducto(PermissionRequiredMixin, UpdateView):
+        permission_required = 'appGestionDePedidos.change_producto'
         model = Producto
         template_name = 'modificarProducto.html'
         success_url = reverse_lazy('pagPrincipal')
@@ -169,8 +186,9 @@ class ModificarProducto(UpdateView):
                 "componentes"
         }
 
-#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
-class ModificarCliente(UpdateView):
+#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class ModificarCliente(PermissionRequiredMixin, UpdateView):
+        permission_required = 'appGestionDePedidos.change_cliente'
         model = Cliente
         template_name = 'modificarCliente.html'
         success_url = reverse_lazy('pagPrincipal')
@@ -183,8 +201,9 @@ class ModificarCliente(UpdateView):
                 "email"
         }
 
-#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos 
-class ModificarComponente(UpdateView):
+#Vista basada en clase tipo UpdateView, si le indicamos que campos queremos modificar (en fields) los muestra por pantalla y no modifica los que no le indicamos. El 'permission_required' es para que un usuario sin autorización no pueda acceder a este formulario por URL.
+class ModificarComponente(PermissionRequiredMixin, UpdateView):
+        permission_required = 'appGestionDePedidos.change_componente'
         model = Componente
         template_name = 'modificarComponente.html'
         success_url = reverse_lazy('pagPrincipal')

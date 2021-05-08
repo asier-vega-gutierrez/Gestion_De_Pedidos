@@ -38,7 +38,9 @@
                     <!--Sacamos un aviso de que no existen productos asignados en caso de no encontrarlos-->
                     {% else %}
                         <h4>No se han asignado productos para este pedido</h4>
-                        <p>Para asignar un producto haga click <a href="{% url 'anyadirPedidoProducto' %}">aquí</a></p>
+                        {% if perms.app.add_compone %}
+                            <p>Para asignar un producto haga click <a href="{% url 'anyadirPedidoProducto' %}">aquí</a></p>
+                        {% endif %}
                     {% endif %}
                 </td>
             </tr>
