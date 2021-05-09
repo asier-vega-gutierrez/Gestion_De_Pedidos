@@ -47,7 +47,7 @@ class ListadosListView(ListView):
                 
                 paginatorProducto = Paginator(Producto.objects.all(), 3)
                 # Si no existe la variable page en la url entonces sera 1
-                context['pagina']=self.request.GET.get('page') or 1
+                context['pagina'] = self.request.GET.get('page') or 1
                 pagina = context['pagina']    
                 productos = paginatorProducto.get_page(pagina)
                 context['productos'] = productos

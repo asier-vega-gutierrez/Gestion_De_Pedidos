@@ -45,7 +45,7 @@
                         </li>
                     {% endfor %}
                 </ul>
-                
+
             <!--Sacamos un aviso de que no existen productos en caso de no encontrarlos-->
             {% else %}
                 <h4>No existen productos en Deustronic Components S.L.</h4>
@@ -53,10 +53,8 @@
                     <p>Para añadir un producto haga click <a class="añadir" href="{% url 'anyadirProducto' %}">aquí</a></p>
                 {% endif %}
             {% endif %}
-
-            {% include "paginacion.html" %} 
-
         </div>
+        {% include "paginacion.html" %} 
     </article>
 
     <!--Segundo articulo donde se visualizara el listado de pedidos.-->
