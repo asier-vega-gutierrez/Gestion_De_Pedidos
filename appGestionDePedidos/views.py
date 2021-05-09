@@ -31,14 +31,14 @@ class RegistroView(View):
                         # Volvemos a la lista de departamentos
                         return redirect('pagPrincipal')
                 return render(request, 'registration/register.html', {'form': form})
-                
+
 #Vista basada en clases que nos coge un listado de todos los productos para poder trabajar con ellos en el html
 class ListadosListView(ListView):
         model = Producto
         template_name = 'pagPrincipal.html'
         context_object_name = 'lista_productos'
 
-        #AÃ±adimos a la vista un listado de todos los pedidos, clientes y componentes existentes mediante la funciÃ³n get_context_data
+        #Añdimos a la vista un listado de todos los pedidos, clientes y componentes existentes mediante la función get_context_data
         def get_context_data(self, **kwargs):
                 context = super(ListadosListView, self).get_context_data(**kwargs)
                 context['lista_pedidos'] = Pedido.objects.all()

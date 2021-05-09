@@ -39,13 +39,13 @@
                             {% if perms.appGestionDePedidos.delete_producto %}
                                 <a class="eliminar" href="{% url 'eliminarProducto' producto.id %}">eliminar</a>
                             {% endif %} 
-                            {% if perms.appGestionDePedidos.view_producto %}
+                            {% if perms.appGestionDePedidos.change_producto %}
                                 <a class="modificar" href="{% url 'modificarProducto' producto.id %}">modificar</a>
                             {% endif %} 
                         </li>
                     {% endfor %}
-
                 </ul>
+                
             <!--Sacamos un aviso de que no existen productos en caso de no encontrarlos-->
             {% else %}
                 <h4>No existen productos en Deustronic Components S.L.</h4>
@@ -53,7 +53,9 @@
                     <p>Para añadir un producto haga click <a class="añadir" href="{% url 'anyadirProducto' %}">aquí</a></p>
                 {% endif %}
             {% endif %}
+
             {% include "paginacion.html" %} 
+
         </div>
     </article>
 

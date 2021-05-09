@@ -208,11 +208,10 @@ main h2{
 .listadosContenido ul{
     height: 300px;
     overflow:hidden; 
-    overflow-y:scroll;
 }
 
 .listadosContenido {
-    height: 300px;
+    height: 350px;
     margin-bottom: 15px;
     padding: 5px;
     justify-content: center;
@@ -322,6 +321,40 @@ main h2{
 .listadosContenido p a{
     font-size: 20px;
     font-weight: 800;
+}
+
+/* PAGINACIÓN */
+
+ul.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+}
+
+ul.pagination li {
+    display: inline;
+}
+
+ul.pagination li a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+ul.pagination li a.active {
+    background-color: black;
+    color: white;
+}
+
+ul.pagination li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+div.center {
+    text-align: center;
 }
 
 /*FORMATO DE LA VISUALIZACION DE DETALLE*/
@@ -479,31 +512,4 @@ input[type=submit]:hover{
     background: rgba(0, 0, 0, .65);
 }
 
-/* paginacion */
 
-ul.pagination {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-}
-
-ul.pagination li {display: inline;}
-
-ul.pagination li a {
-    color: black;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color .3s;
-    border: 1px solid #ddd;
-}
-
-ul.pagination li a.active {
-    background-color: #4CAF50;
-    color: white;
-    border: 1px solid #4CAF50;
-}
-
-ul.pagination li a:hover:not(.active) {background-color: #ddd;}
-
-div.center {text-align: center;}
