@@ -448,6 +448,16 @@ form p{
     color: rgb(231, 65, 65);
 }
 
+.autenticacion a {
+    color: gainsboro;
+    text-decoration: underline;
+    transition: color 1s;
+}
+
+.autenticacion a:hover {
+    color: rgb(177, 177, 177);
+}
+
 .formularios .required{
     color: rgb(231, 65, 65);
     float: right;

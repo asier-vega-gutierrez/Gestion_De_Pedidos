@@ -24,40 +24,40 @@
                     <li><a href="">GESTIÓN DE PRODUCTOS</a> 
                         <ul>
                             
-                            {% if perms.app.add_producto %}
+                            {% if perms.appGestionDePedidos.add_producto %}
                                 <li><a href="{% url 'anyadirProducto' %}">AÑADIR PRODUCTO</a></li>
                             {% endif %}
-                            {% if perms.app.add_compone %}
+                            {% if perms.appGestionDePedidos.add_compone %}
                                 <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PEDIDO</a></li>
                             {% endif %}
-                            {% if perms.app.add_consta %}
+                            {% if perms.appGestionDePedidos.add_consta %}
                                 <li><a href="{% url 'anyadirComponenteProducto' %}">ASIGNAR COMPONENTE</a></li>
                             {% endif %}
                         </ul>
                     </li> 
                     <li><a href="">GESTIÓN DE PEDIDOS</a> 
                         <ul>
-                            {% if perms.app.add_pedido %}
+                            {% if perms.appGestionDePedidos.add_pedido %}
                                 <li><a href="{% url 'anyadirPedido' %}">AÑADIR PEDIDO</a></li>
                             {% endif %}
-                            {% if perms.app.add_compone %}
+                            {% if perms.appGestionDePedidos.add_compone %}
                                 <li><a href="{% url 'anyadirPedidoProducto' %}">ASIGNAR PRODUCTO</a></li>
                             {% endif %}
                         </ul>
                     </li>  
                     <li><a href="">GESTIÓN DE COMPONENTES</a> 
                         <ul>
-                            {% if perms.app.add_componente %}
+                            {% if perms.appGestionDePedidos.add_componente %}
                                 <li><a href="{% url 'anyadirComponente' %}">AÑADIR COMPONENTE</a></li>
                             {% endif %}
-                            {% if perms.app.add_consta %}
+                            {% if perms.appGestionDePedidos.add_consta %}
                                 <li><a href="{% url 'anyadirComponenteProducto' %}">ASIGNAR PRODUCTO</a></li>
                             {% endif %}   
                         </ul>
                     </li>  
                     <li><a href="">GESTIÓN DE CLIENTES</a> 
                         <ul>
-                            {% if perms.app.add_cliente %}
+                            {% if perms.appGestionDePedidos.add_cliente %}
                                 <li><a href="{% url 'anyadirCliente' %}">AÑADIR CLIENTE</a></li>
                             {% endif %}
                         </ul>

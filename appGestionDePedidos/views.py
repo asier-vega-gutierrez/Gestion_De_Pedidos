@@ -5,10 +5,33 @@ from django import forms
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.paginator import Paginator
+from django.contrib.auth.models import User
 
 from .forms import *
 from .models import *
 
+class RegistroView(View):
+        def get(self, request, *args, **kwargs):
+                form = RegistroForm()
+                context = {'form': form}
+                return render(request, 'registration/register.html', context)
+
+        def post(self, request, *args, **kwargs):
+                form = RegistroForm(request.POST)
+                if form.is_valid():
+                        user = User()
+                        user.username = form.cleaned_data['username']
+                        user.first_name = form.cleaned_data['first_name']
+                        user.last_name = form.cleaned_data['last_name']
+                        user.email = form.cleaned_data['email']
+                        user.password1 = form.cleaned_data['password1']
+                        user.password2 = form.cleaned_data['password2']
+                        user.groups.set(form.cleaned_data['groups'])
+                        user.save()
+                        # Volvemos a la lista de departamentos
+                        return redirect('pagPrincipal')
+                return render(request, 'registration/register.html', {'form': form})
+                
 #Vista basada en clases que nos coge un listado de todos los productos para poder trabajar con ellos en el html
 class ListadosListView(ListView):
         model = Producto
