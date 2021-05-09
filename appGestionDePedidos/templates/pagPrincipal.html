@@ -27,23 +27,18 @@
 
         <div class="listadosContenido">
             <!--Comprobamos si existen productos en nuestra BBDD-->
-            {% if lista_productos %}
+            {% if productos %}
                 <ul>
                     <!--Recorremos todos los productos existentes y los visualizamos como una lista no ordenada <ul>-->
-                    {% for producto in lista_productos %}
+                    {% for producto in productos %}
                         <li>
                             <span>id.{{producto.id}}</span>{{producto.nombre}}
-                            {% if perms.appGestionDePedidos.view_producto %}
-                                <a class="detalles" href="{% url 'detalleProducto' producto.id %}">detalles</a> 
-                            {% endif %}
-                            {% if perms.appGestionDePedidos.delete_producto %}
-                                <a class="eliminar" href="{% url 'eliminarProducto' producto.id %}">eliminar</a>
-                            {% endif %}
-                            {% if perms.appGestionDePedidos.change_producto %}
-                                <a class="modificar" href="{% url 'modificarProducto' producto.id %}">modificar</a>
-                            {% endif %}
+                            <a class="detalles" href="{% url 'detalleProducto' producto.id %}">detalles</a>
+                            <a class="eliminar" href="{% url 'eliminarProducto' producto.id %}">eliminar</a>
+                            <a class="modificar" href="{% url 'modificarProducto' producto.id %}">modificar</a>
                         </li>
                     {% endfor %}
+
                 </ul>
             <!--Sacamos un aviso de que no existen productos en caso de no encontrarlos-->
             {% else %}
@@ -52,6 +47,7 @@
                     <p>Para añadir un producto haga click <a class="añadir" href="{% url 'anyadirProducto' %}">aquí</a></p>
                 {% endif %}
             {% endif %}
+            {% include "paginacion.html" %} 
         </div>
     </article>
 

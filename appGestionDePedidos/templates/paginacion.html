@@ -1,0 +1,31 @@
+<div class="center"> 
+    <nav>
+        <ul class="pagination">
+            {% if productos.has_previous %}
+                <li>    
+                    <a href="?page=1">Primera</a>
+                </li>
+                <li>    
+                    <a href="?page={{ productos.previous_page_number }}">&laquo;</a>
+                </li>
+            {% endif %}
+
+
+            {% for pagina in paginas %}
+                <li> 
+                    <a class="{% if pagina_actual == pagina %} active{% endif %}" href="?page={{ pagina }}">{{ pagina }}</a>
+                </li>
+            {% endfor %}
+
+
+            {% if productos.has_next %}
+                <li>    
+                    <a href="?page={{ productos.next_page_number }}">&raquo;</a>
+                </li>
+                <li>    
+                    <a href="?page={{ productos.paginator.num_pages }}">Ultima</a>
+                </li>
+             {% endif %}
+        </ul>
+    </nav>
+</div>

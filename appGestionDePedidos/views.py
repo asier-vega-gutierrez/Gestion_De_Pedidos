@@ -4,7 +4,7 @@ from django.views import View
 from django import forms
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
-
+from django.core.paginator import Paginator
 
 from .forms import *
 from .models import *
@@ -15,13 +15,23 @@ class ListadosListView(ListView):
         template_name = 'pagPrincipal.html'
         context_object_name = 'lista_productos'
 
-        #Añadimos a la vista un listado de todos los pedidos, clientes y componentes existentes mediante la función get_context_data
+        #AÃ±adimos a la vista un listado de todos los pedidos, clientes y componentes existentes mediante la funciÃ³n get_context_data
         def get_context_data(self, **kwargs):
                 context = super(ListadosListView, self).get_context_data(**kwargs)
                 context['lista_pedidos'] = Pedido.objects.all()
                 context['lista_clientes'] = Cliente.objects.all()
                 context['lista_componentes'] = Componente.objects.all()
+                
+                paginatorProducto = Paginator(Producto.objects.all(), 3)
+                # Si no existe la variable page en la url entonces sera 1
+                context['pagina']=self.request.GET.get('page') or 1
+                pagina = context['pagina']    
+                productos = paginatorProducto.get_page(pagina)
+                context['productos'] = productos
+                context['pagina_actual'] = int(pagina)
+                context['paginas'] = range(1, productos.paginator.num_pages + 1)
                 return context
+
 
 #Vista basada en clases que nos coge todos los atributos de un producto concreto para poder trabajar con ellos en el html. El 'permission_required' es para que un usuario sin autorización no pueda acceder a esta información por URL.
 class ProductoDetailView(PermissionRequiredMixin, DetailView):
