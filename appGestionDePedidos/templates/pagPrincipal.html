@@ -16,17 +16,13 @@
 <!--Contenido de la página donde se visualizarán todos los listados-->
 {% block content %}
 
-    <div>
-        <form method="get">
-            <div>
-                <input type="text" placeholder="Buscar...">
-                <span>
-                    <i></i>
-                    <button type="submit">Buscar</button>
-                </span>
-            </div>
-        </form>
-    </div>
+<div>
+    <form method="POST" action = "/buscarCliente/">
+    {% csrf_token %}
+        <input type="text" placeholder="Buscar..." name="buscalo" >
+        <button type="submit"><i class ="icon-search"></i>Buscar</button>
+    </form>
+</div>
 
     <header>
         <h2>LISTADOS GENERALES</h2>

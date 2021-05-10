@@ -1,12 +1,11 @@
 from django.shortcuts import render, redirect
-from django.views.generic import DetailView, DeleteView, ListView, UpdateView, CreateView
+from django.views.generic import DetailView, DeleteView, ListView, UpdateView, CreateView,TemplateView
 from django.views import View
 from django import forms
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
-from django.db.models import Q
 
 from .forms import *
 from .models import *
@@ -33,16 +32,10 @@ class RegistroView(View):
                         return redirect('pagPrincipal')
                 return render(request, 'registration/register.html', {'form': form})
 
-def buscar(request):
-        queryset = request.GET.get("buscar")
-        print (queryset)
-        clientes = Cliente.objects.filter(estado = True)
-        if queryset:
-                clientes = Cliente.objects.filter(
-                        Q(nombre = queryset) |
-                        Q(telefono = queryset) 
-                ).distinct()
-        return render(request,'pagPrincipal.html',{'clientes':clientes})
+class BuscarView(TemplateView):
+
+        template_name = 'buscar.html'
+
 
 #Vista basada en clases que nos coge un listado de todos los productos para poder trabajar con ellos en el html
 class ListadosListView(ListView):
