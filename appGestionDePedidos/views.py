@@ -32,10 +32,6 @@ class RegistroView(View):
                         return redirect('pagPrincipal')
                 return render(request, 'registration/register.html', {'form': form})
 
-class BuscarView(TemplateView):
-
-        template_name = 'buscar.html'
-
 
 #Vista basada en clases que nos coge un listado de todos los productos para poder trabajar con ellos en el html
 class ListadosListView(ListView):
