@@ -27,12 +27,14 @@
         </header>
 
         <div class="listadosContenido">
+            <div class="busqueda">
+                <form class="busqueda" id="formularioBusqueda" method="post" action="buscarProducto/">
+                    {% csrf_token %}
+                    <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar">
+                    <button class="boton" type="submit"><img src="lupa.png" id="lupa"></button>
+                </form>
+            </div>
 
-            <form class="navbar-search pull-left" method="post" action="buscarProducto/">
-                {% csrf_token %}
-                <input type="text" name="lupa" class="search-query" placeholder="Buscar">
-                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-            </form>
             <!--Comprobamos si existen productos en nuestra BBDD-->
             {% if productos %}
                 <ul>
