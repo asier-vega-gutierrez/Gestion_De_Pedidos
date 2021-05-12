@@ -27,6 +27,11 @@
         </header>
 
         <div class="listadosContenido">
+
+            <form class="navbar-search pull-left" action="buscarProducto">
+                <input type="text" class="search-query" placeholder="Buscar">
+                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+            </form>
             <!--Comprobamos si existen productos en nuestra BBDD-->
             {% if productos %}
                 <ul>

@@ -247,3 +247,7 @@ class ModificarComponente(PermissionRequiredMixin, UpdateView):
                 "nombre",
                 "marca"
         }
+
+#Vista que permite buscar si existe algun objeto que coincida con la busqueda.
+class BuscarView(View):
+        template_name = 'buscar.html'

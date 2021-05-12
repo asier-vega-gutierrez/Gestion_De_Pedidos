@@ -54,4 +54,8 @@ urlpatterns = [
     #URL para acceder al formulario en el cual se podrá modificar un componente ya existente
     path('modificarComponente/<int:pk>/', ModificarComponente.as_view(), name = 'modificarComponente'),
 
+
+    #URLS PARA BUSCAR
+    #URL para buscar un producto ya creado
+    path('buscarProducto/', BuscarView.as_view(), name = 'buscar'),
 ]
