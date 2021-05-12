@@ -1,3 +1,17 @@
 <!--Heredamos todos los elementos de base.html-->
 {% extends "base.html" %}
 {% load static %}
+
+{% block content %}
+
+    <div>
+        {% if producto  %}    
+            {% for producto in productos %}
+                <h3>{{ producto.nombre }}</h3>
+                <h3>{{ producto.nombre }}</h3>
+                <h3>{{ producto.nombre }}</h3>
+                <p>{{ producto.nombre }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

@@ -28,8 +28,9 @@
 
         <div class="listadosContenido">
 
-            <form class="navbar-search pull-left" action="buscarProducto">
-                <input type="text" class="search-query" placeholder="Buscar">
+            <form class="navbar-search pull-left" method="post" action="buscarProducto/">
+                {% csrf_token %}
+                <input type="text" name="lupa" class="search-query" placeholder="Buscar">
                 <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
             </form>
             <!--Comprobamos si existen productos en nuestra BBDD-->

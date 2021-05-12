@@ -57,5 +57,5 @@ urlpatterns = [
 
     #URLS PARA BUSCAR
     #URL para buscar un producto ya creado
-    path('buscarProducto/', BuscarView.as_view(), name = 'buscar'),
+    path('buscarProducto/', BuscarProductoView.as_view(), name='buscar'),
 ]

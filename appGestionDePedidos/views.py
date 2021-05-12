@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
+from django.template.loader import render_to_string
 
 from .forms import *
 from .models import *
@@ -259,5 +260,11 @@ class ModificarComponente(PermissionRequiredMixin, UpdateView):
         }
 
 #Vista que permite buscar si existe algun objeto que coincida con la busqueda.
-class BuscarView(View):
-        template_name = 'buscar.html'
+class BuscarProductoView(TemplateView):
+        permission_required = 'appGestionDePedidos.search_producto'
+
+        def post(self, request, *args, **kwargs):
+                buscar = request.POST['lupa']
+                productos = Producto.objects.filter(nombre__contains=buscar)
+                
+                return render(request, 'buscar.html',{'productos':productos, 'producto':True})
