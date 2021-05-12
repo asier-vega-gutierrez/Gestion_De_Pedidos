@@ -46,14 +46,24 @@ class ListadosListView(ListView):
                 context['lista_clientes'] = Cliente.objects.all()
                 context['lista_componentes'] = Componente.objects.all()
                 
-                paginatorProducto = Paginator(Producto.objects.all(), 3)
+                paginator = Paginator(Producto.objects.all(), 3)
                 # Si no existe la variable page en la url entonces sera 1
-                context['pagina'] = self.request.GET.get('page') or 1
-                pagina = context['pagina']    
-                productos = paginatorProducto.get_page(pagina)
+                context['paginaProducto'] = self.request.GET.get('paginaProducto') or 1
+                paginaProducto = context['paginaProducto']    
+                productos = paginator.get_page(paginaProducto)
                 context['productos'] = productos
-                context['pagina_actual'] = int(pagina)
-                context['paginas'] = range(1, productos.paginator.num_pages + 1)
+                context['pagina_actualProducto'] = int(paginaProducto)
+                context['paginasProducto'] = range(1, productos.paginator.num_pages + 1)
+
+                paginator = Paginator(Pedido.objects.all(), 3)
+                # Si no existe la variable page en la url entonces sera 1
+                context['paginaPedido'] = self.request.GET.get('paginaPedido') or 1
+                paginaPedido = context['paginaPedido']
+                pedidos = paginator.get_page(paginaPedido)
+                context['pedidos'] = pedidos
+                context['pagina_actualPedido'] = int(paginaPedido)
+                context['paginasPedido'] = range(1, pedidos.paginator.num_pages + 1)
+
                 return context
 
 

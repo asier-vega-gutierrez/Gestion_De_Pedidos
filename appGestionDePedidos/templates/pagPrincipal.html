@@ -60,7 +60,7 @@
                 {% endif %}
             {% endif %}
         </div>
-        {% include "paginacion.html" %} 
+        {% include "paginacion/paginacionProductos.html" %} 
     </article>
 
     <!--Segundo articulo donde se visualizara el listado de pedidos.-->
@@ -74,7 +74,7 @@
             {% if lista_pedidos %}
                 <ul>
                     <!--Recorremos todos los pedidos existentes y los visualizamos como una lista no ordenada <ul>-->
-                    {% for pedido in lista_pedidos %}
+                    {% for pedido in pedidos %}
                         <li>
                             <span>id.{{pedido.id}}</span>{{pedido.fecha}}
                             {% if perms.appGestionDePedidos.view_pedido %}
@@ -97,6 +97,7 @@
                 {% endif %}
             {% endif %}
         </div>
+        {% include "paginacion/paginacionPedidos.html" %} 
     </article>
 
     <!--Tercer articulo donde se visualizara el listado de clientes.-->
@@ -134,6 +135,7 @@
                 {% endif %}
             {% endif %}
         </div>
+       
     </article>
 
     <!--Cuarto y ultimo articulo donde se visualizara el listado de componentes-->
@@ -170,6 +172,7 @@
                 {% endif %}
             {% endif %}
         </div>
+      
     </article>
 {% endblock %}
 

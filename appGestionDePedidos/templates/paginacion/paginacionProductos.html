@@ -1,0 +1,36 @@
+{% if productos %}
+<div class="center"> 
+    <ul class="pagination">
+        
+        {% if productos.has_previous %}
+            <li>    
+                <a href="?paginaProducto=1&paginaPedido={{pagina_actualPedido}}">Primera</a>
+            </li>
+            <li>    
+                <a href="?paginaProducto={{ productos.previous_page_number }}&paginaPedido={{pagina_actualPedido}}">&laquo;</a>
+            </li>
+        {% endif %}
+
+
+        {% for pagina in paginasProducto %}
+            <li> 
+                <a class="{% if pagina_actualProducto == pagina %} active{% endif %}" href="?paginaProducto={{ pagina }}&paginaPedido={{pagina_actualPedido}}">{{ pagina }}</a>
+            </li>
+        {% endfor %}
+
+
+        {% if productos.has_next %}
+            <li>    
+                <a href="?paginaProducto={{ productos.next_page_number }}&paginaPedido={{pagina_actualPedido}}">&raquo;</a>
+            </li>
+            <li>    
+                <a href="?paginaProducto={{ productos.paginator.num_pages }}&paginaPedido={{pagina_actualPedido}}">Última</a>
+            </li>
+        {% endif %}
+
+    </ul>
+</div>
+{% endif %}
+
+
+
