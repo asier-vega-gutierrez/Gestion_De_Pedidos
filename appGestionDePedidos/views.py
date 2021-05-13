@@ -47,6 +47,7 @@ class ListadosListView(ListView):
                 context['lista_clientes'] = Cliente.objects.all()
                 context['lista_componentes'] = Componente.objects.all()
                 
+                #acontinuacion esta todo la paginacion de la 4 listas, se recupera el numero de paginas y la pagina actual por cada uno, se muestran solo 3 registros por pagina
                 paginator = Paginator(Producto.objects.all(), 3)
                 # Si no existe la variable page en la url entonces sera 1
                 context['paginaProducto'] = self.request.GET.get('paginaProducto') or 1
@@ -64,6 +65,24 @@ class ListadosListView(ListView):
                 context['pedidos'] = pedidos
                 context['pagina_actualPedido'] = int(paginaPedido)
                 context['paginasPedido'] = range(1, pedidos.paginator.num_pages + 1)
+
+                paginator = Paginator(Cliente.objects.all(), 3)
+                # Si no existe la variable page en la url entonces sera 1
+                context['paginaCliente'] = self.request.GET.get('paginaCliente') or 1
+                paginaCliente = context['paginaCliente']
+                clientes = paginator.get_page(paginaCliente)
+                context['clientes'] = clientes
+                context['pagina_actualCliente'] = int(paginaCliente)
+                context['paginasCliente'] = range(1, clientes.paginator.num_pages + 1)
+
+                paginator = Paginator(Componente.objects.all(), 3)
+                # Si no existe la variable page en la url entonces sera 1
+                context['paginaComponente'] = self.request.GET.get('paginaComponente') or 1
+                paginaComponente = context['paginaComponente']
+                componentes = paginator.get_page(paginaComponente)
+                context['componentes'] = componentes
+                context['pagina_actualComponente'] = int(paginaComponente)
+                context['paginasComponente'] = range(1, componentes.paginator.num_pages + 1)
 
                 return context
 

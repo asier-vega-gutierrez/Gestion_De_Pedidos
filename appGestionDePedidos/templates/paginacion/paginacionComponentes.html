@@ -1,0 +1,37 @@
+<!--Con este html se genera la barra de navegacion de la paginacion-->
+{% if componentes %}
+<div class="center"> 
+    <ul class="pagination">
+        <!--Aqui comporbamos si tenemso una pagina antes de la actual-->
+        {% if componentes.has_previous %}
+            <li>    
+                <a href="?paginasComponente=1&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">Primera</a>
+            </li>
+            <li>    
+                <a href="?paginasComponente={{ componentes.previous_page_number }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">&laquo;</a>
+            </li>
+        {% endif %}
+
+        <!--Estos genera un enlace por pagian exitente-->
+        {% for pagina in paginasComponente %}
+            <li> 
+                <a class="{% if pagina_actualComponente == pagina %} active{% endif %}" href="?paginaComponente={{ pagina }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">{{ pagina }}</a>
+            </li>
+        {% endfor %}
+
+        <!--Aqui comporbamos si tenemso una pagina despues de la actual-->
+        {% if componentes.has_next %}
+            <li>    
+                <a href="?paginasComponente={{ componentes.next_page_number }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">&raquo;</a>
+            </li>
+            <li>    
+                <a href="?paginasComponente={{ componentes.paginator.num_pages }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">Última</a>
+            </li>
+        {% endif %}
+
+    </ul>
+</div>
+{% endif %}
+
+
+
