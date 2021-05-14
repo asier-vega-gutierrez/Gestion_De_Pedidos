@@ -5,10 +5,10 @@
         <!--Aqui comporbamos si tenemso una pagina antes de la actual-->
         {% if componentes.has_previous %}
             <li>    
-                <a href="?paginasComponente=1&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">Primera</a>
+                <a href="?paginaComponente=1&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">Primera</a>
             </li>
             <li>    
-                <a href="?paginasComponente={{ componentes.previous_page_number }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">&laquo;</a>
+                <a href="?paginaComponente={{ componentes.previous_page_number }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">&laquo;</a>
             </li>
         {% endif %}
 
@@ -22,10 +22,10 @@
         <!--Aqui comporbamos si tenemso una pagina despues de la actual-->
         {% if componentes.has_next %}
             <li>    
-                <a href="?paginasComponente={{ componentes.next_page_number }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">&raquo;</a>
+                <a href="?paginaComponente={{ componentes.next_page_number }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">&raquo;</a>
             </li>
             <li>    
-                <a href="?paginasComponente={{ componentes.paginator.num_pages }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">Última</a>
+                <a href="?paginaComponente={{ componentes.paginator.num_pages }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaCliente={{pagina_actualCliente}}">Última</a>
             </li>
         {% endif %}
 
