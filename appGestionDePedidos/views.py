@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
 
 from .forms import *
 from .models import *
@@ -287,3 +288,39 @@ class BuscarProductoView(TemplateView):
                 productos = Producto.objects.filter(nombre__contains=buscar)
                 
                 return render(request, 'buscar.html',{'productos':productos, 'producto':True})
+
+#Vista que permite realizar el envío del mensaje al correo predeterminado
+class EnviarCorreoView(TemplateView):
+        template_name = 'contacto.html'
+
+        def get_context_data(self, **kwargs):
+                context = super().get_context_data(**kwargs)
+                context['EnviarMail_form'] = EnviarMail()
+
+                return context
+        
+        def post(self, request, *args, **kwargs):
+                Nombre = request.POST.get('Nombre')
+                Apellidos = request.POST.get('Apellidos')
+                Email = request.POST.get('Email')
+                Mensaje = request.POSR.get('Mensaje')
+
+                Correo = render_to_string(
+                        'email_content.html', {
+                        'Nombre': Nombre,
+                        'Apellidos': Apellidos,
+                        'Email': Email,
+                        'Mensaje': Mensaje,
+                        },
+                )
+                
+                email_message = EmailMessage(
+                        subject = 'Mensaje de un usuario',
+                        body = Correo,
+                        from_email = Email,
+                        to=['duestronicomponents@gmail.com'],
+                )
+                email_message.content_subtype = 'html'
+                email_message.send()
+
+                return redirect('pagPrincipal')

@@ -56,3 +56,10 @@ class ComponenteAnyadirForm(forms.ModelForm):
     class Meta:
         model = Componente
         fields = '__all__'
+
+#Clase formulario para enviar correos al correo de contacto
+class EnviarMail(forms.Form):
+    Nombre = forms.CharField(max_length = 25)
+    Apellidos = forms.CharField(max_length = 50)
+    Email = forms.EmailField()
+    Mensaje = forms.CharField(widget = forms.Textarea)
