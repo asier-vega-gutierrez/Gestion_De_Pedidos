@@ -30,7 +30,7 @@
             <div class="busqueda">
                 <form class="busqueda" id="formularioBusqueda" method="post" action="buscarProducto/">
                     {% csrf_token %}
-                    <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar">
+                    <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del producto">
                     <button class="boton" type="submit"><img src="lupa.png" id="lupa"></button>
                 </form>
             </div>
@@ -73,6 +73,13 @@
         </header>
         
         <div class="listadosContenido">
+            <div class="busqueda">
+                <form class="busqueda" id="formularioBusqueda" method="post" action="buscarPedido/">
+                    {% csrf_token %}
+                    <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar fecha del pedido">
+                    <button class="boton" type="submit"><img src="lupa.png" id="lupa"></button>
+                </form>
+            </div>
             <!--Comprobamos si existen pedidos en nuestra BBDD-->
             {% if lista_pedidos %}
                 <ul>
@@ -110,6 +117,13 @@
         </header>
 
         <div class="listadosContenido">
+            <div class="busqueda">
+                <form class="busqueda" id="formularioBusqueda" method="post" action="buscarCliente/">
+                    {% csrf_token %}
+                    <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del cliente">
+                    <button class="boton" type="submit"><img src="lupa.png" id="lupa"></button>
+                </form>
+            </div>
             <!--Comprobamos si existen clientes en nuestra BBDD-->
             {% if lista_clientes %}
                 <ul>
@@ -148,6 +162,13 @@
         </header>
         
         <div class="listadosContenido">
+            <div class="busqueda">
+                <form class="busqueda" id="formularioBusqueda" method="post" action="buscarComponente/">
+                    {% csrf_token %}
+                    <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del componente">
+                    <button class="boton" type="submit"><img src="lupa.png" id="lupa"></button>
+                </form>
+            </div>
             <!--Comprobamos si existen componentes en nuestra BBDD-->
             {% if lista_componentes %}
                 <ul>

@@ -1,0 +1,34 @@
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <h2 class="pagSecundarias">RESULTADOS DE LA BUSQUEDA</h2>
+        <hr>
+    </header>
+
+    <div class="listadosBuscar">
+
+        {% if producto  %}    
+            {% for producto in productos %}
+                <p><span class="listadoBuscar">id.{{producto.id}}</span>{{ producto.nombre }}</p><br>
+            {% endfor %}
+
+        {% elif cliente  %}    
+            {% for cliente in clientes %}
+                <p><span class="listadoBuscar">id.{{cliente.id}}</span>{{ cliente.nombre }}</p><br>
+            {% endfor %}
+
+        {% elif componente  %}    
+            {% for componente in componentes %}
+                <p><span class="listadoBuscar">id.{{componente.id}}</span>{{ componente.nombre }}</p><br>
+            {% endfor %}
+
+        {% elif pedido  %}    
+            {% for pedido in pedidos %}
+                <p><span class="listadoBuscar">id.{{pedido.id}}</span>{{ pedido.fecha }}</p><br>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

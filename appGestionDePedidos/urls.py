@@ -57,7 +57,10 @@ urlpatterns = [
 
     #URLS PARA BUSCAR
     #URL para buscar un producto ya creado
-    path('buscarProducto/', BuscarProductoView.as_view(), name='buscar'),
+    path('buscarProducto/', BuscarProductoView.as_view(), name='buscarProducto'),
+    path('buscarPedido/', BuscarPedidoView.as_view(), name='buscarPedido'),
+    path('buscarCliente/', BuscarClienteView.as_view(), name='buscarCliente'),
+    path('buscarComponente/', BuscarComponenteView.as_view(), name='buscarComponente'),
 
     #URL PARA ENVIAR EMAIL
     path('correoContacto/', EnviarCorreoView.as_view(), name='enviarCorreo'),

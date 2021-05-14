@@ -279,15 +279,45 @@ class ModificarComponente(PermissionRequiredMixin, UpdateView):
                 "marca"
         }
 
-#Vista que permite buscar si existe algun objeto que coincida con la busqueda.
+#Vista que permite buscar si existe algun producto que coincida con la busqueda.
 class BuscarProductoView(TemplateView):
-        permission_required = 'appGestionDePedidos.search_producto'
+        permission_required = 'appGestionDePedidos.search'
 
         def post(self, request, *args, **kwargs):
-                buscar = request.POST['lupa']
-                productos = Producto.objects.filter(nombre__contains=buscar)
+                buscarProducto = request.POST['lupa']
+                productos = Producto.objects.filter(nombre__contains=buscarProducto)
                 
-                return render(request, 'buscar.html',{'productos':productos, 'producto':True})
+                return render(request, 'buscar/buscar.html',{'productos':productos, 'producto':True})
+
+#Vista que permite buscar si existe algun cliente que coincida con la busqueda.
+class BuscarClienteView(TemplateView):
+        permission_required = 'appGestionDePedidos.search'
+
+        def post(self, request, *args, **kwargs):
+                buscarCliente = request.POST['lupa']
+                clientes = Cliente.objects.filter(nombre__contains=buscarCliente)
+                
+                return render(request, 'buscar/buscar.html',{'clientes':clientes, 'cliente':True})
+
+#Vista que permite buscar si existe algun componente que coincida con la busqueda.
+class BuscarComponenteView(TemplateView):
+        permission_required = 'appGestionDePedidos.search'
+
+        def post(self, request, *args, **kwargs):
+                buscarComponente = request.POST['lupa']
+                componentes = Componente.objects.filter(nombre__contains=buscarComponente)
+                
+                return render(request, 'buscar/buscar.html',{'componentes':componentes, 'componente':True})
+
+#Vista que permite buscar si existe algun pedido que coincida con la busqueda.
+class BuscarPedidoView(TemplateView):
+        permission_required = 'appGestionDePedidos.search'
+
+        def post(self, request, *args, **kwargs):
+                buscarPedido = request.POST['lupa']
+                pedidos = Pedido.objects.filter(fecha__contains=buscarPedido)
+                
+                return render(request, 'buscar/buscar.html',{'pedidos':pedidos, 'pedido':True})
 
 #Vista que permite realizar el envío del mensaje al correo predeterminado
 class EnviarCorreoView(TemplateView):
