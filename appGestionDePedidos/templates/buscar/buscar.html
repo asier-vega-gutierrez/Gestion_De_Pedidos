@@ -8,11 +8,11 @@
         <hr>
     </header>
 
-    <div class="listadosBuscar">
+    <div class="listadosBuscar" id="Busqueda">
 
         {% if producto  %}    
             {% for producto in productos %}
-                <p id="IdProducto"><span class="listadoBuscar">id.{{producto.id}}</span>{{ producto.nombre }}</p><br>
+                <p class="Prueba"><span class="listadoBuscar">id.{{producto.id}}</span>{{ producto.nombre }}</p><br>
             {% endfor %}
 
         {% elif cliente  %}    
