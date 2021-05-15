@@ -12,7 +12,7 @@
 
         {% if producto  %}    
             {% for producto in productos %}
-                <p><span class="listadoBuscar">id.{{producto.id}}</span>{{ producto.nombre }}</p><br>
+                <p id="IdProducto"><span class="listadoBuscar">id.{{producto.id}}</span>{{ producto.nombre }}</p><br>
             {% endfor %}
 
         {% elif cliente  %}    
