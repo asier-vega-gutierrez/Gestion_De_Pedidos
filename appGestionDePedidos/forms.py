@@ -4,9 +4,9 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
 
 class RegistroForm(UserCreationForm):
-    groups = forms.ModelMultipleChoiceField(
+    group = forms.ModelChoiceField(
         queryset=Group.objects.all(),
-        widget=forms.Select
+        required=True
     )
 
     class Meta:
@@ -18,7 +18,7 @@ class RegistroForm(UserCreationForm):
             'email',
             'password1',
             'password2',
-            'groups',
+            'group',
         ] 
 
 #Clase formulario para los productos, cargamos todos los campos de dicho modelo
