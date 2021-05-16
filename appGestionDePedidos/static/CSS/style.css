@@ -562,3 +562,12 @@ input[type=submit]:hover{
     margin-right: 15px;
     margin-left: 10px;
 }
+
+.boton {
+    margin-top: 3px;
+}
+
+.boton img {
+    height: 18px;
+    width: 20px;
+}

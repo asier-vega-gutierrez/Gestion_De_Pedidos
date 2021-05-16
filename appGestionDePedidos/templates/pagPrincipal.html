@@ -31,7 +31,8 @@
                 <form class="busqueda" id="formularioBusqueda" method="post" action="buscarProducto/">
                     {% csrf_token %}
                     <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del producto">
-                    <button class="boton" type="submit"><img src="lupa.png" id="lupa"></button>
+                    <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
+                    
                 </form>
             </div>
 
@@ -77,7 +78,7 @@
                 <form class="busqueda" id="formularioBusqueda" method="post" action="buscarPedido/">
                     {% csrf_token %}
                     <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar fecha del pedido">
-                    <button class="boton" type="submit"><img src="lupa.png" id="lupa"></button>
+                    <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
                 </form>
             </div>
             <!--Comprobamos si existen pedidos en nuestra BBDD-->
@@ -121,7 +122,7 @@
                 <form class="busqueda" id="formularioBusqueda" method="post" action="buscarCliente/">
                     {% csrf_token %}
                     <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del cliente">
-                    <button class="boton" type="submit"><img src="lupa.png" id="lupa"></button>
+                    <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
                 </form>
             </div>
             <!--Comprobamos si existen clientes en nuestra BBDD-->
@@ -166,7 +167,7 @@
                 <form class="busqueda" id="formularioBusqueda" method="post" action="buscarComponente/">
                     {% csrf_token %}
                     <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del componente">
-                    <button class="boton" type="submit"><img src="lupa.png" id="lupa"></button>
+                    <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
                 </form>
             </div>
             <!--Comprobamos si existen componentes en nuestra BBDD-->
