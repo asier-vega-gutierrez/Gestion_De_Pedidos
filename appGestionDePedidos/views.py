@@ -22,9 +22,7 @@ class RegistroView(CreateView):
                 self.object = form.save(commit=False)
                 self.object.save()
 
-                group = Group.objects.get(name=form.cleaned_data['group']) 
-
-                self.object.groups.add(group)
+                self.object.groups.add(form.cleaned_data['group'])
 
                 return super(RegistroView, self).form_valid(form)
 
