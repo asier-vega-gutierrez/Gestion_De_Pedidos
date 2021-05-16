@@ -10,7 +10,7 @@
     </header>
 
     <!--Formulario para añadir un producto nuevo mediante el metodo post.-->
-    <form action="{% url 'anyadirProducto' %}" method="post">
+    <form class="acciones" action="{% url 'anyadirProducto' %}" method="post">
         {% csrf_token %}
         <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">

@@ -164,7 +164,7 @@
         
         <div class="listadosContenido">
             <div class="busqueda">
-                <form class="busqueda" id="formularioBusqueda" method="post" action="buscarComponente/">
+                <form class="busqueda" method="post" action="buscarComponente/">
                     {% csrf_token %}
                     <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del componente">
                     <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>

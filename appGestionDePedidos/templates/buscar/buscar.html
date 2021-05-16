@@ -8,27 +8,72 @@
         <hr>
     </header>
 
-    <div class="listadosBuscar" id="Busqueda">
+    <div class="listadosContenido">
+        <ul>
+            {% if producto  %}    
+                {% for producto in productos %}
+                <li>
+                    <span>id.{{producto.id}}</span>{{ producto.nombre }}
+                    {% if perms.appGestionDePedidos.view_producto %}
+                        <a class="detalles" href="{% url 'detalleProducto' producto.id %}">detalles</a>
+                    {% endif %}  
+                    {% if perms.appGestionDePedidos.delete_producto %}
+                        <a class="eliminar" href="{% url 'eliminarProducto' producto.id %}">eliminar</a>
+                    {% endif %} 
+                    {% if perms.appGestionDePedidos.change_producto %}
+                        <a class="modificar" href="{% url 'modificarProducto' producto.id %}">modificar</a>
+                    {% endif %} 
+                </li>
+                {% endfor %}
 
-        {% if producto  %}    
-            {% for producto in productos %}
-                <p class="Prueba"><span class="listadoBuscar">id.{{producto.id}}</span>{{ producto.nombre }}</p><br>
-            {% endfor %}
+            {% elif cliente  %}    
+                {% for cliente in clientes %}
+                <li>
+                    <span>id.{{cliente.id}}</span>{{ cliente.nombre }}
+                    {% if perms.appGestionDePedidos.view_cliente %}
+                        <a class="detalles" href="{% url 'detalleCliente' cliente.id %}">detalles</a>
+                    {% endif %}
+                    {% if perms.appGestionDePedidos.delete_cliente %}
+                        <a class="eliminar" href="{% url 'eliminarCliente' cliente.id %}">eliminar</a>
+                    {% endif %}
+                    {% if perms.appGestionDePedidos.change_cliente %}
+                        <a class="modificar" href="{% url 'modificarCliente' cliente.id %}">modificar</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
 
-        {% elif cliente  %}    
-            {% for cliente in clientes %}
-                <p><span class="listadoBuscar">id.{{cliente.id}}</span>{{ cliente.nombre }}</p><br>
-            {% endfor %}
+            {% elif componente  %}    
+                {% for componente in componentes %}
+                <li>
+                    <span>id.{{componente.id}}</span>{{ componente.nombre }}
+                    {% if perms.appGestionDePedidos.view_componente %}
+                        <a class="detalles" href="{% url 'detalleComponente' componente.id %}">detalles</a>
+                    {% endif %}
+                    {% if perms.appGestionDePedidos.delete_componente %}
+                        <a class="eliminar" href="{% url 'eliminarComponente' componente.id %}">eliminar</a>
+                    {% endif %}
+                    {% if perms.appGestionDePedidos.change_componente %}
+                        <a class="modificar" href="{% url 'modificarComponente' componente.id %}">modificar</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
 
-        {% elif componente  %}    
-            {% for componente in componentes %}
-                <p><span class="listadoBuscar">id.{{componente.id}}</span>{{ componente.nombre }}</p><br>
-            {% endfor %}
-
-        {% elif pedido  %}    
-            {% for pedido in pedidos %}
-                <p><span class="listadoBuscar">id.{{pedido.id}}</span>{{ pedido.fecha }}</p><br>
-            {% endfor %}
-        {% endif %}
+            {% elif pedido  %}    
+                {% for pedido in pedidos %}
+                <li>
+                    <span>id.{{pedido.id}}</span>{{ pedido.fecha }}
+                    {% if perms.appGestionDePedidos.view_pedido %}
+                        <a class="detalles" href="{% url 'detallePedido' pedido.id %}">detalles</a>
+                    {% endif %}
+                    {% if perms.appGestionDePedidos.delete_pedido %}
+                        <a class="eliminar" href="{% url 'eliminarPedido' pedido.id %}">eliminar</a>
+                    {% endif %}
+                    {% if perms.appGestionDePedidos.change_pedido %}
+                        <a class="modificar" href="{% url 'modificarPedido' pedido.id %}">modificar</a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
     </div>
 {% endblock %}

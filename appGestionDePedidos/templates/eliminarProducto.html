@@ -11,7 +11,7 @@
 
     <div class = "formularios">
         <!--Formulario para eliminar un producto existente mediante el metodo post. La accion se desarrolla mediante el id del producto.-->
-        <form method="POST" action=".">
+        <form class="acciones" method="POST" action=".">
             {% csrf_token %}
             <p>Está seguro que desea eliminar: {{ producto.nombre }}?</p>
             <input type="submit" value="Eliminar">

@@ -10,7 +10,7 @@
     </header>
 
     <!--Formulario para iniciar sesión de un usuario existente mediante el metodo post.-->
-    <form action="{% url 'login' %}" method="post">
+    <form class="acciones" action="{% url 'login' %}" method="post">
         {% csrf_token %}
         <!--Cargamos los campos del formulario indicados-->
         <ul class="formularios">

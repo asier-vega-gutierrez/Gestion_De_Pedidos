@@ -10,7 +10,7 @@
     </header>
 
     <!--Formulario para asignar la cantidad de un producto ya existente a un pedido mediante el metodo post.-->
-    <form action="{% url 'anyadirPedidoProducto' %}" method="post">
+    <form class="acciones" action="{% url 'anyadirPedidoProducto' %}" method="post">
         {% csrf_token %}
         <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">

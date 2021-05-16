@@ -10,7 +10,7 @@
     </header>
 
     <!--Formulario para asignar un componente ya existente a un producto mediante el metodo post.-->
-    <form action="{% url 'anyadirComponenteProducto' %}" method="post">
+    <form class="acciones" action="{% url 'anyadirComponenteProducto' %}" method="post">
         {% csrf_token %}
         <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">

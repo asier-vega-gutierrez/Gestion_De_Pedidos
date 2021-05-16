@@ -11,7 +11,7 @@
 
     <div class = "formularios">
         <!--Formulario para eliminar un cliente existente mediante el metodo post. La accion se desarrolla mediante el id del cliente.-->
-        <form method="POST" action=".">
+        <form class="acciones" method="POST" action=".">
             {% csrf_token %}
             <p>Está seguro que desea eliminar: {{ cliente.nombre }}?</p>
             <input type="submit" value="Eliminar">

@@ -10,7 +10,7 @@
     </header>
 
     <!--Formulario para añadir un nuevo componente mediante el metodo post.-->
-    <form action="{% url 'anyadirComponente' %}" method="post">
+    <form class="acciones" action="{% url 'anyadirComponente' %}" method="post">
         {% csrf_token %}
         <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">
