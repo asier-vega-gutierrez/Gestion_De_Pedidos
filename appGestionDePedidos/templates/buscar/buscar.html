@@ -10,7 +10,7 @@
 
     <div class="listadosContenido">
         <ul>
-            {% if producto  %}    
+            {% if productos  %}    
                 {% for producto in productos %}
                 <li>
                     <span>id.{{producto.id}}</span>{{ producto.nombre }}
@@ -26,7 +26,7 @@
                 </li>
                 {% endfor %}
 
-            {% elif cliente  %}    
+            {% elif clientes  %}    
                 {% for cliente in clientes %}
                 <li>
                     <span>id.{{cliente.id}}</span>{{ cliente.nombre }}
@@ -42,7 +42,7 @@
                 </li>
                 {% endfor %}
 
-            {% elif componente  %}    
+            {% elif componentes  %}    
                 {% for componente in componentes %}
                 <li>
                     <span>id.{{componente.id}}</span>{{ componente.nombre }}
@@ -58,7 +58,7 @@
                 </li>
                 {% endfor %}
 
-            {% elif pedido  %}    
+            {% elif pedidos  %}    
                 {% for pedido in pedidos %}
                 <li>
                     <span>id.{{pedido.id}}</span>{{ pedido.fecha }}
@@ -73,6 +73,8 @@
                     {% endif %}
                 </li>
                 {% endfor %}
+            {% else %}
+                <p id="textoNoResultado">No hay resultados para la busqueda realizada. Por favor intentelo de nuevo.</p>
             {% endif %}
         </ul>
     </div>

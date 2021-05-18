@@ -537,3 +537,8 @@ input[type=submit]:hover{
     display: block;
     margin: auto;
 }
+
+#textoNoResultado {
+    text-align: left;
+    margin-left: 20px;
+}
