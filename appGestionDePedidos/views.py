@@ -280,7 +280,7 @@ class BuscarProductoView(TemplateView):
                 buscarProducto = request.POST['lupa']
                 productos = Producto.objects.filter(nombre__contains=buscarProducto)
                 
-                return render(request, 'buscar/buscar.html',{'productos':productos})
+                return render(request, 'buscar/resultadosBusqueda.html',{'productos':productos})
 
 #Vista que permite buscar si existe algun cliente que coincida con la busqueda.
 class BuscarClienteView(TemplateView):
@@ -290,7 +290,7 @@ class BuscarClienteView(TemplateView):
                 buscarCliente = request.POST['lupa']
                 clientes = Cliente.objects.filter(nombre__contains=buscarCliente)
                 
-                return render(request, 'buscar/buscar.html',{'clientes':clientes})
+                return render(request, 'buscar/resultadosBusqueda.html',{'clientes':clientes})
 
 #Vista que permite buscar si existe algun componente que coincida con la busqueda.
 class BuscarComponenteView(TemplateView):
@@ -300,7 +300,7 @@ class BuscarComponenteView(TemplateView):
                 buscarComponente = request.POST['lupa']
                 componentes = Componente.objects.filter(nombre__contains=buscarComponente)
                 
-                return render(request, 'buscar/buscar.html',{'componentes':componentes})
+                return render(request, 'buscar/resultadosBusqueda.html',{'componentes':componentes})
 
 #Vista que permite buscar si existe algun pedido que coincida con la busqueda.
 class BuscarPedidoView(TemplateView):
@@ -310,7 +310,7 @@ class BuscarPedidoView(TemplateView):
                 buscarPedido = request.POST['lupa']
                 pedidos = Pedido.objects.filter(fecha__contains=buscarPedido)
                 
-                return render(request, 'buscar/buscar.html',{'pedidos':pedidos})
+                return render(request, 'buscar/resultadosBusqueda.html',{'pedidos':pedidos})
 
 #Vista que permite realizar el envío del mensaje al correo predeterminado
 class EnviarCorreoView(TemplateView):

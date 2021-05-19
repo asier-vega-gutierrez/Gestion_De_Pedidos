@@ -450,6 +450,7 @@ select{
 	-ms-transition: all 0.30s ease-in-out;
 	-o-transition: all 0.30s ease-in-out;
 	outline: none;	
+    position: relative;
 }
 
 textarea{
@@ -468,6 +469,38 @@ input[type=text]:focus,
 	-webkit-box-shadow: 0 0 8px #88D5E9;
 	box-shadow: 0 0 8px #88D5E9;
 	border: 1px solid #88D5E9;
+}
+
+.formularios i {
+    height: 20px;
+    width: 25px;
+    margin-top: 7px;
+    position: absolute;
+    right: 435px;
+    opacity: 0;
+}
+
+.formularios .formulario_correcto i {
+    color: green;
+    opacity: 1;
+}
+
+.formularios .formulario_incorrecto label {
+    color: red;
+}
+
+.formularios .formulario_incorrecto i {
+    color: red;
+    opacity: 1;
+    margin-top: 10px;
+}
+
+.formularios .formulario_incorrecto input {
+    border: 3px solid red;
+}
+
+.formularios .formulario_incorrecto select {
+    border: 3px solid red;
 }
 
 form p{

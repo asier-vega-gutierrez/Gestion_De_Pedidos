@@ -11,38 +11,51 @@
     </header>
 
     <!--Formulario para añadir un nuevo cliente mediante el metodo post.-->
-    <form class="acciones" action="{% url 'registro' %}" method="post">
+    <form id="formularioRegistro" class="acciones" action="{% url 'registro' %}" method="post">
         {% csrf_token %}
         <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">
-            <li>
-                <label for="id_username">Usuario <span class="required">*</span></label>
-                {{ form.username }}
-            </li>
-            <li>
-                <label for="id_first_name">Nombre <span class="required">*</span></label>
-                {{ form.first_name }} 
-            </li>
-            <li>
-                <label for="id_last_name">Apellido <span class="required">*</span></label>
-                {{ form.last_name }} 
-            </li>
-            <li>
-                <label for="id_email">Email <span class="required">*</span></label>
-                {{ form.email }} 
-            </li>
-            <li>
-                <label for="id_password1">Contraseña <span class="required">*</span></label>
-                {{ form.password1 }} 
-            </li>
-            <li>
-                <label for="id_password2">Confirmar contraseña <span class="required">*</span></label>
-                {{ form.password2 }} 
-            </li>
-            <li>
-                <label for="id_group">Cargo <span class="required">*</span></label>
-                {{ form.group }} 
-            </li>
+            <div>
+                <li>
+                    <label for="id_username">Usuario <span class="required">*</span></label>{{ form.username }}<i class="fas fa-times-circle"></i>
+                </li>
+            </div>
+            <div>
+                <li>
+                    <label for="id_first_name">Nombre <span class="required">*</span></label>
+                    {{ form.first_name }}<i class="fas fa-times-circle"></i>
+                </li>
+            </div>
+            <div>
+                <li>
+                    <label for="id_last_name">Apellido <span class="required">*</span></label>
+                    {{ form.last_name }}<i class="fas fa-times-circle"></i>
+                </li>
+            </div>
+            <div>
+                <li>
+                    <label for="id_email">Email <span class="required">*</span></label>
+                    {{ form.email }}<i class="fas fa-times-circle"></i> 
+                </li>
+            </div>
+            <div>
+                <li>
+                    <label for="id_password1">Contraseña <span class="required">*</span></label>
+                    {{ form.password1 }}<i class="fas fa-times-circle"></i> 
+                </li>
+            </div>
+            <div>
+                <li>
+                    <label for="id_password2">Confirmar contraseña <span class="required">*</span></label>
+                    {{ form.password2 }}<i class="fas fa-times-circle"></i> 
+                </li>
+            </div>
+            <div>
+                <li>
+                    <label for="id_group">Cargo <span class="required">*</span></label>
+                    {{ form.group }}<i class="fas fa-times-circle"></i> 
+                </li>
+            </div>
         </ul>
 
         <input type="submit" value="Registrarse">
