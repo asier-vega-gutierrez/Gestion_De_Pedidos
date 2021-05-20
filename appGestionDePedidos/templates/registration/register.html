@@ -14,42 +14,42 @@
         {% csrf_token %}
         <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
         <ul class="formularios">
-            <div>
+            <div id="divUsuario">
                 <li>
                     <label for="id_username">Usuario <span class="required">*</span></label>{{ form.username }}<i class="fas fa-times-circle"></i>
                 </li>
             </div>
-            <div>
+            <div id="divNombre">
                 <li>
                     <label for="id_first_name">Nombre <span class="required">*</span></label>
                     {{ form.first_name }}<i class="fas fa-times-circle"></i>
                 </li>
             </div>
-            <div>
+            <div id="divApellido">
                 <li>
                     <label for="id_last_name">Apellido <span class="required">*</span></label>
                     {{ form.last_name }}<i class="fas fa-times-circle"></i>
                 </li>
             </div>
-            <div>
+            <div id="divEmail">
                 <li>
                     <label for="id_email">Email <span class="required">*</span></label>
                     {{ form.email }}<i class="fas fa-times-circle"></i> 
                 </li>
             </div>
-            <div>
+            <div id="divPassword1">
                 <li>
                     <label for="id_password1">Contraseña <span class="required">*</span></label>
                     {{ form.password1 }}<i class="fas fa-times-circle"></i> 
                 </li>
             </div>
-            <div>
+            <div id="divPassword2">
                 <li>
                     <label for="id_password2">Confirmar contraseña <span class="required">*</span></label>
                     {{ form.password2 }}<i class="fas fa-times-circle"></i> 
                 </li>
             </div>
-            <div>
+            <div id="divCargo">
                 <li>
                     <label for="id_group">Cargo <span class="required">*</span></label>
                     {{ form.group }}<i class="fas fa-times-circle"></i> 
