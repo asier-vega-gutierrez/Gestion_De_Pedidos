@@ -15,190 +15,198 @@
 
 <!--Contenido de la página donde se visualizarán todos los listados-->
 {% block content %}
-
+    
     <header>
         <h2>LISTADOS GENERALES</h2>
     </header>
+    
+    {% if user.is_authenticated %}
+        <!--Primer articulo donde se visualizara el listado de productos.-->
+        <article class="listados" id="listadosIzq">
+            <header>
+                <h3><span>1</span>LISTADO DE PRODUCTOS</h3>
+            </header>
 
-    <!--Primer articulo donde se visualizara el listado de productos.-->
-    <article class="listados" id="listadosIzq">
-        <header>
-            <h3><span>1</span>LISTADO DE PRODUCTOS</h3>
-        </header>
+            <div class="listadosContenido">
+                <div class="busqueda">
+                    <form class="busqueda" id="formularioBusqueda" method="post" action="buscarProducto/">
+                        {% csrf_token %}
+                        <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del producto">
+                        <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
+                        
+                    </form>
+                </div>
 
-        <div class="listadosContenido">
-            <div class="busqueda">
-                <form class="busqueda" id="formularioBusqueda" method="post" action="buscarProducto/">
-                    {% csrf_token %}
-                    <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del producto">
-                    <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
+                <!--Comprobamos si existen productos en nuestra BBDD-->
+                {% if productos %}
+                    <ul>
+                        <!--Recorremos todos los productos existentes y los visualizamos como una lista no ordenada <ul>-->
+                        {% for producto in productos %}
+                            <li>
+                                <span>id.{{producto.id}}</span>{{producto.nombre}}
+                                {% if perms.appGestionDePedidos.view_producto %}
+                                    <a class="detalles" href="{% url 'detalleProducto' producto.id %}">detalles</a>
+                                {% endif %}  
+                                {% if perms.appGestionDePedidos.delete_producto %}
+                                    <a class="eliminar" href="{% url 'eliminarProducto' producto.id %}">eliminar</a>
+                                {% endif %} 
+                                {% if perms.appGestionDePedidos.change_producto %}
+                                    <a class="modificar" href="{% url 'modificarProducto' producto.id %}">modificar</a>
+                                {% endif %} 
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                <!--Sacamos un aviso de que no existen productos en caso de no encontrarlos-->
+                {% else %}
+                    <h4>No existen productos en Deustronic Components S.L.</h4>
+                    {% if perms.appGestionDePedidos.add_producto %}
+                        <p>Para añadir un producto haga click <a class="añadir" href="{% url 'anyadirProducto' %}">aquí</a></p>
+                    {% endif %}
+                {% endif %}
+            </div>
+            {% include "paginacion/paginacionProductos.html" %} 
+        </article>
+
+        <!--Segundo articulo donde se visualizara el listado de pedidos.-->
+        <article class="listados" id="listadosDcha">
+            <header>
+                <h3><span>2</span>LISTADO DE PEDIDOS</h3>
+            </header>
+            
+            <div class="listadosContenido">
+                <div class="busqueda">
+                    <form class="busqueda" id="formularioBusqueda" method="post" action="buscarPedido/">
+                        {% csrf_token %}
+                        <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar fecha del pedido">
+                        <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
+                    </form>
+                </div>
+                <!--Comprobamos si existen pedidos en nuestra BBDD-->
+                {% if lista_pedidos %}
+                    <ul>
+                        <!--Recorremos todos los pedidos existentes y los visualizamos como una lista no ordenada <ul>-->
+                        {% for pedido in pedidos %}
+                            <li>
+                                <span>id.{{pedido.id}}</span>{{pedido.fecha}}
+                                {% if perms.appGestionDePedidos.view_pedido %}
+                                    <a class="detalles" href="{% url 'detallePedido' pedido.id %}">detalles</a>
+                                {% endif %}
+                                {% if perms.appGestionDePedidos.delete_pedido %}
+                                    <a class="eliminar" href="{% url 'eliminarPedido' pedido.id %}">eliminar</a>
+                                {% endif %}
+                                {% if perms.appGestionDePedidos.change_pedido %}
+                                    <a class="modificar" href="{% url 'modificarPedido' pedido.id %}">modificar</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                <!--Sacamos un aviso de que no existen pedidos en caso de no encontrarlos-->
+                {% else %}
+                    <h4>No existen pedidos en Deustronic Components S.L.</h4>
+                    {% if perms.appGestionDePedidos.add_pedido %}
+                        <p>Para añadir un pedido haga click <a class="añadir" href="{% url 'anyadirPedido' %}">aquí</a></p>
+                    {% endif %}
+                {% endif %}
+            </div>
+            {% include "paginacion/paginacionPedidos.html" %} 
+        </article>
+
+        <!--Tercer articulo donde se visualizara el listado de clientes.-->
+        <article class="listados" id="listadosIzq">
+            <header>
+                <h3><span>3</span>LISTADO DE CLIENTES</h3>
+            </header>
+
+            <div class="listadosContenido">
+                <div class="busqueda">
+                    <form class="busqueda" id="formularioBusqueda" method="post" action="buscarCliente/">
+                        {% csrf_token %}
+                        <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del cliente">
+                        <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
+                    </form>
+                </div>
+                <!--Comprobamos si existen clientes en nuestra BBDD-->
+                {% if lista_clientes %}
+                    <ul>
+                        <!--Recorremos todos los clientes existentes y los visualizamos como una lista no ordenada <ul>-->
+                        {% for cliente in lista_clientes %}
+                            <li>
+                                <span>id.{{cliente.id}}</span>{{cliente.nombre}}
+                                {% if perms.appGestionDePedidos.view_cliente %}
+                                    <a class="detalles" href="{% url 'detalleCliente' cliente.id %}">detalles</a>
+                                {% endif %}
+                                {% if perms.appGestionDePedidos.delete_cliente %}
+                                    <a class="eliminar" href="{% url 'eliminarCliente' cliente.id %}">eliminar</a>
+                                {% endif %}
+                                {% if perms.appGestionDePedidos.change_cliente %}
+                                    <a class="modificar" href="{% url 'modificarCliente' cliente.id %}">modificar</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                <!--Sacamos un aviso de que no existen clientes en caso de no encontrarlos-->
+                {% else %}
+                    <h4>No existen clientes en Deustronic Components S.L.</h4>
                     
-                </form>
-            </div>
-
-            <!--Comprobamos si existen productos en nuestra BBDD-->
-            {% if productos %}
-                <ul>
-                    <!--Recorremos todos los productos existentes y los visualizamos como una lista no ordenada <ul>-->
-                    {% for producto in productos %}
-                        <li>
-                            <span>id.{{producto.id}}</span>{{producto.nombre}}
-                            {% if perms.appGestionDePedidos.view_producto %}
-                                <a class="detalles" href="{% url 'detalleProducto' producto.id %}">detalles</a>
-                            {% endif %}  
-                            {% if perms.appGestionDePedidos.delete_producto %}
-                                <a class="eliminar" href="{% url 'eliminarProducto' producto.id %}">eliminar</a>
-                            {% endif %} 
-                            {% if perms.appGestionDePedidos.change_producto %}
-                                <a class="modificar" href="{% url 'modificarProducto' producto.id %}">modificar</a>
-                            {% endif %} 
-                        </li>
-                    {% endfor %}
-                </ul>
-
-            <!--Sacamos un aviso de que no existen productos en caso de no encontrarlos-->
-            {% else %}
-                <h4>No existen productos en Deustronic Components S.L.</h4>
-                {% if perms.appGestionDePedidos.add_producto %}
-                    <p>Para añadir un producto haga click <a class="añadir" href="{% url 'anyadirProducto' %}">aquí</a></p>
+                    {% if perms.appGestionDePedidos.add_cliente %}
+                        <p>Para añadir un cliente haga click <a class="añadir" href="{% url 'anyadirCliente' %}">aquí</a></p>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        </div>
-        {% include "paginacion/paginacionProductos.html" %} 
-    </article>
-
-    <!--Segundo articulo donde se visualizara el listado de pedidos.-->
-    <article class="listados" id="listadosDcha">
-        <header>
-            <h3><span>2</span>LISTADO DE PEDIDOS</h3>
-        </header>
-        
-        <div class="listadosContenido">
-            <div class="busqueda">
-                <form class="busqueda" id="formularioBusqueda" method="post" action="buscarPedido/">
-                    {% csrf_token %}
-                    <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar fecha del pedido">
-                    <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
-                </form>
             </div>
-            <!--Comprobamos si existen pedidos en nuestra BBDD-->
-            {% if lista_pedidos %}
-                <ul>
-                    <!--Recorremos todos los pedidos existentes y los visualizamos como una lista no ordenada <ul>-->
-                    {% for pedido in pedidos %}
-                        <li>
-                            <span>id.{{pedido.id}}</span>{{pedido.fecha}}
-                            {% if perms.appGestionDePedidos.view_pedido %}
-                                <a class="detalles" href="{% url 'detallePedido' pedido.id %}">detalles</a>
-                            {% endif %}
-                            {% if perms.appGestionDePedidos.delete_pedido %}
-                                <a class="eliminar" href="{% url 'eliminarPedido' pedido.id %}">eliminar</a>
-                            {% endif %}
-                            {% if perms.appGestionDePedidos.change_pedido %}
-                                <a class="modificar" href="{% url 'modificarPedido' pedido.id %}">modificar</a>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            <!--Sacamos un aviso de que no existen pedidos en caso de no encontrarlos-->
-            {% else %}
-                <h4>No existen pedidos en Deustronic Components S.L.</h4>
-                {% if perms.appGestionDePedidos.add_pedido %}
-                    <p>Para añadir un pedido haga click <a class="añadir" href="{% url 'anyadirPedido' %}">aquí</a></p>
+            {% include "paginacion/paginacionClientes.html" %} 
+        </article>
+
+        <!--Cuarto y ultimo articulo donde se visualizara el listado de componentes-->
+        <article class="listados" id="listadosDcha">
+            <header>
+                <h3><span>4</span>LISTADO DE COMPONENTES</h3>
+            </header>
+            
+            <div class="listadosContenido">
+                <div class="busqueda">
+                    <form class="busqueda" method="post" action="buscarComponente/">
+                        {% csrf_token %}
+                        <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del componente">
+                        <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
+                    </form>
+                </div>
+                <!--Comprobamos si existen componentes en nuestra BBDD-->
+                {% if lista_componentes %}
+                    <ul>
+                        <!--Recorremos todos los componentes existentes y los visualizamos como una lista no ordenada <ul>-->
+                        {% for componente in lista_componentes %}
+                            <li>
+                                <span>id.{{componente.id}}</span>{{componente.nombre}}
+                                {% if perms.appGestionDePedidos.view_componente %}
+                                    <a class="detalles" href="{% url 'detalleComponente' componente.id %}">detalles</a>
+                                {% endif %}
+                                {% if perms.appGestionDePedidos.delete_componente %}
+                                    <a class="eliminar" href="{% url 'eliminarComponente' componente.id %}">eliminar</a>
+                                {% endif %}
+                                {% if perms.appGestionDePedidos.change_componente %}
+                                    <a class="modificar" href="{% url 'modificarComponente' componente.id %}">modificar</a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                <!--Sacamos un aviso de que no existen componentes en caso de no encontrarlos-->
+                {% else %}
+                    <h4>No existen componentes en Deustronic Components S.L.</h4>
+                    {% if perms.appGestionDePedidos.add_componente %}
+                        <p>Para añadir un componente haga click <a class="añadir" href="{% url 'anyadirComponente' %}">aquí</a></p>
+                    {% endif %}
                 {% endif %}
-            {% endif %}
-        </div>
-        {% include "paginacion/paginacionPedidos.html" %} 
-    </article>
-
-    <!--Tercer articulo donde se visualizara el listado de clientes.-->
-    <article class="listados" id="listadosIzq">
-        <header>
-            <h3><span>3</span>LISTADO DE CLIENTES</h3>
-        </header>
-
-        <div class="listadosContenido">
-            <div class="busqueda">
-                <form class="busqueda" id="formularioBusqueda" method="post" action="buscarCliente/">
-                    {% csrf_token %}
-                    <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del cliente">
-                    <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
-                </form>
             </div>
-            <!--Comprobamos si existen clientes en nuestra BBDD-->
-            {% if lista_clientes %}
-                <ul>
-                    <!--Recorremos todos los clientes existentes y los visualizamos como una lista no ordenada <ul>-->
-                    {% for cliente in lista_clientes %}
-                        <li>
-                            <span>id.{{cliente.id}}</span>{{cliente.nombre}}
-                            {% if perms.appGestionDePedidos.view_cliente %}
-                                <a class="detalles" href="{% url 'detalleCliente' cliente.id %}">detalles</a>
-                            {% endif %}
-                            {% if perms.appGestionDePedidos.delete_cliente %}
-                                <a class="eliminar" href="{% url 'eliminarCliente' cliente.id %}">eliminar</a>
-                            {% endif %}
-                            {% if perms.appGestionDePedidos.change_cliente %}
-                                <a class="modificar" href="{% url 'modificarCliente' cliente.id %}">modificar</a>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            <!--Sacamos un aviso de que no existen clientes en caso de no encontrarlos-->
-            {% else %}
-                <h4>No existen clientes en Deustronic Components S.L.</h4>
-                
-                {% if perms.appGestionDePedidos.add_cliente %}
-                    <p>Para añadir un cliente haga click <a class="añadir" href="{% url 'anyadirCliente' %}">aquí</a></p>
-                {% endif %}
-            {% endif %}
+            {% include "paginacion/paginacionComponentes.html" %} 
+        </article>
+    {% else %}
+        <div id="sinAcceso">
+            <h4>Oh no! No ha iniciado sesión o no está registrado</h4>
+            <p>Para iniciar sesión haga click <a href="{% url 'login' %}">aquí</a></p>
+            <p>Para registrarse haga click <a href="{% url 'registro' %}">aquí</a></p>
         </div>
-        {% include "paginacion/paginacionClientes.html" %} 
-    </article>
-
-    <!--Cuarto y ultimo articulo donde se visualizara el listado de componentes-->
-    <article class="listados" id="listadosDcha">
-        <header>
-            <h3><span>4</span>LISTADO DE COMPONENTES</h3>
-        </header>
-        
-        <div class="listadosContenido">
-            <div class="busqueda">
-                <form class="busqueda" method="post" action="buscarComponente/">
-                    {% csrf_token %}
-                    <input class="input" type="text" name="lupa" class="search-query" placeholder="Buscar nombre del componente">
-                    <button class="boton" type="submit"><img src="{% static 'IMG/lupa.png' %}" alt="Lupa"></button>
-                </form>
-            </div>
-            <!--Comprobamos si existen componentes en nuestra BBDD-->
-            {% if lista_componentes %}
-                <ul>
-                    <!--Recorremos todos los componentes existentes y los visualizamos como una lista no ordenada <ul>-->
-                    {% for componente in lista_componentes %}
-                        <li>
-                            <span>id.{{componente.id}}</span>{{componente.nombre}}
-                            {% if perms.appGestionDePedidos.view_componente %}
-                                <a class="detalles" href="{% url 'detalleComponente' componente.id %}">detalles</a>
-                            {% endif %}
-                            {% if perms.appGestionDePedidos.delete_componente %}
-                                <a class="eliminar" href="{% url 'eliminarComponente' componente.id %}">eliminar</a>
-                            {% endif %}
-                            {% if perms.appGestionDePedidos.change_componente %}
-                                <a class="modificar" href="{% url 'modificarComponente' componente.id %}">modificar</a>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
-            <!--Sacamos un aviso de que no existen componentes en caso de no encontrarlos-->
-            {% else %}
-                <h4>No existen componentes en Deustronic Components S.L.</h4>
-                {% if perms.appGestionDePedidos.add_componente %}
-                    <p>Para añadir un componente haga click <a class="añadir" href="{% url 'anyadirComponente' %}">aquí</a></p>
-                {% endif %}
-            {% endif %}
-        </div>
-        {% include "paginacion/paginacionComponentes.html" %} 
-    </article>
+    {% endif %}
 {% endblock %}
 
 

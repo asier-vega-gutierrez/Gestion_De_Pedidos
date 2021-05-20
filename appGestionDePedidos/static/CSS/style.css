@@ -12,7 +12,7 @@
     position: fixed;
     z-index: 1;
     border-bottom: 2px solid rgb(241, 241, 241);
-    background-color: #313238;
+    background-color: rgb(33, 37, 41);
 }
 
 .menu{
@@ -81,7 +81,7 @@
     padding-bottom: 5px;
     min-width: 100px;
     /*Estetica*/
-    background-color:  #313238;  
+    background-color:  rgb(33, 37, 41);;  
 }
 
 /*Condicion para que se haga visible la lista anidada*/
@@ -92,7 +92,7 @@
 
 /*PIE DE PÁGINA --> IGUAL PARA TODOS*/
 .pie{
-    background-color: #313238;
+    background-color: rgb(33, 37, 41);
     height: 95px;
     width: 100%;
     text-align: center;
@@ -254,6 +254,36 @@ main h2{
 .añadir:hover{
     color: rgb(136, 136, 136);
     transition: color 0.4s;
+}
+
+#sinAcceso{
+    display: block;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+    padding-top: 60px;
+    font-family: Calibri, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#sinAcceso h4{
+    font-size: 30px;
+    color: #d1052a;
+}
+
+#sinAcceso p{
+    font-size: 20px;
+    padding: 5px;
+}
+
+#sinAcceso p a{
+    color: black;
+    text-decoration: none;
+    font-weight: 800;
+    transition: color 1s;
+}
+
+#sinAcceso p a:hover{
+    color: rgb(75, 75, 75);
 }
 
 /*BOTON DE ELIMINAR EN LISTADOS*/
