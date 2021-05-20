@@ -4,7 +4,6 @@
 
 <!--Bloque content, que varia dependiendo el html.-->
 {% block content %}
-    
     <header>
         <h2 class="pagSecundarias">REGISTRAR NUEVO USUARIO</h2>
         <hr>
@@ -58,6 +57,10 @@
             </div>
         </ul>
 
-        <input type="submit" value="Registrarse">
+        <input type="submit" value="Registrarse" id="Registro">
     </form>
+
+<!-- enlace de archivo JS-->
+<script src="{% static 'JS/scriptRegistro.js' %}" charset="utf-8"></script>
+
 {% endblock %}
