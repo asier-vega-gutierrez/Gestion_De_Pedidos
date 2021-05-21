@@ -54,14 +54,12 @@ const validarCampo = (expresion, input, campo ) => {
         document.getElementById(`div${campo}`).classList.add('formulario_correcto');
         document.querySelector(`#div${campo} i`).classList.remove('fa-times-circle');
         document.querySelector(`#div${campo} i`).classList.add('fa-check-circle');
-        camposFormulario[campo] = true;
 
     } else {
         document.getElementById(`div${campo}`).classList.add('formulario_incorrecto');
         document.getElementById(`div${campo}`).classList.remove('formulario_correcto');
         document.querySelector(`#div${campo} i`).classList.remove('fa-check-circle');
         document.querySelector(`#div${campo} i`).classList.add('fa-times-circle');
-        camposFormulario[campo] = false;
     }
 }
 
@@ -75,13 +73,13 @@ const validarPassword2 = () => {
         document.getElementById(`divPassword2`).classList.remove('formulario_correcto');
         document.querySelector(`#divPassword2 i`).classList.remove('fa-check-circle');
         document.querySelector(`#divPassword2 i`).classList.add('fa-times-circle');
-        camposFormulario['Password1'] = false;
+        camposFormulario['password1'] = false;
     } else {
         document.getElementById(`divPassword2`).classList.remove('formulario_incorrecto');
         document.getElementById(`divPassword2`).classList.add('formulario_correcto');
         document.querySelector(`#divPassword2 i`).classList.remove('fa-times-circle');
         document.querySelector(`#divPassword2 i`).classList.add('fa-check-circle');
-        camposFormulario['Password1'] = true;
+        camposFormulario['password1'] = true;
     }
 }
 
@@ -92,11 +90,16 @@ inputsFormulario.forEach((input) => {
 });
 
 /*Añadimos un EventListener al formulario para que no permita enviar los datos si la validacion no es correcta*/
-Formulario.addEventListener('submit', (e) => {
+Formulario.addEventListener('submit', prueba)
+
+function prueba(){
+    console.log('hola')
+}
+/*, (e) => {
     if (camposFormulario.username && camposFormulario.first_name && camposFormulario.last_name && camposFormulario.email && camposFormulario.password1) {
 
     } else {
         alert('Alguno de los campos no era correcto. Por favor, vuelva a intentarlo');
         Formulario.reset();
     }
-});
+});*/
