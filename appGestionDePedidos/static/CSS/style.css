@@ -141,7 +141,7 @@ main h2{
 /* PÁG. PRINCIPAL*/
 /*CABECERA DE LA PAGINA PRINCIPAL*/
 #cabecera-pag-princ{
-    height: 620px;
+    height: 670px;
     width: 100%;
     background-image: url(../IMG/cabecera-pag-princ.jpg);
     background-attachment: fixed;
@@ -389,8 +389,26 @@ div.center {
 }
 
 /*FORMATO DE LA VISUALIZACION DE DETALLE*/
+#botones{
+    margin: 10px;
+}
+
+#botones button{
+    padding: 10px;
+    border: 0px;
+    background-color: black;
+    color: gainsboro;
+    transition: background-color 1s;
+}
+
+#botones button:hover{
+    cursor: pointer;
+    background-color: rgb(85, 84, 84);
+}
+
 .detalle{
     padding: 30px;
+    padding-top: 10px;
     width: 55%;
     margin: auto;
 }
@@ -421,7 +439,6 @@ div.center {
 }
 
 .detalle p a{
-    font-size: 20px;
     font-weight: 800;
     text-decoration: none;
     color: gainsboro;
@@ -506,31 +523,31 @@ input[type=text]:focus,
     width: 25px;
     margin-top: 7px;
     position: absolute;
-    right: 435px;
+    right: 400px;
     opacity: 0;
 }
 
 .formularios .formulario_correcto i {
-    color: green;
+    color: #42ab49;
     opacity: 1;
 }
 
 .formularios .formulario_incorrecto label {
-    color: red;
+    color: #d1052a;
 }
 
 .formularios .formulario_incorrecto i {
-    color: red;
+    color: #d1052a;
     opacity: 1;
     margin-top: 10px;
 }
 
 .formularios .formulario_incorrecto input {
-    border: 3px solid red;
+    border: 3px solid #d1052a;
 }
 
 .formularios .formulario_incorrecto select {
-    border: 3px solid red;
+    border: 3px solid #d1052a;
 }
 
 form p{

@@ -202,7 +202,8 @@
         </article>
     {% else %}
         <div id="sinAcceso">
-            <h4>Oh no! No ha iniciado sesión o no está registrado</h4>
+            <img src="{% static 'IMG/candado.png' %}" alt="Candado" width="100px" height="100px">
+            <h4>Oh no! Parece que no tienes permisos</h4>
             <p>Para iniciar sesión haga click <a href="{% url 'login' %}">aquí</a></p>
             <p>Para registrarse haga click <a href="{% url 'registro' %}">aquí</a></p>
         </div>

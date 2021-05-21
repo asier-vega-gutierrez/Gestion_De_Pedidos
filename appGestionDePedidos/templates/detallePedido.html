@@ -9,9 +9,14 @@
         <hr>
     </header>
 
+    <div id="botones">
+        <button id="aumentarTamaño">Aumentar Tamaño</button>
+        <button id="disminuirTamaño">Disminuir Tamaño</button>
+    </div>
+
     <!--Tabla con todos los atributos de un pedido específico-->
     <div class="detalle">
-        <table>
+        <table id="texto">
             <tr>
                 <th>Fecha del pedido</th>
                 <td>{{ detalle_pedido.fecha }}</td>
@@ -46,4 +51,7 @@
             </tr>
         </table>
     </div>
+
+    <!-- enlace de archivo JS-->
+    <script src="{% static 'JS/cambiarTamaño.js' %}" charset="utf-8"></script>
 {% endblock %}
