@@ -24,14 +24,15 @@ const camposFormulario = {
 /*Creamos la funcion de tipo arrow validarFormulario, que llama a la funcion validarCampo de una manera automatica, independientemente del campo*/
 const validarFormulario = (e) => {
     switch (e.target.name){
-        case "username":
-            validarCampo(expresiones.usuario, e.target, 'Usuario');
-        break;
+
         case "first_name":
             validarCampo(expresiones.nombre, e.target, 'Nombre');
         break;
         case "last_name":
             validarCampo(expresiones.apellido, e.target, 'Apellido');
+        break;
+        case "username":
+            validarCampo(expresiones.usuario, e.target, 'Usuario');
         break;
         case "email":
             validarCampo(expresiones.email, e.target, 'Email');
