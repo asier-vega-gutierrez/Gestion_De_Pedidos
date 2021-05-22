@@ -1,0 +1,29 @@
+<!--Heredamos todos los elementos de base.html-->
+{% extends "base.html" %}
+{% load static %}
+
+<!--Bloque content, que varia dependiendo el html.-->
+{% block content %}
+<header>
+    <h2 class="pagSecundarias">CORREO DE CONTACTO</h2>
+    <hr>
+</header>
+
+<form class = "acciones" action = "{% url 'contacto' %}" method = "POST">
+    {% csrf_token %} 
+
+    <ul class = "formularios">
+        <li>
+            {{ contacto_form.nombre.label }}
+        </li>
+        <li>
+            {{ contacto_form.correo.label }} 
+        </li>
+        <li>
+            {{ contacto_form.mensaje.label }}
+        </li>
+    </ul>
+    <input type="submit" value="Enviar correo">
+</form>
+
+{% endblock %}

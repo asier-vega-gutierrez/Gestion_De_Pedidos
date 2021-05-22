@@ -129,3 +129,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = reverse_lazy('pagPrincipal')
 LOGOUT_REDIRECT_URL = reverse_lazy('pagPrincipal')
+
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'duestronicomponents@gmail.com'
+EMAIL_HOST_PASSWORD = 'adminiweb'
+EMAIL_USE_TLS = True

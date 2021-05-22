@@ -63,6 +63,6 @@ urlpatterns = [
     path('buscarCliente/', BuscarClienteView.as_view(), name='buscarCliente'),
     path('buscarComponente/', BuscarComponenteView.as_view(), name='buscarComponente'),
 
-    #URL PARA ENVIAR EMAIL
-    path('correoContacto/', EnviarCorreoView.as_view(), name='enviarCorreo'),
+    #URL para el correo de contacto
+    path('CorreoContacto/', EnviarCorreoView.as_view(), name='contacto'),
 ]
