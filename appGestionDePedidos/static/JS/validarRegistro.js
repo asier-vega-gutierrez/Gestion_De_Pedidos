@@ -5,18 +5,18 @@ const Formulario = document.getElementById('formularioRegistro');
 
 /*Creamos la constante expresiones, para establecer un modelo a seguir por input*/
 const expresiones = {
-	usuario: /^[a-zA-Z0-9\_\-]{4,30}$/, // Letras, numeros, guion y guion_bajo
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
     apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    usuario: /^[a-zA-Z0-9\_\-]{4,30}$/, // Letras, numeros, guion y guion_bajo
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, //Formato email
 	password: /^.{4,20}$/, // 4 a 20 digitos.
 }
 
 /*Creamos la constante camposFormulario, para validar pasando a true, el campo que cumpla las condiciones*/
 const camposFormulario = {
-    username: false,
     first_name: false,
     last_name: false,
+    username: false,
     email: false,
     password1: false
 }
@@ -25,10 +25,6 @@ const camposFormulario = {
 const validarFormulario = (e) => {
     /*Switch para elegir el campo adecuado en cada caso, dependiendo el case*/
     switch (e.target.name){
-        /*Campo del nombre del usuario a crear*/
-        case "username":
-            validarCampo(expresiones.usuario, e.target, 'username');
-        break;
         /*Campo del nombre del usuario*/
         case "first_name":
             validarCampo(expresiones.nombre, e.target, 'first_name');
@@ -36,6 +32,10 @@ const validarFormulario = (e) => {
         /*Campo del apellido del usuario*/
         case "last_name":
             validarCampo(expresiones.apellido, e.target, 'last_name');
+        break;
+        /*Campo del nombre del usuario a crear*/
+        case "username":
+            validarCampo(expresiones.usuario, e.target, 'username');
         break;
         /*Campo del email del usuario*/
         case "email":

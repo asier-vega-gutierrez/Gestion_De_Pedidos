@@ -12,6 +12,19 @@ from django.core.mail import EmailMessage
 from .forms import *
 from .models import *
 
+
+# Metodo para guardar un dato en la sesion de lo que recupere en la request o un dato por defecto
+# Si no existe la key en la sesion entonces guardara lo que recupere de la request o un dato por defecto
+# Si existe la key en la sesion entonces recupera por este orden la key de la request, y si esta no existe recupera la key de la sesion 
+# Retorna el dato guardado en la sesion 
+def guardaDatoEnSesion(self, clave, datopordefecto):
+    if clave in self.request.session:
+        self.request.session[clave] = self.request.GET.get(clave)  or self.request.session[clave]
+    else:
+        self.request.session[clave] = self.request.GET.get(clave)  or datopordefecto
+
+    return self.request.session[clave]
+
 #Vista basada en clases que muestra un formulario para crear un usuario, volver a mostrar el formulario con errores de validación (si los hay) y guardar el usuario.
 class RegistroView(CreateView):
         form_class = RegistroForm
@@ -42,19 +55,24 @@ class ListadosListView(ListView):
                 context['lista_clientes'] = Cliente.objects.all()
                 context['lista_componentes'] = Componente.objects.all()
                 
-                #acontinuacion esta todo la paginacion de la 4 listas, se recupera el numero de paginas y la pagina actual por cada uno, se muestran solo 5 registros por pagina
+               #a continuacion esta toda la paginacion de la 4 listas, se recupera el numero de paginas y la pagina actual por cada uno, se muestran solo 5 registros por pagina
                 paginator = Paginator(Producto.objects.all(), 5)
-                # Si no existe la variable page en la url entonces sera 1
-                context['paginaProducto'] = self.request.GET.get('paginaProducto') or 1
-                paginaProducto = context['paginaProducto']    
+                # Se recupera de la request la pagina actual y la guarda en la sesion
+                # Si no existe la variable page en la url o no la encuentra en la sesion entonces sera 1
+                context['paginaProducto'] = guardaDatoEnSesion(self, "paginaProducto", 1)
+                paginaProducto = context['paginaProducto']
+                # Hacemos el filtro de productos para que solo tenga los de la pagina actual    
                 productos = paginator.get_page(paginaProducto)
                 context['productos'] = productos
+                # guardamos la pagina actual para destacarla por css en la plantilla
                 context['pagina_actualProducto'] = int(paginaProducto)
+                # creamos una lista con todas las paginas
                 context['paginasProducto'] = range(1, productos.paginator.num_pages + 1)
+
 
                 paginator = Paginator(Pedido.objects.all(), 5)
                 # Si no existe la variable page en la url entonces sera 1
-                context['paginaPedido'] = self.request.GET.get('paginaPedido') or 1
+                context['paginaPedido'] = guardaDatoEnSesion(self, "paginaPedido", 1)
                 paginaPedido = context['paginaPedido']
                 pedidos = paginator.get_page(paginaPedido)
                 context['pedidos'] = pedidos
@@ -63,7 +81,7 @@ class ListadosListView(ListView):
 
                 paginator = Paginator(Cliente.objects.all(), 5)
                 # Si no existe la variable page en la url entonces sera 1
-                context['paginaCliente'] = self.request.GET.get('paginaCliente') or 1
+                context['paginaCliente'] = guardaDatoEnSesion(self, "paginaCliente", 1)
                 paginaCliente = context['paginaCliente']
                 clientes = paginator.get_page(paginaCliente)
                 context['clientes'] = clientes
@@ -72,7 +90,7 @@ class ListadosListView(ListView):
 
                 paginator = Paginator(Componente.objects.all(), 5)
                 # Si no existe la variable page en la url entonces sera 1
-                context['paginaComponente'] = self.request.GET.get('paginaComponente') or 1
+                context['paginaComponente'] = guardaDatoEnSesion(self, "paginaComponente", 1)
                 paginaComponente = context['paginaComponente']
                 componentes = paginator.get_page(paginaComponente)
                 context['componentes'] = componentes

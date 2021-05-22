@@ -8,7 +8,7 @@ function generarUsuario(event){
     let usuarioFinal = usuarioGenericoParte1 +  usuarioGenericoParte2 + String(usuarioGenericoParte3)
     usuarioFinal = ponerPrimeraMayuscula(usuarioFinal)
 
-    document.getElementById("divUsuario").childNodes[1].childNodes[2].value = usuarioFinal
+    document.getElementById("div_username").childNodes[1].childNodes[2].value = usuarioFinal
 }
 /*para poner la primera letra en mayuscula */
 function ponerPrimeraMayuscula(str){
@@ -17,8 +17,8 @@ function ponerPrimeraMayuscula(str){
 }
 
 /*recojo los inputs y les añado el listener de alpderder el foko */
-let campoNombre = document.getElementById("divNombre")
+let campoNombre = document.getElementById("div_first_name")
 campoNombre.childNodes[1].childNodes[3].addEventListener("blur", generarUsuario)
 
-let campoApellido = document.getElementById("divApellido")
+let campoApellido = document.getElementById("div_last_name")
 campoApellido.childNodes[1].childNodes[3].addEventListener("blur", generarUsuario)

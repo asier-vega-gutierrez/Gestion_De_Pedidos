@@ -14,11 +14,6 @@
         {% csrf_token %}
         <!--Cargamos los campos del formulario-->
         <ul class="formularios">
-            <div id="div_username">
-                <li>
-                    <label for="id_username">Usuario <span class="required">*</span></label>{{ form.username }}<i class="fas fa-times-circle"></i>
-                </li>
-            </div>
             <div id="div_first_name">
                 <li>
                     <label for="id_first_name">Nombre <span class="required">*</span></label>
@@ -31,7 +26,11 @@
                     {{ form.last_name }}<i class="fas fa-times-circle"></i>
                 </li>
             </div>
-
+            <div id="div_username">
+                <li>
+                    <label for="id_username">Usuario <span class="required">*</span></label>{{ form.username }}<i class="fas fa-times-circle"></i>
+                </li>
+            </div>
             <div id="div_email">
                 <li>
                     <label for="id_email">Email <span class="required">*</span></label>

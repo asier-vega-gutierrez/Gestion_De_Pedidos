@@ -5,33 +5,31 @@
         <!--Aqui comporbamos si tenemso una pagina antes de la actual-->
         {% if productos.has_previous %}
             <li>    
-                <a href="?paginaProducto=1&paginaPedido={{pagina_actualPedido}}&paginaCliente={{pagina_actualCliente}}&paginaComponente={{pagina_actualComponente}}">Primera</a>
+                <a href="?paginaProducto=1">Primera</a>
             </li>
             <li>    
-                <a href="?paginaProducto={{ productos.previous_page_number }}&paginaPedido={{pagina_actualPedido}}&paginaCliente={{pagina_actualCliente}}&paginaComponente={{pagina_actualComponente}}">&laquo;</a>
+                <a href="?paginaProducto={{ productos.previous_page_number }}">&laquo;</a>
             </li>
         {% endif %}
 
         <!--Estos genera un enlace por pagian exitente-->
         {% for pagina in paginasProducto %}
             <li> 
-                <a class="{% if pagina_actualProducto == pagina %} active{% endif %}" href="?paginaProducto={{ pagina }}&paginaPedido={{pagina_actualPedido}}&paginaCliente={{pagina_actualCliente}}&paginaComponente={{pagina_actualComponente}}">{{ pagina }}</a>
+                <a class="{% if pagina_actualProducto == pagina %} active{% endif %}" href="?paginaProducto={{ pagina }}">{{ pagina }}</a>
             </li>
         {% endfor %}
 
         <!--Aqui comporbamos si tenemso una pagina despues de la actual-->
         {% if productos.has_next %}
             <li>    
-                <a href="?paginaProducto={{ productos.next_page_number }}&paginaPedido={{pagina_actualPedido}}&paginaCliente={{pagina_actualCliente}}&paginaComponente={{pagina_actualComponente}}">&raquo;</a>
+                <a href="?paginaProducto={{ productos.next_page_number }}">&raquo;</a>
             </li>
             <li>    
-                <a href="?paginaProducto={{ productos.paginator.num_pages }}&paginaPedido={{pagina_actualPedido}}&paginaCliente={{pagina_actualCliente}}&paginaComponente={{pagina_actualComponente}}">Última</a>
+                <a href="?paginaProducto={{ productos.paginator.num_pages }}">Ãšltima</a>
             </li>
         {% endif %}
 
     </ul>
 </div>
 {% endif %}
-
-
 

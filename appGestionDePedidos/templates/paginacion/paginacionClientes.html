@@ -5,33 +5,34 @@
         <!--Aqui comporbamos si tenemso una pagina antes de la actual-->
         {% if clientes.has_previous %}
             <li>    
-                <a href="?paginaCliente=1&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaComponente={{pagina_actualComponente}}">Primera</a>
+                <a href="?paginaCliente=1">Primera</a>
             </li>
             <li>    
-                <a href="?paginaCliente={{ clientes.previous_page_number }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaComponente={{pagina_actualComponente}}">&laquo;</a>
+                <a href="?paginaCliente={{ clientes.previous_page_number }}">&laquo;</a>
             </li>
         {% endif %}
 
         <!--Estos genera un enlace por pagian exitente-->
         {% for pagina in paginasCliente %}
             <li> 
-                <a class="{% if pagina_actualCliente == pagina %} active{% endif %}" href="?paginaCliente={{ pagina }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaComponente={{pagina_actualComponente}}">{{ pagina }}</a>
+                <a class="{% if pagina_actualCliente == pagina %} active{% endif %}" href="?paginaCliente={{ pagina }}">{{ pagina }}</a>
             </li>
         {% endfor %}
 
         <!--Aqui comporbamos si tenemso una pagina despues de la actual-->
         {% if clientes.has_next %}
             <li>    
-                <a href="?paginaCliente={{ clientes.next_page_number }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaComponente={{pagina_actualComponente}}">&raquo;</a>
+                <a href="?paginaCliente={{ clientes.next_page_number }}">&raquo;</a>
             </li>
             <li>    
-                <a href="?paginaCliente={{ clientes.paginator.num_pages }}&paginaPedido={{pagina_actualPedido}}&paginaProducto={{pagina_actualProducto}}&paginaComponente={{pagina_actualComponente}}">Última</a>
+                <a href="?paginaCliente={{ clientes.paginator.num_pages }}">Ãšltima</a>
             </li>
         {% endif %}
 
     </ul>
 </div>
 {% endif %}
+
 
 
 
