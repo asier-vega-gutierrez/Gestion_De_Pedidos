@@ -93,8 +93,6 @@ inputsFormulario.forEach((input) => {
 
 /*Añadimos un EventListener al formulario para que no permita enviar los datos si la validacion no es correcta*/
 Formulario.addEventListener('submit', (e) => {
-    alert(camposFormulario.username)
-    
     if (camposFormulario.username && camposFormulario.first_name && camposFormulario.last_name && camposFormulario.email && camposFormulario.password1 == true) {
 
     } else {

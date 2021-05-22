@@ -93,16 +93,47 @@
 /*PIE DE PÁGINA --> IGUAL PARA TODOS*/
 .pie{
     background-color: rgb(33, 37, 41);
-    height: 95px;
+    min-height: 95px;
+    height: 100%;
     width: 100%;
-    text-align: center;
+    bottom: 0;
     clear: right;
     clear: left;
+    display: flex;
+    align-items: center;
+}
+
+.pie #redes {
+    margin-left: 60px;
+}
+
+.pie #saberMas{
+    text-align: center;
+    width: 700px;
+    padding: 10px;
+    font-family: "poppins", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: gainsboro;
+}
+
+.pie #saberMas button{
+    padding: 3px;
+    background-color: #e7e7e7;
+    border-radius: 5px;
+}
+
+.pie #textoMasInfo{
+    padding: 5px;
+    text-align: center;
+}
+
+.pie #textoMasInfo ul {
+    list-style: circle inside;
 }
 
 .pie img{
+    margin-top: 10px;
     margin-left: 15px;
-    margin-top: 25px;
 }
 
 /*ELEMENTOS COMUNES PARA TODAS LAS PÁGINAS --> IGUAL PARA TODOS*/

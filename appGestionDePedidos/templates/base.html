@@ -88,14 +88,23 @@
     </main>
 
     <footer class="pie">
-        <!--INSTAGRAM-->
-        <a href="https://www.instagram.com/?hl=es" title="Instagram"><img src="{% static 'IMG/instagram.png' %}" alt="Intagram" width="50px" height="50px"></a>
-        <!--TWITTER-->
-        <a href="https://twitter.com/?lang=es" title="Twitter"><img src="{% static 'IMG/twitter.png' %}"alt="Twitter" width="50px" height="50px"></a>
-        <!--FACEBOOK-->
-        <a href="https://es-es.facebook.com/" title="Facebook"><img src="{% static 'IMG/facebook.png' %}" alt="Facebook" width="50px" height="50px"></a>
-        <!--LINKEDIN-->
-        <a href="https://es.linkedin.com/" title="LinkedIn"><img src="{% static 'IMG/linkedin.png' %}" alt="LinkedIn" width="50px" height="50px"></a>
+        <div id="saberMas">
+            <button id="masInfo">Más sobre la herramienta</button>
+        </div>
+
+        <div id="redes">
+            <!--INSTAGRAM-->
+            <a href="https://www.instagram.com/?hl=es" title="Instagram"><img src="{% static 'IMG/instagram.png' %}" alt="Intagram" width="50px" height="50px"></a>
+            <!--TWITTER-->
+            <a href="https://twitter.com/?lang=es" title="Twitter"><img src="{% static 'IMG/twitter.png' %}"alt="Twitter" width="50px" height="50px"></a>
+            <!--FACEBOOK-->
+            <a href="https://es-es.facebook.com/" title="Facebook"><img src="{% static 'IMG/facebook.png' %}" alt="Facebook" width="50px" height="50px"></a>
+            <!--LINKEDIN-->
+            <a href="https://es.linkedin.com/" title="LinkedIn"><img src="{% static 'IMG/linkedin.png' %}" alt="LinkedIn" width="50px" height="50px"></a>
+        </div>
+
+        <!-- enlace de archivo JS-->
+        <script src="{% static 'JS/masInfo.js' %}" charset="utf-8"></script>
     </footer>
 </body>
 </html>

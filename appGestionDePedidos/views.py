@@ -41,8 +41,8 @@ class ListadosListView(ListView):
                 context['lista_clientes'] = Cliente.objects.all()
                 context['lista_componentes'] = Componente.objects.all()
                 
-                #acontinuacion esta todo la paginacion de la 4 listas, se recupera el numero de paginas y la pagina actual por cada uno, se muestran solo 3 registros por pagina
-                paginator = Paginator(Producto.objects.all(), 3)
+                #acontinuacion esta todo la paginacion de la 4 listas, se recupera el numero de paginas y la pagina actual por cada uno, se muestran solo 5 registros por pagina
+                paginator = Paginator(Producto.objects.all(), 5)
                 # Si no existe la variable page en la url entonces sera 1
                 context['paginaProducto'] = self.request.GET.get('paginaProducto') or 1
                 paginaProducto = context['paginaProducto']    
@@ -51,7 +51,7 @@ class ListadosListView(ListView):
                 context['pagina_actualProducto'] = int(paginaProducto)
                 context['paginasProducto'] = range(1, productos.paginator.num_pages + 1)
 
-                paginator = Paginator(Pedido.objects.all(), 3)
+                paginator = Paginator(Pedido.objects.all(), 5)
                 # Si no existe la variable page en la url entonces sera 1
                 context['paginaPedido'] = self.request.GET.get('paginaPedido') or 1
                 paginaPedido = context['paginaPedido']
@@ -60,7 +60,7 @@ class ListadosListView(ListView):
                 context['pagina_actualPedido'] = int(paginaPedido)
                 context['paginasPedido'] = range(1, pedidos.paginator.num_pages + 1)
 
-                paginator = Paginator(Cliente.objects.all(), 3)
+                paginator = Paginator(Cliente.objects.all(), 5)
                 # Si no existe la variable page en la url entonces sera 1
                 context['paginaCliente'] = self.request.GET.get('paginaCliente') or 1
                 paginaCliente = context['paginaCliente']
@@ -69,7 +69,7 @@ class ListadosListView(ListView):
                 context['pagina_actualCliente'] = int(paginaCliente)
                 context['paginasCliente'] = range(1, clientes.paginator.num_pages + 1)
 
-                paginator = Paginator(Componente.objects.all(), 3)
+                paginator = Paginator(Componente.objects.all(), 5)
                 # Si no existe la variable page en la url entonces sera 1
                 context['paginaComponente'] = self.request.GET.get('paginaComponente') or 1
                 paginaComponente = context['paginaComponente']
