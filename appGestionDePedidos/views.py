@@ -12,12 +12,13 @@ from django.core.mail import EmailMessage
 from .forms import *
 from .models import *
 
+#Vista basada en clases que muestra un formulario para crear un usuario, volver a mostrar el formulario con errores de validación (si los hay) y guardar el usuario.
 class RegistroView(CreateView):
         form_class = RegistroForm
         template_name = 'registration/register.html'
         success_url = reverse_lazy('pagPrincipal')
 
-        #Con esta función la relación Producto - Componente se guarda al realizar este formulario.
+        #Con esta función podremos guardar el cargo (grupo) al que pertenece el usuario para controlar sus permisos.
         def form_valid(self, form):
                 self.object = form.save(commit=False)
                 self.object.save()

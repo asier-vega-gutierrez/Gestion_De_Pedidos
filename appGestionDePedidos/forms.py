@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
 
+#Clase formulario para el registro de usuarios, cargamos todos los campos de dicho modelo. Mediante 'group = forms.ModelChoiceField' haremos que en nuestro formulario solo se pueda escoger un grupo o cargo.
 class RegistroForm(UserCreationForm):
     group = forms.ModelChoiceField(
         queryset=Group.objects.all(),

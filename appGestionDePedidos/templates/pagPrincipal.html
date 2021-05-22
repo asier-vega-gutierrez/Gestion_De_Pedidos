@@ -20,6 +20,7 @@
         <h2>LISTADOS GENERALES</h2>
     </header>
     
+    <!--Comprobamos que hayan usuarios autenticados-->
     {% if user.is_authenticated %}
         <!--Primer articulo donde se visualizara el listado de productos.-->
         <article class="listados" id="listadosIzq">
@@ -44,12 +45,15 @@
                         {% for producto in productos %}
                             <li>
                                 <span>id.{{producto.id}}</span>{{producto.nombre}}
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.view_producto %}
                                     <a class="detalles" href="{% url 'detalleProducto' producto.id %}">detalles</a>
                                 {% endif %}  
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.delete_producto %}
                                     <a class="eliminar" href="{% url 'eliminarProducto' producto.id %}">eliminar</a>
                                 {% endif %} 
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.change_producto %}
                                     <a class="modificar" href="{% url 'modificarProducto' producto.id %}">modificar</a>
                                 {% endif %} 
@@ -89,12 +93,15 @@
                         {% for pedido in pedidos %}
                             <li>
                                 <span>id.{{pedido.id}}</span>{{pedido.fecha}}
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.view_pedido %}
                                     <a class="detalles" href="{% url 'detallePedido' pedido.id %}">detalles</a>
                                 {% endif %}
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.delete_pedido %}
                                     <a class="eliminar" href="{% url 'eliminarPedido' pedido.id %}">eliminar</a>
                                 {% endif %}
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.change_pedido %}
                                     <a class="modificar" href="{% url 'modificarPedido' pedido.id %}">modificar</a>
                                 {% endif %}
@@ -133,12 +140,15 @@
                         {% for cliente in lista_clientes %}
                             <li>
                                 <span>id.{{cliente.id}}</span>{{cliente.nombre}}
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.view_cliente %}
                                     <a class="detalles" href="{% url 'detalleCliente' cliente.id %}">detalles</a>
                                 {% endif %}
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.delete_cliente %}
                                     <a class="eliminar" href="{% url 'eliminarCliente' cliente.id %}">eliminar</a>
                                 {% endif %}
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.change_cliente %}
                                     <a class="modificar" href="{% url 'modificarCliente' cliente.id %}">modificar</a>
                                 {% endif %}
@@ -178,12 +188,15 @@
                         {% for componente in lista_componentes %}
                             <li>
                                 <span>id.{{componente.id}}</span>{{componente.nombre}}
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.view_componente %}
                                     <a class="detalles" href="{% url 'detalleComponente' componente.id %}">detalles</a>
                                 {% endif %}
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.delete_componente %}
                                     <a class="eliminar" href="{% url 'eliminarComponente' componente.id %}">eliminar</a>
                                 {% endif %}
+                                <!--Solo se podrá visualizar si se tiene acceso-->
                                 {% if perms.appGestionDePedidos.change_componente %}
                                     <a class="modificar" href="{% url 'modificarComponente' componente.id %}">modificar</a>
                                 {% endif %}
@@ -201,6 +214,7 @@
             {% include "paginacion/paginacionComponentes.html" %} 
         </article>
     {% else %}
+        <!--En el caso de que el usuario no este registrado o no haya iniciado sesión, se mostrará el siguiente mensaje-->
         <div id="sinAcceso">
             <img src="{% static 'IMG/candado.png' %}" alt="Candado" width="100px" height="100px">
             <h4>Oh no! Parece que no tienes permisos</h4>

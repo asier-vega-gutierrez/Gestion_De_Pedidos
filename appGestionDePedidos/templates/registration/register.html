@@ -9,10 +9,10 @@
         <hr>
     </header>
 
-    <!--Formulario para añadir un nuevo cliente mediante el metodo post.-->
+    <!--Formulario para añadir un nuevo usuario-->
     <form id="formularioRegistro" class="acciones" action="{% url 'registro' %}" method="post">
         {% csrf_token %}
-        <!--Cargamos los campos del formulario indicados en el metodo get dentro de nuestra vista-->
+        <!--Cargamos los campos del formulario-->
         <ul class="formularios">
             <div id="div_username">
                 <li>
@@ -59,6 +59,9 @@
         </ul>
 
         <input type="submit" value="Registrarse" id="Registro">
+
+        <!--Enlace para formulario login-->
+        <p class = "autenticacion">¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
     </form>
 
 <!-- enlace de archivo JS-->

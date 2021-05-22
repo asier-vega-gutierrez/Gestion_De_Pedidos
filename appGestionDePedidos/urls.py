@@ -5,6 +5,7 @@ from appGestionDePedidos.views import *
 urlpatterns = [
     #URL de Django para crear los forms Login y Logout
     path('accounts/', include('django.contrib.auth.urls')),
+    #URL para acceder al formulario en el cual se podrá añadir un usuario nuevo
     path('registration/', views.RegistroView.as_view(), name = 'registro'),
 
     #URL para la pag. principal donde se visualizará todos los listados
