@@ -1,4 +1,4 @@
-/*esta funcion coje el nombre + apillido introducido les añade un nuemero aleatorio y mustra el resultado en el usuario */
+/*esta funcion coje el nombre + apellido introducido les añade un nuemero aleatorio y muestra el resultado en el usuario */
 function generarUsuario(event){
 
     let usuarioGenericoParte1 = campoNombre.childNodes[1].childNodes[3].value
@@ -16,7 +16,7 @@ function ponerPrimeraMayuscula(str){
 
 }
 
-/*recojo los imputs y les añado el listener de alpderder el foko */
+/*recojo los inputs y les añado el listener de alpderder el foko */
 let campoNombre = document.getElementById("divNombre")
 campoNombre.childNodes[1].childNodes[3].addEventListener("blur", generarUsuario)
 

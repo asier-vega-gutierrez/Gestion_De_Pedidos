@@ -8,7 +8,7 @@ const expresiones = {
 	usuario: /^[a-zA-Z0-9\_\-]{4,30}$/, // Letras, numeros, guion y guion_bajo
 	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
     apellido: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-    email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+    email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/, //Formato email
 	password: /^.{4,20}$/, // 4 a 20 digitos.
 }
 
@@ -23,30 +23,37 @@ const camposFormulario = {
 
 /*Creamos la funcion de tipo arrow validarFormulario, que llama a la funcion validarCampo de una manera automatica, independientemente del campo*/
 const validarFormulario = (e) => {
+    /*Switch para elegir el campo adecuado en cada caso, dependiendo el case*/
     switch (e.target.name){
+        /*Campo del nombre del usuario a crear*/
         case "username":
             validarCampo(expresiones.usuario, e.target, 'username');
         break;
+        /*Campo del nombre del usuario*/
         case "first_name":
             validarCampo(expresiones.nombre, e.target, 'first_name');
         break;
+        /*Campo del apellido del usuario*/
         case "last_name":
             validarCampo(expresiones.apellido, e.target, 'last_name');
         break;
+        /*Campo del email del usuario*/
         case "email":
             validarCampo(expresiones.email, e.target, 'email');
         break;
+        /*Campo de la contraseña de la cuenta*/
         case "password1":
             validarCampo(expresiones.password, e.target, 'password1');
             validarPassword2();
         break;
+        /*Comprobacion de la contraseña de la cuenta*/
         case "password2":
             validarPassword2();
         break;
     }
 }
 
-/*Creamos la funcion de tipo arrow validarCampo, que añade o elimina una clase al div de dicho campo con el fin de mostra un determinado icono*/
+/*Creamos la funcion de tipo arrow validarCampo, que añade o elimina una clase al div de dicho campo con el fin de mostra un determinado icono y validar los campos*/
 const validarCampo = (expresion, input, campo ) => {
     if (expresion.test(input.value)) {
         document.getElementById(`div_${campo}`).classList.remove('formulario_incorrecto');
