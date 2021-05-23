@@ -87,7 +87,7 @@
                     </form>
                 </div>
                 <!--Comprobamos si existen pedidos en nuestra BBDD-->
-                {% if lista_pedidos %}
+                {% if pedidos %}
                     <ul>
                         <!--Recorremos todos los pedidos existentes y los visualizamos como una lista no ordenada <ul>-->
                         {% for pedido in pedidos %}
@@ -134,10 +134,10 @@
                     </form>
                 </div>
                 <!--Comprobamos si existen clientes en nuestra BBDD-->
-                {% if lista_clientes %}
+                {% if clientes %}
                     <ul>
                         <!--Recorremos todos los clientes existentes y los visualizamos como una lista no ordenada <ul>-->
-                        {% for cliente in lista_clientes %}
+                        {% for cliente in clientes %}
                             <li>
                                 <span>id.{{cliente.id}}</span>{{cliente.nombre}}
                                 <!--Solo se podrá visualizar si se tiene acceso-->
@@ -182,10 +182,10 @@
                     </form>
                 </div>
                 <!--Comprobamos si existen componentes en nuestra BBDD-->
-                {% if lista_componentes %}
+                {% if componentes %}
                     <ul>
                         <!--Recorremos todos los componentes existentes y los visualizamos como una lista no ordenada <ul>-->
-                        {% for componente in lista_componentes %}
+                        {% for componente in componentes %}
                             <li>
                                 <span>id.{{componente.id}}</span>{{componente.nombre}}
                                 <!--Solo se podrá visualizar si se tiene acceso-->
