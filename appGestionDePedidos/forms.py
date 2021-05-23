@@ -1,4 +1,5 @@
 from django import forms
+from django.forms.forms import Form
 from .models import *
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.forms import UserCreationForm
@@ -59,8 +60,7 @@ class ComponenteAnyadirForm(forms.ModelForm):
         fields = '__all__'
 
 #Clase formulario para enviar correos al correo de contacto
-class EnviarMail(forms.Form):
-    Nombre = forms.CharField(max_length = 25)
-    Apellidos = forms.CharField(max_length = 50)
-    Email = forms.EmailField()
-    Mensaje = forms.CharField(widget = forms.Textarea)
+class ContactoForm(forms.Form):
+    nombre = forms.CharField(label='nombre', )
+    correo = forms.EmailField(label='correo', )
+    mensaje = forms.CharField(label='mensaje', widget=forms.Textarea, )

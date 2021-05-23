@@ -1,3 +1,4 @@
+from django.http import request
 from django.shortcuts import render, redirect
 from django.views.generic import DetailView, DeleteView, ListView, UpdateView, CreateView,TemplateView
 from django.views import View
@@ -331,38 +332,36 @@ class BuscarPedidoView(TemplateView):
                 
                 return render(request, 'buscar/resultadosBusqueda.html',{'pedidos':pedidos})
 
-#Vista que permite realizar el envío del mensaje al correo predeterminado
+#Vista que permite realizar el envío del mensaje al correo predeterminado 
 class EnviarCorreoView(TemplateView):
         template_name = 'contacto.html'
 
         def get_context_data(self, **kwargs):
                 context = super().get_context_data(**kwargs)
-                context['EnviarMail_form'] = EnviarMail()
-
+                context['contacto_form'] = ContactoForm()
                 return context
         
-        def post(self, request, *args, **kwargs):
-                Nombre = request.POST.get('Nombre')
-                Apellidos = request.POST.get('Apellidos')
-                Email = request.POST.get('Email')
-                Mensaje = request.POSR.get('Mensaje')
+        def post (self, request, *args, **kwargs):
+                nombre = request.POST.get('nombre')
+                correo = request.POST.get('correo')
+                mensaje = request.POST.get('mensaje')
 
-                Correo = render_to_string(
+                cuerpo = render_to_string(
                         'email_content.html', {
-                        'Nombre': Nombre,
-                        'Apellidos': Apellidos,
-                        'Email': Email,
-                        'Mensaje': Mensaje,
+                                'nombre': nombre,
+                                'correo': correo,
+                                'mensaje': mensaje,
                         },
                 )
-                
-                email_message = EmailMessage(
-                        subject = 'Mensaje de un usuario',
-                        body = Correo,
-                        from_email = Email,
-                        to=['duestronicomponents@gmail.com'],
-                )
-                email_message.content_subtype = 'html'
-                email_message.send()
 
-                return redirect('pagPrincipal')
+                CorreoFinal = EmailMessage(
+                        subject='Mensaje de usuario',
+                        body=cuerpo,
+                        from_email=correo,
+                        to=['duestronicomponents@gmail.com'],
+                        fail_silently=False,
+                )
+                CorreoFinal.content_subtype='html'
+                CorreoFinal.send()
+
+                return redirect ('pagPrincipal')
