@@ -61,6 +61,6 @@ class ComponenteAnyadirForm(forms.ModelForm):
 
 #Clase formulario para enviar correos al correo de contacto
 class ContactoForm(forms.Form):
-    nombre = forms.CharField(label='nombre', )
-    correo = forms.EmailField(label='correo', )
-    mensaje = forms.CharField(label='mensaje', widget=forms.Textarea, )
+    Nombre = forms.CharField()
+    Correo = forms.EmailField()
+    Mensaje = forms.CharField(widget=forms.Textarea, )

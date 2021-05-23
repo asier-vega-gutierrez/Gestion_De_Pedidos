@@ -14,13 +14,16 @@
 
     <ul class = "formularios">
         <li>
-            {{ contacto_form.nombre.label }}
+            <label for="Nombre">Nombre: <span class="required">*</span></label>
+            {{ contacto_form.Nombre }}
         </li>
         <li>
-            {{ contacto_form.correo.label }} 
+            <label for="Correo">Correo: <span class="required">*</span></label>
+            {{ contacto_form.Correo }} 
         </li>
         <li>
-            {{ contacto_form.mensaje.label }}
+            <label for="Mensaje">Mensaje: <span class="required">*</span></label>
+            {{ contacto_form.Mensaje }}
         </li>
     </ul>
     <input type="submit" value="Enviar correo">

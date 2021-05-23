@@ -342,24 +342,23 @@ class EnviarCorreoView(TemplateView):
                 return context
         
         def post (self, request, *args, **kwargs):
-                nombre = request.POST.get('nombre')
-                correo = request.POST.get('correo')
-                mensaje = request.POST.get('mensaje')
+                Nombre = request.POST.get('Nombre')
+                Correo = request.POST.get('Correo')
+                Mensaje = request.POST.get('Mensaje')
 
                 cuerpo = render_to_string(
                         'email_content.html', {
-                                'nombre': nombre,
-                                'correo': correo,
-                                'mensaje': mensaje,
+                                'Nombre': Nombre,
+                                'Correo': Correo,
+                                'Mensaje': Mensaje,
                         },
                 )
 
                 CorreoFinal = EmailMessage(
                         subject='Mensaje de usuario',
                         body=cuerpo,
-                        from_email=correo,
+                        from_email=Correo,
                         to=['duestronicomponents@gmail.com'],
-                        fail_silently=False,
                 )
                 CorreoFinal.content_subtype='html'
                 CorreoFinal.send()
