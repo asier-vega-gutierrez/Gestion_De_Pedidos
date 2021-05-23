@@ -1,0 +1,7 @@
+La aplicación está limitada con permisos.
+	
+	- En caso de querer acceder a todo: Nombre usuario: 'admin' ; Contraseña: 'admin'
+	- Rol Jefe (acceder a todo): Nombre usuario: 'pepe' ; Contraseña: 'ingenieriaweb'
+	- Rol Comercial (visualización, insertar, modificar): Nombre usuario: 'AlfonsoJimenez4' ; Contraseña: 'ingenieriaweb'
+	- Rol Producción (visualización): Nombre usuario: 'SelenaGuerrero0' ; Contraseña: 'ingenieriaweb'
+	- Rol Ventas (visualización, eliminación): Nombre usuario: 'EricPenosi1' ; Contraseña: 'ingenieriaweb'

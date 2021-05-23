@@ -21,7 +21,7 @@
                 <img src="{% static 'IMG/logo_nav.png' %}" alt="Logo" width="150px">
                 <ul>
                     <li><a href="{% url 'pagPrincipal' %}">PÁGINA PRINCIPAL</a></li>
-                    <li><a href = "{% url 'contacto' %}">CONTACTANOS</a></li>
+                    <li><a href = "{% url 'contacto' %}">CONTÁCTANOS</a></li>
                     <li><a href="">GESTIÓN DE PRODUCTOS</a> 
                         <ul>
                             
@@ -65,7 +65,7 @@
                     </li>
                     {% if user.is_authenticated %}
                         <li>
-                            <p>Hola, @{{ user.username }}</p>
+                            <p id="saludo-usuario">Hola, @{{ user.username }}</p>
                             <ul>
                                 <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
                             </ul>
