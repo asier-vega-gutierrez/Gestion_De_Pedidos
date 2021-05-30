@@ -12,7 +12,7 @@ function aumentar(){
 
 /*Funcion que llama el EventListener si el usuario hace click en el boton de disminuir tamaño. Se coge el tamaño actual del texto y lo reduce en 5px*/
 function disminuir(){
-    /*Si el tamaño del texto es mayor que 10px, lo reduce 5px más*/
+    /*Si el tamaño del texto es mayor que 10px, lo reduce 5px mas*/
     if (tamaño>10){
         tamaño -= 5;
         texto.style.fontSize = `${tamaño}px`;
